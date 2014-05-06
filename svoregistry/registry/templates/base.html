@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %}</title>
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<div id="divContent">
+		{% block content %}{% endblock %}
+	</div>
+	<div id="divFooter">
+		developed by <a href="http://www.shawnrenner.com/">srenner</a>
+		::
+		code @ <a href="https://github.com/srenner/svoregistry-v2">github</a>
+	</div>
+	{% block scripts %}{% endblock %}
+</body>
+</html>
