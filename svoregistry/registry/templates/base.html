@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>{% block title %}{% endblock %}</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+	{% load staticfiles %}
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/bootstrap.min.css' %}" />
 	{% block head %}{% endblock %}
 </head>
 <body style="margin-top: 60px">
@@ -50,7 +51,7 @@
 		::
 		code @ <a href="https://github.com/srenner/svoregistry-v2">github</a>
 	</div>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="{% static 'registry/js/vendor/bootstrap.min.js' %}" type="text/javascript"></script>
 	{% block scripts %}{% endblock %}
 </body>
 </html>
