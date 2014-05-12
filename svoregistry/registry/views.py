@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext, loader
 from random import randint
@@ -25,9 +26,9 @@ def index(request):
 
 def new(request):
     #display the newest entries
-    template = loader.get_template('new.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+    entries = Entry.objects.order_by('-entry_datetime', '-id')[:10]
+    strJson = serializers.serialize("json", entries, excludes=('scrape_id', 'entry_flag', 'ip', 'comments'))
+    return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def forsale(request):
     #display SVOs for sale
