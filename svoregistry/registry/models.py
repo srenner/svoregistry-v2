@@ -90,5 +90,5 @@ class Entry(models.Model):
     class Meta:
         verbose_name_plural = 'Entries'
     def __str__(self):
-        return self.car + ' ' + self.entry_datetime
+        return str(self.car) + ' ' + str(self.entry_datetime)
     
