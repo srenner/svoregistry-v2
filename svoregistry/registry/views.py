@@ -16,7 +16,7 @@ def index(request):
     if last >= 0:
         index = randint(0, last)
         random_entry = entries[index]
-        strJson = serializers.serialize("json", [random_entry,], excludes=('scrape_id', 'entry_flag', 'ip', 'car'))
+        strJson = serializers.serialize("json", [random_entry,])
     else:
         random_entry = None
         strJson = None
