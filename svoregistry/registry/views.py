@@ -16,13 +16,14 @@ def index(request):
     if last >= 0:
         index = randint(0, last)
         random_entry = entries[index]
-        strJson = serializers.serialize("json", [random_entry,])
+        #random = serializers.serialize("json", [random_entry,])
     else:
         random_entry = None
-        strJson = None
-    template = loader.get_template('index.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+        #random = None
+    #template = loader.get_template('index.html')
+    #context = RequestContext(request)
+    #return HttpResponse(template.render(context))
+    return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
 def new(request):
     #display the newest entries
