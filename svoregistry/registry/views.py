@@ -27,7 +27,7 @@ def index(request):
 def new(request):
     #display the newest entries
     entries = Entry.objects.order_by('-entry_datetime', '-id')[:10]
-    strJson = serializers.serialize("json", entries, excludes=('scrape_id', 'entry_flag', 'ip', 'comments'))
+    strJson = serializers.serialize("json", entries)
     return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def forsale(request):
