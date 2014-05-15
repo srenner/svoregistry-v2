@@ -47,3 +47,8 @@ def about(request):
     template = loader.get_template('about.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
+
+def map_data(request):
+    locations = Entry.objects.exclude(geo_lat__isnull=True)
+    json = serializers.serialize('json', locations)
+    return HttpResponse(str(locations), 'application/text')
