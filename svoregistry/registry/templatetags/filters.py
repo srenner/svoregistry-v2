@@ -6,4 +6,4 @@ register = template.Library()
 @register.filter
 
 def color_lookup(tuple, key):
-    return dict(tuple).get(key, "Other/Unknown Color")
+    return dict(tuple).get(key, "Unknown Color")

@@ -1,9 +1,23 @@
 {% load filters %}
+{% load humanize %}
 <div class="registry-entry">
-	<div class="registry-entry-header">
-		{{entry.year}} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO	
+	<div class="row registry-entry-header">
+			<div class="col-md-9">{{entry.mileage|intcomma}} Miles. Entered {{entry.entry_datetime|date}}.</div>
+			<div class="col-md-3 pull-right text-right">
+				<span class="glyphicon glyphicon-star-empty"></span>
+				<span class="glyphicon glyphicon-flag"></span>
+			</div>
+		
 	</div>
-	
+	<div class="registry-entry-body">
+		<div class="registry-entry-owner">
+			{{entry.owner}}
+		</div>
+		
+		<div class="registry-entry-comments">
+			{{entry.comments|safe}}
+		</div>
+	</div>
 	
 
 	

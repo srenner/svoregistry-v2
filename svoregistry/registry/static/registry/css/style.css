@@ -1,6 +1,9 @@
 .h1, h1 {
 	text-align: center;
 }
+.h2, h2 {
+	text-align: center;
+}
 
 footer {
 	font-size: 12px;
@@ -8,4 +11,14 @@ footer {
 
 #divMap {
 	height: 500px;
+}
+
+.registry-entry {
+	border: solid 1px #EFEFEF;
+	border-radius: 5px;
+}
+.registry-entry-header {
+	border-bottom: solid 1px #EFEFEF;
+	font-size: 18px;
+	font-weight: bold;
 }
