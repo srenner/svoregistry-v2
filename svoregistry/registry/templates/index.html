@@ -8,7 +8,7 @@
 <h1>Home of the 1984 - 1986 Mustang SVO Registry</h1>
 <div id="divMap" class="jumbotron"></div>
 <div class="random-entry-container">
-	<h2>Random Entry: {{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO - {{ entry.car }}</h2>
+	<h2>Random Entry: {{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO - <a href="/{{entry.car}}/">{{ entry.car }}</a></h2>
 	<div>{% include 'entry.html' %}</div>
 </div>
 {% endblock %}

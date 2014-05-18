@@ -14,11 +14,29 @@ footer {
 }
 
 .registry-entry {
-	border: solid 1px #EFEFEF;
-	border-radius: 5px;
+	border: solid 1px #888888;
+	border-radius: 0 0 5px 5px;
+	box-shadow: 5px 5px 5px #888888;
 }
 .registry-entry-header {
-	border-bottom: solid 1px #EFEFEF;
-	font-size: 18px;
+	border-bottom: solid 1px #888888;
+	background-color: #EFEFEF;
+	font-size: 20px;
 	font-weight: bold;
+}
+.registry-entry-body {
+	padding: 5px;
+}
+.registry-entry-comments {
+	padding-top: 5px;
+}
+.registry-entry-footer {
+	border-top: solid 1px #EFEFEF;
+}
+.flag-entry {
+	color: #AC2925;
+}
+.flag-entry:hover {
+	color: #C9302C;
+	text-decoration: none;
 }

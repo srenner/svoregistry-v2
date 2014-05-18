@@ -1,25 +1,27 @@
 {% load filters %}
 {% load humanize %}
-<div class="registry-entry">
+<div class="registry-entry container row">
 	<div class="row registry-entry-header">
-			<div class="col-md-9">{{entry.mileage|intcomma}} Miles. Entered {{entry.entry_datetime|date}}.</div>
-			<div class="col-md-3 pull-right text-right">
-				<span class="glyphicon glyphicon-star-empty"></span>
-				<span class="glyphicon glyphicon-flag"></span>
-			</div>
-		
-	</div>
-	<div class="registry-entry-body">
-		<div class="registry-entry-owner">
-			{{entry.owner}}
+		<div class="col-md-6 col-sm-6">{{entry.mileage|intcomma}} Miles. {{entry.entry_datetime|date}}.</div>
+		<div class="col-md-6 col-sm-6 text-right">
+			Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}.
+			{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:""}} {{entry.zipcode|default_if_none:""}}
 		</div>
-		
-		<div class="registry-entry-comments">
+	</div>
+	<div class="row registry-entry-body">
+		<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
+		<div class="registry-entry-comments row col-md-12">
+			<blockquote>
 			{{entry.comments|safe}}
+			</blockquote>
 		</div>
 	</div>
-	
-
-	
-
+	<div class="row registry-entry-footer">
+		<div class="pull-right text-right">
+			<a class="flag-entry" href="#">
+			<span>Flag this entry for review</span>
+			<span class="glyphicon glyphicon-flag"></span>
+			</a>
+		</div>
+	</div>
 </div>
