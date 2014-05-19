@@ -28,7 +28,10 @@ footer {
 	padding: 5px;
 }
 .registry-entry-comments {
-	padding-top: 5px;
+	margin-top: 10px;
+	padding-top: 7px;
+	padding-left: 10px;
+	border-left: solid 5px #EFEFEF;
 }
 .registry-entry-footer {
 	border-top: solid 1px #EFEFEF;
