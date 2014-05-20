@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^forsale/$', views.forsale, name='forsale'),
     url(r'^statistics/$', views.statistics, name='statistics'),
     url(r'^about/$', views.about, name='about'),
-
+    url(r'^(?P<vin>\w{17})/$', views.view_car, name='car'),
     url(r'map/', views.map_data, name='map_data'),
 
     url(r'^admin/', include(admin.site.urls)),

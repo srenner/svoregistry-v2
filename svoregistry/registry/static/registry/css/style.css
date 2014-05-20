@@ -1,8 +1,12 @@
 .h1, h1 {
 	text-align: center;
+	margin-top: 0px;
+	padding-top: 0px;
 }
 .h2, h2 {
 	text-align: center;
+	margin-top: 0px;
+	padding-top: 0px;
 }
 
 footer {
@@ -42,4 +46,9 @@ footer {
 .flag-entry:hover {
 	color: #C9302C;
 	text-decoration: none;
+}
+.map-small {
+	background-color: #EFEFEF;
+	border-radius: 4px;
+	height: 300px;
 }

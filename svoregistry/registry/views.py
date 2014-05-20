@@ -5,6 +5,7 @@ from django.template import RequestContext, loader
 from random import randint
 from django.core import serializers
 from registry.models import Entry
+from registry.models import Car
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -48,6 +49,10 @@ def about(request):
     template = loader.get_template('about.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
+
+def view_car(request,vin):
+    car = Car.objects.get(pk=vin)
+    return render_to_response('car.html', {'car': car}, context_instance=RequestContext(request))
 
 def map_data(request):
     locations = Entry.objects.exclude(geo_lat__isnull=True)

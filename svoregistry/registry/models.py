@@ -3,6 +3,18 @@ from localflavor.us.us_states import US_STATES
 from localflavor.ca.ca_provinces import PROVINCE_CHOICES
 
 class Car(models.Model):
+    COLOR_CHOICES = (
+        ('1B','1B (Medium Charcoal)'),
+        ('1C','1C (Black)'),
+        ('1D', '1D (Dark Gray)'),
+        ('1E', '1E (Silver)'),
+        ('2A', '2A (Medium Canyon Red)'),
+        ('2R', '2R (Jalepeno Red)'),
+        ('4E', '4E (Dark Sage)'),
+        ('7B', '7B (Dark Shadow Blue)'),
+        ('9L', '9L (Oxford White)'),
+        ('9W', '9W (Dark Charcoal)')
+    )
     vin = models.CharField(max_length=17, primary_key=True, unique=True)
     #these fields are in two models in case users disagree about what the car has
     #the Car model will hold the most recent information about the car
