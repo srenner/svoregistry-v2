@@ -4,6 +4,7 @@
 {% load staticfiles %}
 {% endblock %}
 {% load filters %}
+{% load humanize %}
 {%block content %}
 <header>
 	<h1>
@@ -17,6 +18,12 @@
 <div class="row">
 	<div class="col-md-6">
 		<h2>Specs</h2>
+		{% with count=entries.count %}
+		<p>
+			This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry. The most recent mileage is {{entries.0.mileage|intcomma}}, recorded on {{entries.0.entry_datetime|date}}.
+			There are __ SVOs in the registry with this year and color code.
+		</p>
+		{% endwith %}
 		<dl class="dl-horizontal">
 			<dt>Slapper bars</dt>
 			<dd>{{car.slappers}}</dd>
@@ -41,6 +48,13 @@
 		</dl> 
 	</div>
 	<div class="map-small col-md-6 text-center">map</div>
+</div>
+<div class="row col-md-12">
+	{% for entry in entries %}
+		<div class="car-entry">
+		{% include 'entry.html' %}
+		</div>		
+	{% endfor %}
 </div>
 
 {% endblock %}

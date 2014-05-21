@@ -17,13 +17,8 @@ def index(request):
     if last >= 0:
         index = randint(0, last)
         random_entry = entries[index]
-        #random = serializers.serialize("json", [random_entry,])
     else:
         random_entry = None
-        #random = None
-    #template = loader.get_template('index.html')
-    #context = RequestContext(request)
-    #return HttpResponse(template.render(context))
     return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
 def new(request):
@@ -52,7 +47,8 @@ def about(request):
 
 def view_car(request,vin):
     car = Car.objects.get(pk=vin)
-    return render_to_response('car.html', {'car': car}, context_instance=RequestContext(request))
+    entries = Entry.objects.filter(car=car).order_by('-entry_datetime')
+    return render_to_response('car.html', {'car': car, 'entries': entries}, context_instance=RequestContext(request))
 
 def map_data(request):
     locations = Entry.objects.exclude(geo_lat__isnull=True)

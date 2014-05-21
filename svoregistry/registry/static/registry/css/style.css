@@ -21,6 +21,8 @@ footer {
 	border: solid 1px #888888;
 	border-radius: 0 0 5px 5px;
 	box-shadow: 5px 5px 5px #888888;
+	margin-top: 15px;
+	margin-bottom: 15px;
 }
 .registry-entry-header {
 	border-bottom: solid 1px #888888;
@@ -51,4 +53,7 @@ footer {
 	background-color: #EFEFEF;
 	border-radius: 4px;
 	height: 300px;
+}
+.car-entry {
+	margin-top: 35px;
 }

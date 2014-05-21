@@ -11,7 +11,7 @@
 	<div class="row registry-entry-body">
 		<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
 		<div class="registry-entry-comments col-md-12">
-			{{entry.comments|safe}}
+			{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
 		</div>
 	</div>
 	<div class="row registry-entry-footer">
