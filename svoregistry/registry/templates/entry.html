@@ -9,7 +9,10 @@
 		</div>
 	</div>
 	<div class="row registry-entry-body">
+		{% if entry.photo %}
 		<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
+		{% endif %}
+		<h3>Entry Comments:</h3>
 		<div class="registry-entry-comments col-md-12">
 			{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
 		</div>
