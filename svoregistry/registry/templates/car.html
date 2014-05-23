@@ -16,10 +16,10 @@
 </header>
 
 <div class="row">
-	<div class="col-md-4">
-		<h2>Specs</h2>
+	<div id="divMap" class="map-small col-md-6 text-center"></div>
+	<div class="col-md-6">
 		{% with count=entries.count %}
-		<p class="text-center">
+		<p class="">
 			This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
 		</p>
 		{% endwith %}
@@ -46,8 +46,16 @@
 			<dt>Deceased</dt>
 			<dd>{{car.deceased|yesno:"Yes,No"}}</dd>
 		</dl> 
+		
+		SVOs nearby
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		
 	</div>
-	<div id="divMap" class="map-small col-md-8 text-center"></div>
+
 </div>
 <div class="row col-md-12">
 	{% for entry in entries %}

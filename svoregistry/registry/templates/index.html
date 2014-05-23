@@ -6,7 +6,18 @@
 {% load filters %}
 {%block content %}
 <h1>Home of the 1984 - 1986 Mustang SVO Registry</h1>
-<div id="divMap" class="jumbotron"></div>
+<div class="row spacer20">
+	<div class="col-md-9">
+		<div id="divMap" class="big-map"></div>		
+	</div>
+	<div class="col-md-3">
+		<div class="twitter-widget text-center">
+			<a class="twitter-timeline" href="https://twitter.com/SVOregistry" data-widget-id="469321231313813505">Tweets by @SVOregistry</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+		</div>
+	</div>
+</div>
+
 <div class="random-entry-container">
 	<h2>Random Entry: {{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO - <a href="/{{entry.car}}/">{{ entry.car }}</a></h2>
 	<div>{% include 'entry.html' %}</div>

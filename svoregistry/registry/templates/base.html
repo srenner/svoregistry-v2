@@ -14,10 +14,10 @@
 			font-variant: small-caps;
 			font-style: italic;
 			font-size: 36px;
-			
 		}
 		.navbar-brand span {
-			padding-top: -4px;
+			color: #000;
+			font-size: 38px;
 		}
 	</style>
 	{% block head %}{% endblock %}
@@ -37,15 +37,13 @@
 	        <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="/">Home</a></li>
-					<li><a href="/new">New</a></li>
 					<li><a href="/forsale">For Sale</a></li>
 					<li><a href="/statistics">Stats</a></li>
 					<li><a href="/about">About</a></li>
 				</ul>
 				<div class="pull-right">
+					<button class="btn btn-info"> <span class="glyphicon glyphicon-download"></span> Download Registry</button>
 					<span>
-						<a href="https://twitter.com/SVOregistry" class="twitter-follow-button" data-show-count="false">Follow @SVOregistry</a>
-						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 						<div class="g-plusone" data-size="medium" data-annotation="none"></div>
 						<script type="text/javascript">
 						  (function() {
