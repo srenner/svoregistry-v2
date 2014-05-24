@@ -7,6 +7,7 @@ from django.core import serializers
 from registry.models import Entry
 from registry.models import Car
 from json import dumps
+from registry.utils import xstr
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -52,12 +53,11 @@ def view_car(request,vin):
     return render_to_response('car.html', {'car': car, 'entries': entries}, context_instance=RequestContext(request))
 
 def map_data(request):
-    locations = Entry.objects.exclude(geo_lat__isnull=True)[:20]
-    #json = serializers.serialize("json", locations, fields=('car'))
+    locations = Entry.objects.exclude(geo_lat__isnull=True)
     json = dumps([{
                    'v': str(l.car),
-                   'de': str(l.year + ' ' + l.color),
-                   'o': str(l.owner),
+                   'de': str(xstr(l.year) + ' ' + xstr(l.color)).strip(),
+                   'o': xstr(l.owner),
                    'dt': l.entry_datetime.strftime('%b %d, %Y'),
                    'lt': float(l.geo_lat),
                    'lg': float(l.geo_long)
