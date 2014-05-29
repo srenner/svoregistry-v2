@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
+{% load filters %}
 {% block title %}Mustang SVO Registry{% endblock %}
 {% block head %}
-{% load staticfiles %}
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@svoregistry">
+	<meta name="twitter:title" content="{{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}} SVO {{car.vin}}">
+	<meta name="twitter:description" content="{{twitter_description|truncatechars:200|striptags}}">
+	<meta name="twitter:domain" content="SVOregistry.com">
+	{% load staticfiles %}
 {% endblock %}
-{% load filters %}
+
 {% load humanize %}
 {%block content %}
 <header>
@@ -29,7 +35,7 @@
 			<dd>{{car.slappers|yesno:"Yes,No"}}</dd>
 			{% endif %}
 			<dt>Interior</dt>
-		    <dd>{{car.interior}}</dd>
+		    <dd>{{car.interior|default_if_none:"Unknown"}}</dd>
 			
 			<dt>Sunroof</dt>
 			<dd>{{car.sunroof|yesno:"Yes,No"}}</dd>
@@ -46,14 +52,14 @@
 			<dt>Deceased</dt>
 			<dd>{{car.deceased|yesno:"Yes,No"}}</dd>
 		</dl> 
-		
-		SVOs nearby
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-		</ul>
-		
+		<div class="hidden">
+			SVOs nearby
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+			</ul>
+		</div>
 	</div>
 
 </div>

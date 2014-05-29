@@ -50,7 +50,13 @@ def about(request):
 def view_car(request,vin):
     car = Car.objects.get(pk=vin)
     entries = Entry.objects.filter(car=car).order_by('-entry_datetime')
-    return render_to_response('car.html', {'car': car, 'entries': entries}, context_instance=RequestContext(request))
+    if(entries.count() > 0):
+        twitter_description = entries[entries.count() - 1].comments[:201]
+        if len(twitter_description) == 0:
+            twitter_description = 'View info for SVO with VIN ' + car.vin
+    else:
+        twitter_description = 'View info for SVO with VIN ' + car.vin
+    return render_to_response('car.html', {'car': car, 'entries': entries, 'twitter_description': twitter_description}, context_instance=RequestContext(request))
 
 def map_data(request):
     locations = Entry.objects.exclude(geo_lat__isnull=True)
