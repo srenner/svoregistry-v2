@@ -27,9 +27,8 @@ footer {
 }
 .registry-entry-header {
 	border-bottom: solid 1px #888888;
-	background-color: #EFEFEF;
 	font-size: 20px;
-	font-weight: bold;
+	
 }
 .registry-entry-body {
 	padding: 5px;
@@ -53,19 +52,31 @@ footer {
 .map-small {
 	background-color: #EFEFEF;
 	border-radius: 4px;
-	height: 325px;
-	max-height: 325px;
+	height: 450px;
+	max-height: 450px;
 }
 .car-entry {
 	margin-top: 35px;
 }
-.twitter-widget {
-	
-}
-.big-map {
-	height: 450px;
-	border-radius: 4px;
-}
 .spacer20 {
 	margin-bottom: 20px
 }
+
+.medium-canyon-red {
+	background-color: #923525;
+	color: #FFFFFF;
+}
+h2.inline-header {
+	display: inline-block;
+	vertical-align: bottom;
+}
+.form-field {
+	whitespace: nowrap;
+	display: inline-block;
+	padding: 8px;
+}
+.form-field textarea {
+	width: 100%;
+	
+}
+

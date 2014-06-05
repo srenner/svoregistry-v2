@@ -1,7 +1,7 @@
 {% load filters %}
 {% load humanize %}
 <div class="registry-entry container row">
-	<div class="row registry-entry-header">
+	<div class="row registry-entry-header svo-{{entry.color}}">
 		<div class="col-md-6 col-sm-6">{{entry.mileage|intcomma}} Miles. {{entry.entry_datetime|date}}.</div>
 		<div class="col-md-6 col-sm-6 text-right">
 			Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}.

@@ -8,6 +8,7 @@ from registry.models import Entry
 from registry.models import Car
 from json import dumps
 from registry.utils import xstr
+from registry.forms import AddEntryForm
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -56,7 +57,8 @@ def view_car(request,vin):
             twitter_description = 'View info for SVO with VIN ' + car.vin
     else:
         twitter_description = 'View info for SVO with VIN ' + car.vin
-    return render_to_response('car.html', {'car': car, 'entries': entries, 'twitter_description': twitter_description}, context_instance=RequestContext(request))
+    form = AddEntryForm()
+    return render_to_response('car.html', {'car': car, 'entries': entries, 'twitter_description': twitter_description, 'form': form}, context_instance=RequestContext(request))
 
 def map_data(request):
     locations = Entry.objects.exclude(geo_lat__isnull=True)

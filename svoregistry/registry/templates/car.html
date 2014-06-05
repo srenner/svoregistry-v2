@@ -22,12 +22,14 @@
 </header>
 
 <div class="row">
-	<div id="divMap" class="map-small col-md-6 text-center"></div>
-	<div class="col-md-6">
+	<div id="divMap" class="map-small col-md-8 text-center"></div>
+	<div class="col-md-4">
+		
+		
 		{% with count=entries.count %}
-		<p class="">
+		<a href="#entries">
 			This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
-		</p>
+		</a>
 		{% endwith %}
 		<dl class="dl-horizontal">
 			{% if car.year == "1984" %}
@@ -55,32 +57,78 @@
 	</div>
 
 </div>
-<div class="row">
-<a class="btn btn-default" data-toggle="modal" href="#divEntryModal">Add Entry</a>
+<hr>
+
+<div class="row col-md-12 text-center">
+	<a name="entries"></a>
+	<h2 class="inline-header">Entries</h2>
+	<button class="btn btn-lg btn-default" onclick="document.getElementById('divEntry').style.display=''"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
+</div>
+
+<div class="row"></div>
+
+<div class="registry-entry row container" id="divEntry" style="display: none">
+	<div class="row registry-entry-header svo-{{car.color}}">
+		<div class="col-md-12 col-sm-12">
+			Add Entry for VIN {{car.vin}}
+		</div>
+	</div>
+	<form role="form">
+		<fieldset>
+			<legend>Car Info</legend>
+				<span class="hidden">{{ form.car }}</span>
+				
+				
+				<span class="form-field">{{ form.year.label_tag }} {{ form.year }}</span>
+				
+				
+				<span id="spanSlappers" class="form-field">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
+				<span class="form-field">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
+				<span class="form-field">{{ form.color.label_tag }} {{ form.color }}</span>
+				<span class="form-field">{{ form.interior.label_tag }} {{ form.interior }}</span>
+				<span class="form-field">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
+				<span class="form-field">{{ form.comp_prep.label_tag }} {{ form.comp_prep }}</span>
+				<span id="spanOptionDelete" class="form-field">{{ form.option_delete.label_tag }} {{ form.option_delete }}</span>
+				<span class="form-field">{{ form.wing_delete.label_tag }} {{ form.wing_delete }}</span>
+				<span class="form-field">{{ form.has_23.label_tag }} {{ form.has_23 }}</span>
+				<span class="form-field">{{ form.on_road.label_tag }} {{ form.on_road }}</span>
+				<span id="spanDeceased" class="form-field">{{ form.deceased.label_tag }} {{ form.deceased }}</span>
+				<span class="form-field">{{ form.photo.label_tag }} {{ form.photo }}</span>
+		</fieldset>
+		<fieldset>
+			<legend>Owner Info</legend>
+			<div id="divForSale">
+				<span>{{ form.for_sale }}</span>
+				<label for={{ form.for_sale.auto_id }}>
+					Car is for sale
+				</label>
+			</div>
+				<span class="form-field">{{ form.owner.label_tag }} {{ form.owner }}</span>
+				<span class="form-field">{{ form.city.label_tag }} {{ form.city }}</span>
+				<span class="form-field">{{ form.state.label_tag }} {{ form.state }}</span>
+				<span class="form-field">{{ form.country.label_tag }} {{ form.country }}</span>
+				<span class="form-field">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
+				<span class="form-field">{{ form.entry_datetime.label_tag }} {{ form.entry_datetime }}</span>
+		</fieldset>
+		<fieldset>
+			<legend>Comments</legend>
+			<span class="form-field">{{ form.comments }}</span>
+		</fieldset>
+
+		<div>
+			<button class="btn btn-success" type="submit">Save</button>
+			<button class="btn btn-warning" data-dismiss="modal">Cancel</button>
+		</div>
+	</form>
 </div>
 <div class="row col-md-12">
 	{% for entry in entries %}
-		<div class="car-entry">
+		<div class="car-entry" name="entry_{{entry.id}}">
 		{% include 'entry.html' %}
 		</div>		
 	{% endfor %}
 </div>
-<div id="divEntryModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				Add Entry for VIN {{car.vin}}
-			</div>
-			<div class="modal-body">
-				...form...
-			</div>
-			<div class="modal-footer">
-				<button class="btn btn-default" type="submit">Save</button>
-				<button class="btn btn-warning" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-	</div>
-</div>
+
 {% endblock %}
 {% block scripts %}
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>

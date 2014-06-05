@@ -6,6 +6,7 @@
 	{% load staticfiles %}
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/bootstrap/css/bootstrap.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/svo-colors.css' %}" />
 	<style type="text/css">
 		.navbar-brand {
 			background-image: url("{% static 'img/shadow_logo.png' %}");
@@ -42,7 +43,7 @@
 					<li><a href="/about">About</a></li>
 				</ul>
 				<div class="pull-right">
-					<button class="btn btn-info"> <span class="glyphicon glyphicon-download"></span> Download Registry</button>
+					<button class="btn btn-default"> <span class="glyphicon glyphicon-download"></span> Download Registry</button>
 					<span>
 						<div class="g-plusone" data-size="medium" data-annotation="none"></div>
 						<script type="text/javascript">
