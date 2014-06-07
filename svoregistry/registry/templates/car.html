@@ -23,15 +23,15 @@
 
 <div class="row">
 	<div id="divMap" class="map-small col-md-8 text-center"></div>
-	<div class="col-md-4">
+	<div id="divMeta" class="col-md-4">
 		
 		
 		{% with count=entries.count %}
-		<a href="#entries">
+		<a id="aEntryLink" href="#entries">
 			This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
 		</a>
 		{% endwith %}
-		<dl class="dl-horizontal">
+		<dl id="dlMeta" class="dl-horizontal">
 			{% if car.year == "1984" %}
 			<dt>Slapper bars</dt>
 			<dd>{{car.slappers|yesno:"Yes,No"}}</dd>
@@ -78,44 +78,57 @@
 			<legend>Car Info</legend>
 				<span class="hidden">{{ form.car }}</span>
 				
-				
-				<span class="form-field">{{ form.year.label_tag }} {{ form.year }}</span>
-				
-				
-				<span id="spanSlappers" class="form-field">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
-				<span class="form-field">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
-				<span class="form-field">{{ form.color.label_tag }} {{ form.color }}</span>
-				<span class="form-field">{{ form.interior.label_tag }} {{ form.interior }}</span>
-				<span class="form-field">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
-				<span class="form-field">{{ form.comp_prep.label_tag }} {{ form.comp_prep }}</span>
-				<span id="spanOptionDelete" class="form-field">{{ form.option_delete.label_tag }} {{ form.option_delete }}</span>
-				<span class="form-field">{{ form.wing_delete.label_tag }} {{ form.wing_delete }}</span>
-				<span class="form-field">{{ form.has_23.label_tag }} {{ form.has_23 }}</span>
-				<span class="form-field">{{ form.on_road.label_tag }} {{ form.on_road }}</span>
-				<span id="spanDeceased" class="form-field">{{ form.deceased.label_tag }} {{ form.deceased }}</span>
-				<span class="form-field">{{ form.photo.label_tag }} {{ form.photo }}</span>
+				<div class="row spacer-small">
+					<span class="form-field col-md-3">{{ form.year.label_tag }} {{ form.year }}</span>
+					<span id="spanSlappers" class="form-field col-md-3">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
+					<span class="form-field col-md-3">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
+					<span class="form-field col-md-3">{{ form.color.label_tag }} {{ form.color }}</span>
+
+				</div>
+				<div class="row spacer-small">
+					<span class="form-field col-md-3">{{ form.interior.label_tag }} {{ form.interior }}</span>
+					<span class="form-field col-md-3">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
+					<span class="form-field col-md-3">{{ form.comp_prep.label_tag }} {{ form.comp_prep }}</span>
+					<span id="spanOptionDelete" class="form-field col-md-3">{{ form.option_delete.label_tag }} {{ form.option_delete }}</span>
+				</div>
+				<div class="row spacer-small">
+					<span class="form-field col-md-3">{{ form.wing_delete.label_tag }} {{ form.wing_delete }}</span>
+					<span class="form-field col-md-3">{{ form.has_23.label_tag }} {{ form.has_23 }}</span>
+					<span class="form-field col-md-3">{{ form.on_road.label_tag }} {{ form.on_road }}</span>
+					<span id="spanDeceased" class="form-field col-md-3">{{ form.deceased.label_tag }} {{ form.deceased }}</span>	
+				</div>
+				<div class="row spacer-small">
+					<span class="form-field col-md-12">{{ form.photo.label_tag }} {{ form.photo }}</span>
+				</div>
 		</fieldset>
 		<fieldset>
 			<legend>Owner Info</legend>
-			<div id="divForSale">
+			<div id="divForSale" class="row spacer-small col-md-12">
 				<span>{{ form.for_sale }}</span>
 				<label for={{ form.for_sale.auto_id }}>
 					Car is for sale
 				</label>
 			</div>
-				<span class="form-field">{{ form.owner.label_tag }} {{ form.owner }}</span>
-				<span class="form-field">{{ form.city.label_tag }} {{ form.city }}</span>
-				<span class="form-field">{{ form.state.label_tag }} {{ form.state }}</span>
-				<span class="form-field">{{ form.country.label_tag }} {{ form.country }}</span>
-				<span class="form-field">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
-				<span class="form-field">{{ form.entry_datetime.label_tag }} {{ form.entry_datetime }}</span>
+			<div class="row spacer-small">
+				<span class="form-field col-md-2">{{ form.owner.label_tag }} {{ form.owner }}</span>
+				<span class="form-field col-md-2">{{ form.city.label_tag }} {{ form.city }}</span>
+				<span class="form-field col-md-3">{{ form.state.label_tag }} {{ form.state }}</span>
+				<span class="form-field col-md-2">{{ form.country.label_tag }} {{ form.country }}</span>
+				<span class="form-field col-md-2">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
+				
+			</div>
+			<div class="row spacer-small">
+				<span class="form-field col-md-12">{{ form.entry_datetime.label_tag }} {{ form.entry_datetime }}</span>
+			</div>
 		</fieldset>
 		<fieldset>
 			<legend>Comments</legend>
-			<span class="form-field">{{ form.comments }}</span>
+			<div class="row spacer-small">
+				<span class="form-field">{{ form.comments }}</span>
+			</div>
 		</fieldset>
 
-		<div>
+		<div class="spacer-small">
 			<button class="btn btn-success" type="submit">Save</button>
 			<button class="btn btn-warning" data-dismiss="modal">Cancel</button>
 		</div>

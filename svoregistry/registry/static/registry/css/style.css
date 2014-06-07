@@ -58,7 +58,10 @@ footer {
 .car-entry {
 	margin-top: 35px;
 }
-.spacer20 {
+.spacer-small {
+	margin-bottom: 10px;
+}
+.spacer-medium {
 	margin-bottom: 20px
 }
 
@@ -74,6 +77,9 @@ h2.inline-header {
 	whitespace: nowrap;
 	display: inline-block;
 	padding: 8px;
+}
+.form-field label {
+	display: block;
 }
 .form-field textarea {
 	width: 100%;
