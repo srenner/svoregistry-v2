@@ -19,7 +19,7 @@
 </div>
 
 <div class="random-entry-container">
-	<h2>Random Entry: {{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO - <a href="/{{entry.car}}/">{{ entry.car }}</a></h2>
+	<h2>Random Entry: {{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }} SVO - <a href="/{{entry.car}}/">{{ entry.car }}</a></h2>
 	<div>{% include 'entry.html' %}</div>
 </div>
 {% endblock %}

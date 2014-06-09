@@ -12,7 +12,14 @@
 footer {
 	font-size: 12px;
 }
-
+input, textarea, select {
+	/*border-radius: 4px;*/
+	
+}
+input[type=file] {
+	width: 100%;
+	padding: 3px;
+}
 #divMap {
 	height: 500px;
 	background-color: #EFEFEF;
@@ -59,10 +66,10 @@ footer {
 	margin-top: 35px;
 }
 .spacer-small {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 }
 .spacer-medium {
-	margin-bottom: 20px
+	margin-bottom: 15px
 }
 
 .medium-canyon-red {
@@ -82,7 +89,5 @@ h2.inline-header {
 	display: block;
 }
 .form-field textarea {
-	width: 100%;
-	
+	width: 100%;	
 }
-

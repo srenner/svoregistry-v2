@@ -8,6 +8,7 @@ class AddEntryForm(ModelForm):
         exclude = ('scrape_id', 'ip', 'entry_flag')
         widgets = {
             'car': TextInput(),
-            'comments': Textarea(attrs={'rows': 5, 'cols': 120, 'maxlength': 10000}),
+            'comments': Textarea(attrs={'rows': 5, 'cols': 120, 'maxlength': 10000, 'placeholder': 'Enter information about the car here.'}),
             'mileage': TextInput(attrs={'size': 10 }),
+            'zipcode': TextInput(attrs={'size': 5 })
         }
