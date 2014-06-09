@@ -71,3 +71,15 @@ def map_data(request):
                    'lg': float(l.geo_long)
                    } for l in locations])
     return HttpResponse(json, 'application/text')
+
+def map_car(request, vin):
+    #car = Car.objects.get(pk=vin)
+    entries = Entry.objects.filter(car=vin).exclude(geo_lat__isnull=True).order_by('-entry_datetime')
+    json = dumps([{
+                    'entry_id': entry.id,
+                    'date': entry.entry_datetime.strftime('%b %d, %Y'),
+                    'owner': xstr(entry.owner),
+                    'lat': float(entry.geo_lat),
+                    'long': float(entry.geo_long)
+                  } for entry in entries])
+    return HttpResponse(json, 'application/text')
