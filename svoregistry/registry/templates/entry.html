@@ -1,6 +1,7 @@
 {% load filters %}
 {% load humanize %}
 <div class="registry-entry container row">
+	<a name="{{entry.id}}"></a>
 	<div class="row registry-entry-header svo-{{entry.color}}">
 		<div class="col-md-6 col-sm-6">{{entry.mileage|intcomma}} Miles. {{entry.entry_datetime|date}}.</div>
 		<div class="col-md-6 col-sm-6 text-right">
