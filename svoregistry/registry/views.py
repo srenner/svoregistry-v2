@@ -83,3 +83,22 @@ def map_car(request, vin):
                     'long': float(entry.geo_long)
                   } for entry in entries])
     return HttpResponse(json, 'application/text')
+
+def meta_car(request, vin):
+    car = Car.objects.get(pk=vin)
+    count = Entry.objects.filter(car=car).count()
+    json = dumps({
+                    'year': car.year or 'Unknown',
+                    'entry_count': count,
+                    'slappers': car.slappers,
+                    'color': car.color or 'Unknown',
+                    'interior': car.interior or 'Unknown',
+                    'sunroof': car.sunroof,
+                    'comp_prep': car.comp_prep,
+                    'option_delete': car.option_delete,
+                    'wing_delete': car.wing_delete,
+                    'original_engine': car.has_23,
+                    'on_road': car.on_road,
+                    'deceased': car.deceased
+                })
+    return HttpResponse(json, 'application/text')

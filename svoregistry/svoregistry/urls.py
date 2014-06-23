@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^about/$', views.about, name='about'),
     url(r'^(?P<vin>\w{17})/$', views.view_car, name='car'),
     url(r'map/(?P<vin>\w{17})/$', views.map_car, name='map_car'),
+    url(r'meta/(?P<vin>\w{17})/$', views.meta_car, name='meta_car'),
     url(r'map/', views.map_data, name='map_data'),
 
 
