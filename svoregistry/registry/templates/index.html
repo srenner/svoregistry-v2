@@ -6,7 +6,15 @@
 {% load filters %}
 {%block content %}
 <h1>Home of the 1984 - 1986 Mustang SVO Registry</h1>
-<div class="row spacer20">
+<form class="form-horizontal form-inline">
+	<div id="divStart" class="row spacer-medium text-center h3">
+		<label for="txtVIN">Ready to find or add a VIN? Enter it here:</label> 
+		<input id="txtVIN" type="text" class="form-control" style="text-transform: uppercase" placeholder="1FABP28TXXXXXXXXX" />
+		<button type="button" class="btn btn-success">Go</button>
+	</div>	
+</form>
+
+<div class="row spacer-medium">
 	<div class="col-md-9">
 		<div id="divMap" class="big-map"></div>		
 	</div>
