@@ -1,5 +1,10 @@
 svoregistry-v2
 ==============
-This is the next version of svoregistry.com. The site will be upgraded to use Python 3.x instead of 2.7, the newest version of Django, PostgreSQL instead of MySQL, and will feature a new UI and new features. The changes are significant enough to warrant a brand new repository instead of simply branching the old repository.
+This is the next version of svoregistry.com. 
 
+Significant changes include:
+* Python 3.x instead of 2.7
+* PostgreSQL instead of MySQL
+* Use newest available version of Django
+* Use of Twitter Bootstrap
 More details to follow.
