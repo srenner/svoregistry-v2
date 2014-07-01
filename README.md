@@ -7,4 +7,5 @@ Significant changes include:
 * PostgreSQL instead of MySQL
 * Use newest available version of Django
 * Use of Twitter Bootstrap
+
 More details to follow.
