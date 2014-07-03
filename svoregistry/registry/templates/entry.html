@@ -3,10 +3,17 @@
 <div class="registry-entry container row">
 	<a name="{{entry.id}}"></a>
 	<div class="row registry-entry-header svo-{{entry.color}}">
-		<div class="col-md-6 col-sm-6">{{entry.mileage|intcomma}} Miles. {{entry.entry_datetime|date}}.</div>
+		<div class="col-md-6 col-sm-6">
+			{% if entry.mileage = 0 %}
+			Unknown
+			{% else %}
+			{{entry.mileage|intcomma}} 
+			{% endif %}
+			Miles on {{entry.entry_datetime|date}}
+		</div>
 		<div class="col-md-6 col-sm-6 text-right">
-			Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}.
-			{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:""}} {{entry.zipcode|default_if_none:""}}
+			Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in
+			{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
 		</div>
 	</div>
 	<div class="row registry-entry-body">
