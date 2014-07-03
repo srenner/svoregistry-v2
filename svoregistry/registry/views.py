@@ -15,7 +15,7 @@ def coming_soon(request):
 
 def index(request):
     #avoiding order_by('?') because it is a very expensive db call
-    entries = Entry.objects.exclude(photo__isnull=True).exclude(photo__exact='')
+    entries = Entry.objects.exclude(photo__isnull=True).exclude(photo__exact='').exclude(deleted=True)
     last = entries.count() - 1
     if last >= 0:
         index = randint(0, last)
@@ -26,7 +26,7 @@ def index(request):
 
 def new(request):
     #display the newest entries
-    entries = Entry.objects.order_by('-entry_datetime', '-id')[:10]
+    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:10]
     strJson = serializers.serialize("json", entries)
     return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
@@ -50,7 +50,7 @@ def about(request):
 
 def view_car(request,vin):
     car = Car.objects.get(pk=vin)
-    entries = Entry.objects.filter(car=car).order_by('-entry_datetime')
+    entries = Entry.objects.filter(car=car).exclude(deleted=True).order_by('-entry_datetime')
     if(entries.count() > 0):
         twitter_description = entries[entries.count() - 1].comments[:201]
         if len(twitter_description) == 0:
@@ -61,7 +61,7 @@ def view_car(request,vin):
     return render_to_response('car.html', {'car': car, 'entries': entries, 'twitter_description': twitter_description, 'form': form}, context_instance=RequestContext(request))
 
 def map_data(request):
-    locations = Entry.objects.exclude(geo_lat__isnull=True)
+    locations = Entry.objects.exclude(geo_lat__isnull=True).exclude(deleted=True)
     json = dumps([{
                    'v': str(l.car),
                    'de': str(xstr(l.year) + ' ' + xstr(l.color)).strip(),
@@ -74,7 +74,7 @@ def map_data(request):
 
 def map_car(request, vin):
     #car = Car.objects.get(pk=vin)
-    entries = Entry.objects.filter(car=vin).exclude(geo_lat__isnull=True).order_by('-entry_datetime')
+    entries = Entry.objects.filter(car=vin).exclude(geo_lat__isnull=True).order_by('-entry_datetime').exclude(deleted=True)
     json = dumps([{
                     'entry_id': entry.id,
                     'date': entry.entry_datetime.strftime('%b %d, %Y'),
@@ -86,7 +86,7 @@ def map_car(request, vin):
 
 def meta_car(request, vin):
     car = Car.objects.get(pk=vin)
-    count = Entry.objects.filter(car=car).count()
+    count = Entry.objects.filter(car=car).exclude(deleted=True).count()
     json = dumps({
                     'year': car.year or 'Unknown',
                     'entry_count': count,

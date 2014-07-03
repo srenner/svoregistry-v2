@@ -99,6 +99,7 @@ class Entry(models.Model):
     geo_lat = models.DecimalField(decimal_places=8, max_digits=11, null=True, blank=True)
     geo_long = models.DecimalField(decimal_places=8, max_digits=11, null=True, blank=True)
     actual_entry_datetime = models.DateTimeField(auto_now=True, null=True, blank=True)
+    deleted = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = 'Entries'
     def __str__(self):
