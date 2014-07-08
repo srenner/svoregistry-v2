@@ -138,6 +138,7 @@
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript">
+	var activeCar = "{{car.vin}}";
 	document.getElementById("{{ form.year.auto_id }}").value = "{{ car.year }}";
 	document.getElementById("{{ form.slappers.auto_id }}").value = "{{ car.slappers|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.color.auto_id }}").value = "{{ car.color }}";
