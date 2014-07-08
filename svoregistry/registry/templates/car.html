@@ -95,6 +95,7 @@
 		</div>
 		<hr>
 		<div class="row">
+			<span class="form-field col-md-3">{{ form.entry_datetime.label_tag }} {{ form.entry_datetime }}</span>
 			<span class="form-field col-md-3">{{ form.year.label_tag }} {{ form.year }}</span>
 			<span id="spanSlappers" class="form-field col-md-3">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
 			<span class="form-field col-md-3">{{ form.color.label_tag }} {{ form.color }} </span>
@@ -113,8 +114,7 @@
 		</div>
 		<hr>
 		<div class="row">
-			<span class="form-field col-md-9">{{ form.comments }}</span>
-			<span class="form-field col-md-3">{{ form.entry_datetime.label_tag }} {{ form.entry_datetime }}</span>
+			<span class="form-field col-md-12">{{ form.comments }}</span>
 		</div>
 		<hr>
 		<div class="row spacer-small">
