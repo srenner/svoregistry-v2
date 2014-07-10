@@ -51,6 +51,7 @@ input[type=file] {
 }
 .flag-entry {
 	color: #AC2925;
+	cursor: pointer;
 }
 .flag-entry:hover {
 	color: #C9302C;
