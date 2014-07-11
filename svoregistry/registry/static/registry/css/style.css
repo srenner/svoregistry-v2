@@ -48,6 +48,8 @@ input[type=file] {
 }
 .registry-entry-footer {
 	border-top: solid 1px #EFEFEF;
+	padding-left: 5px;
+	padding-right: 5px;
 }
 .flag-entry {
 	color: #AC2925;

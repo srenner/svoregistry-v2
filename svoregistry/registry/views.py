@@ -102,3 +102,9 @@ def meta_car(request, vin):
                     'deceased': car.deceased
                 })
     return HttpResponse(json, 'application/text')
+
+def flag_entry(request, entry_id):
+    entry = Entry.objects.get(pk=entry_id)
+    entry.entry_flag += 1
+    entry.save()
+    return HttpResponse("")
