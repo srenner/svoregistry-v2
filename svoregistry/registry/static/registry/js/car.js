@@ -34,5 +34,12 @@
 	});
 })();
 
-
+(function initializeDatepicker() {
+    var picker = new Pikaday(
+    {
+        field: document.getElementById('id_entry_datetime'),
+        firstDay: 1,
+        minDate: new Date('1983-01-01'),
+    });
+})();
 
