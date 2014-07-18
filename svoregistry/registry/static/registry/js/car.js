@@ -39,7 +39,11 @@
     {
         field: document.getElementById('id_entry_datetime'),
         firstDay: 1,
-        minDate: new Date('1983-01-01'),
+        minDate: new Date('1983-03-02'),
+        onSelect: function() {
+            document.getElementById('id_entry_datetime').value = this.getMoment().format('MM/DD/YYYY');
+        }
     });
+    picker.setMoment(moment());
 })();
 
