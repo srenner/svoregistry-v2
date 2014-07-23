@@ -46,4 +46,3 @@
     });
     picker.setMoment(moment());
 })();
-
