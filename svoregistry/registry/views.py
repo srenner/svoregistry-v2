@@ -9,6 +9,7 @@ from registry.models import Car
 from json import dumps
 from registry.utils import xstr
 from registry.forms import AddEntryForm
+from django.http.response import HttpResponseRedirect
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -49,6 +50,26 @@ def about(request):
     return HttpResponse(template.render(context))
 
 def view_car(request,vin):
+    user_ip = request.META['REMOTE_ADDR']
+    if request.method == 'POST':
+        form = AddEntryForm(request.POST)
+        if form.is_valid():
+            #data = form.cleaned_data
+            car = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
+                      interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
+                      option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
+                      has_23=form.cleaned_data['has_23'], on_road=form.cleaned_data['on_road'], deceased=form.cleaned_data['deceased'])
+            car.save()
+            #TODO: reduce db calls
+            new_entry = form.save()
+            new_entry.ip = user_ip
+            new_entry.save()
+            if request.FILES.get("photo"):
+                new_entry.photo = request.FILES['photo']
+                new_entry.save()
+            return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry 
+    else:
+        pass
     car = Car.objects.get(pk=vin)
     entries = Entry.objects.filter(car=car).exclude(deleted=True).order_by('-entry_datetime')
     if(entries.count() > 0):
