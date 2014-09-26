@@ -33,9 +33,3 @@
     	var mc = new MarkerClusterer(map, markers, mapOptions);
 	});
 })();
-
-$(document).ready(function() {
-	$('#divStart').animate({backgroundColor:"orange"},  5000);
-	$('#divStart').animate({backgroundColor:"white" },  6000);
-	//document.getElementById("divStart").className = 'svo-2A';
-});
