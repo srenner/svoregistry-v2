@@ -1,0 +1,18 @@
+{% load humanize %}
+<div class="registry-entry-compact container row">
+
+	<div class="col-sm-6">
+		<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }} {{ entry.color|default_if_none:"Unknown or Custom color" }}
+	</div>
+
+	<div class="col-sm-6">
+		{% if entry.mileage = 0 or entry.mileage = None %}
+		Unknown
+		{% else %}
+		{{entry.mileage|intcomma}} 
+		{% endif %}
+		Miles on {{entry.entry_datetime|date}}
+	</div>
+
+	<div></div>
+</div>
