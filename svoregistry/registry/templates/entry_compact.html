@@ -1,8 +1,10 @@
 {% load humanize %}
+{% load filters %}
 <div class="registry-entry-compact container row">
 
 	<div class="col-sm-6">
-		<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }} {{ entry.color|default_if_none:"Unknown or Custom color" }}
+		<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }}
+		{{ entry.COLOR_CHOICES|color_lookup:entry.color }}
 	</div>
 
 	<div class="col-sm-6">
