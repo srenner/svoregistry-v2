@@ -5,6 +5,11 @@
 {% endblock %}
 {%block content %}
 <h1>SVOs Listed For Sale</h1>
+<ul>
+	{% for entry in entries %}
+	<li>{{entry.car_id}}</li>
+	{% endfor %}
+</ul>
 {% endblock %}
 {% block scripts %}
 {% endblock %}

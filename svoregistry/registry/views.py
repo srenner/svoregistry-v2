@@ -33,9 +33,9 @@ def new(request):
 
 def forsale(request):
     #display SVOs for sale
-    template = loader.get_template('forsale.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:10]
+    strJson = serializers.serialize("json", entries)
+    return render_to_response("forsale.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def statistics(request):
     #display registry statistics
