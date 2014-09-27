@@ -5,9 +5,9 @@
 {% endblock %}
 {%block content %}
 <h1>SVOs Listed For Sale</h1>
-<ul>
+<ul class="list-unstyled">
 	{% for entry in entries %}
-	<li>{{entry.car_id}}</li>
+		<li>{% include 'entry_compact.html' %}</li>
 	{% endfor %}
 </ul>
 {% endblock %}
