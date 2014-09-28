@@ -27,13 +27,13 @@ def index(request):
 
 def new(request):
     #display the newest entries
-    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:10]
+    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:5]
     strJson = serializers.serialize("json", entries)
     return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def forsale(request):
     #display SVOs for sale
-    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:10]
+    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:5]
     strJson = serializers.serialize("json", entries)
     return render_to_response("forsale.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
