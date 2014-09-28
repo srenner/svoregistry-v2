@@ -94,3 +94,13 @@ h2.inline-header {
 .form-field textarea {
 	width: 100%;	
 }
+.registry-entry-compact {
+	padding: 5px;
+	margin: 5px;
+	border-radius: 5px;
+	border: solid 3px transparent;
+	font-size: 18px;
+}
+.registry-entry-compact:hover {
+	border: solid 3px #EFEFEF;
+}

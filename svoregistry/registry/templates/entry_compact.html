@@ -1,20 +1,38 @@
 {% load humanize %}
 {% load filters %}
-<div class="registry-entry-compact container row">
-
-	<div class="col-sm-6">
-		<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }}
-		{{ entry.COLOR_CHOICES|color_lookup:entry.color }}
+{% load staticfiles %}
+<div class="registry-entry-compact">
+	
+	<div class="row">
+		<div class="col-sm-2">
+			<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" />
+		</div>
+		<div class="col-sm-10">
+			<div class="row col-sm-12">
+				<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }}
+				{{ entry.COLOR_CHOICES|color_lookup:entry.color }}
+			</div>
+			<div class="row col-sm-12">
+				{% if entry.owner = '' %}
+				Unknown owner
+				{% else %}
+				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
+				{% endif %}
+				in
+				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
+			</div>
+			<div class="row col-sm-12">
+				{% if entry.mileage = 0 or entry.mileage = None %}
+				Unknown
+				{% else %}
+				{{entry.mileage|intcomma}} 
+				{% endif %}
+				Miles on {{entry.entry_datetime|date}}				
+			</div>
+		</div>
 	</div>
+	
 
-	<div class="col-sm-6">
-		{% if entry.mileage = 0 or entry.mileage = None %}
-		Unknown
-		{% else %}
-		{{entry.mileage|intcomma}} 
-		{% endif %}
-		Miles on {{entry.entry_datetime|date}}
-	</div>
 
-	<div></div>
+
 </div>
