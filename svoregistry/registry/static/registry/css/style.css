@@ -104,3 +104,13 @@ h2.inline-header {
 .registry-entry-compact:hover {
 	border: solid 3px #EFEFEF;
 }
+.stat-box {
+	width: 320px;
+	height: 240px;
+	display: inline-table;
+	padding: 10px;
+	border: solid 3px #EFEFEF;
+	border-radius: 5px;
+	margin-bottom: 5px;
+	
+}

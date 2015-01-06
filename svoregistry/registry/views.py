@@ -9,6 +9,7 @@ from json import dumps
 from registry.utils import xstr
 from registry.forms import AddEntryForm
 from django.http.response import HttpResponseRedirect
+from django.db import connection
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -38,9 +39,15 @@ def forsale(request):
 
 def statistics(request):
     #display registry statistics
-    template = loader.get_template('statistics.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+    cursor = connection.cursor()
+    cursor.execute("select count(*) from registry_car")
+    cars = cursor.fetchall()[0][0]
+    
+    cursor = connection.cursor()
+    cursor.execute("select count(*) from registry_entry")
+    entries = cursor.fetchall()[0][0]    
+    
+    return render_to_response("statistics.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
 
 def about(request):
     #display the 'about this site' page
