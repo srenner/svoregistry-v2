@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'meta/(?P<vin>\w{17})/$', views.meta_car, name='meta_car'),
     url(r'map/', views.map_data, name='map_data'),
     url(r'^flag/(?P<entry_id>\d+)/$', views.flag_entry, name='flag_entry'),
+    url(r'^download/$', views.download, name='download'),
 
 
     url(r'^admin/', include(admin.site.urls)),

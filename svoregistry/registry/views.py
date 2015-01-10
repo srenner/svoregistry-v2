@@ -55,6 +55,12 @@ def about(request):
     context = RequestContext(request)
     return HttpResponse(template.render(context))
 
+def download(request):
+    #display the 'about this site' page
+    template = loader.get_template('download.html')
+    context = RequestContext(request)
+    return HttpResponse(template.render(context))
+
 def view_car(request,vin):
     user_ip = request.META['REMOTE_ADDR']
     if request.method == 'POST':
