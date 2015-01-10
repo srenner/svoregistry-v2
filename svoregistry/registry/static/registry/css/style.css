@@ -112,3 +112,8 @@ h2.inline-header {
 	margin-bottom: 5px;
 	
 }
+
+.jumbotron {
+	padding: 10px;
+	margin: 5px 0px 5px 0px;
+}
