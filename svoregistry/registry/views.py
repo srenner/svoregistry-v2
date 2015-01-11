@@ -52,23 +52,19 @@ def statistics(request):
     return render_to_response("statistics.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
 
 def statistics_year(request):
-
-    if request.is_ajax():
-        cursor = connection.cursor()
-        cursor.execute("""select year, count(year) as 'count',
-                              case year
-                                when '1984' then 4506
-                                when '1985' then 1512
-                                when '1985.5' then 439
-                                when '1986' then 3378
-                              end as 'total_production'
-                            from registry_car
-                            where year is not null
-                            group by year""")
-        report = dictfetchall(cursor)
-        return HttpResponse(json.dumps(report), 'application/json')
-    else:
-        return HttpResponseBadRequest()
+    cursor = connection.cursor()
+    cursor.execute("""select year, count(year) as "count",
+                          case year
+                            when '1984' then 4506
+                            when '1985' then 1512
+                            when '1985.5' then 439
+                            when '1986' then 3378
+                          end as "total_production"
+                        from registry_car
+                        where year != 'NULL'
+                        group by year""")
+    report = dictfetchall(cursor)
+    return HttpResponse(json.dumps(report), 'application/json')
 
 def about(request):
     #display the 'about this site' page
