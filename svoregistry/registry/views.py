@@ -124,7 +124,7 @@ def map_data(request):
                    'lt': float(l.geo_lat),
                    'lg': float(l.geo_long)
                    } for l in locations])
-    return HttpResponse(json, 'application/text')
+    return HttpResponse(json, 'application/json')
 
 def map_car(request, vin):
     #car = Car.objects.get(pk=vin)
@@ -136,7 +136,7 @@ def map_car(request, vin):
                     'lat': float(entry.geo_lat),
                     'long': float(entry.geo_long)
                   } for entry in entries])
-    return HttpResponse(json, 'application/text')
+    return HttpResponse(json, 'application/json')
 
 def meta_car(request, vin):
     car = Car.objects.get(pk=vin)
@@ -155,7 +155,7 @@ def meta_car(request, vin):
                     'on_road': car.on_road,
                     'deceased': car.deceased
                 })
-    return HttpResponse(json, 'application/text')
+    return HttpResponse(json, 'application/json')
 
 def flag_entry(request, entry_id):
     entry = Entry.objects.get(pk=entry_id)
