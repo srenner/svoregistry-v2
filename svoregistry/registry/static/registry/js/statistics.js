@@ -4,6 +4,6 @@
 			return;
 		}
 		var data = JSON.parse(text);
-		alert(data);
+		
 	});
 })();
