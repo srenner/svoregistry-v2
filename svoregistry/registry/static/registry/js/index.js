@@ -1,9 +1,5 @@
 (function drawMap() {
-	promise.get('/map/').then(function(error, text, xhr) {
-		if (error) {
-			return;
-		}
-		var data = JSON.parse(text);
+	$.get('/map/', function(data) {
 		var map = new google.maps.Map(document.getElementById('divMap'), {
 			zoom: 4,
 			scrollwheel: false,
@@ -30,6 +26,6 @@
 			oms.addMarker(marker);
 		}
     	var mapOptions = {gridSize: 30, maxZoom: 7};
-    	var mc = new MarkerClusterer(map, markers, mapOptions);
+    	var mc = new MarkerClusterer(map, markers, mapOptions);		
 	});
 })();

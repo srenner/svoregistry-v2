@@ -5,7 +5,7 @@
 		anchors[i].onclick = function() {
 			var entryID = this.getAttribute('data-entry-id');
 			var that = this;
-			promise.post('/flag/' + entryID + '/').then(function(error, text, xhr) {
+			$.post('/flag/' + entryID + '/', function(data) {
 				that.innerHTML = 'Thank you for your feedback';
 			});
 		};
