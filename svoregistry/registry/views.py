@@ -62,7 +62,16 @@ def statistics_year(request):
                           end as "total_production"
                         from registry_car
                         where year != 'NULL'
-                        group by year""")
+                        group by year order by year""")
+    report = dictfetchall(cursor)
+    return HttpResponse(json.dumps(report), 'application/json')
+
+def statistics_color(request):
+    cursor = connection.cursor()
+    cursor.execute("""select color, count(color) as "count"
+                        from registry_car
+                        where color != 'NULL'
+                        group by color order by color""")
     report = dictfetchall(cursor)
     return HttpResponse(json.dumps(report), 'application/json')
 
