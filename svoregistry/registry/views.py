@@ -75,6 +75,25 @@ def statistics_color(request):
     report = dictfetchall(cursor)
     return HttpResponse(json.dumps(report), 'application/json')
 
+def statistics_status(request):
+    cursor = connection.cursor()
+    cursor.execute("""select
+                          case deceased
+                            when True then 'Deceased'
+                            when False then 'Alive'
+                          end as "status",
+                          count(deceased) as "count"
+                        from registry_car
+                        where deceased is not null
+                        group by deceased
+                        union all
+                        select 
+                          'Unknown' as "status", 
+                          (select count(*) from registry_car where deceased is null) as "count"
+                          """)
+    report = dictfetchall(cursor)
+    return HttpResponse(json.dumps(report), 'application/json')
+
 def about(request):
     #display the 'about this site' page
     template = loader.get_template('about.html')
@@ -82,7 +101,7 @@ def about(request):
     return HttpResponse(template.render(context))
 
 def download(request):
-    #display the 'about this site' page
+    #display a page that links to the download
     template = loader.get_template('download.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))

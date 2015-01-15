@@ -10,20 +10,19 @@
 <p class="text-center">The registry now contains {{cars}} cars and {{entries}} entries!</p>
 <div class="row">
 	
-	<div class="col-md-12">
-		<div class="stat-box ct-chart" id="stats-color">
-			
-		</div>
+	<div class="col-md-12 stat-box">
+		<h4 class="text-center">Registered Cars by Color Code</h4>
+		<div class="ct-chart" id="stats-color"></div>
 	</div>
 
-	<div class="col-md-6 col-sm-12">
-		<div class="stat-box ct-chart" id="stats-year">
-			
-		</div>
+	<div class="col-md-6 col-sm-12 stat-box">
+		<h4 class="text-center">Registered Cars by Year</h4>
+		<div class="ct-chart" id="stats-year"></div>
 	</div>
 
-	<div class="col-md-6 col-sm-12">
-		<div class="stat-box">Statistic 3</div>
+	<div class="col-md-6 col-sm-12 stat-box">
+		<h4 class="text-center">Vehicle Status</h4>
+		<div class="ct-chart" id="stats-status"></div>
 	</div>	
 </div>
 {% endblock %}
