@@ -12,6 +12,7 @@ from django.http.response import HttpResponseRedirect
 from django.db import connection
 import json
 from django.http import HttpResponseBadRequest
+import csv
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -101,10 +102,34 @@ def about(request):
     return HttpResponse(template.render(context))
 
 def download(request):
-    #display a page that links to the download
-    template = loader.get_template('download.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+    excludes = ['scrape_id', 'entry_flag', 'ip', 'deleted']
+    response = HttpResponse(content_type='text/csv; charset=utf-8')
+    response['Content-Disposition'] = 'attachment; filename=svo_export.csv'
+    writer = csv.writer(response)
+    headers = []
+    for field in Entry._meta.fields:
+        do_write = True
+        pass
+        for exclude in excludes:
+            if exclude == field.name:
+                do_write = False
+                break
+        if do_write:
+            headers.append(field.name)
+    writer.writerow(headers)
+    for obj in Entry.objects.exclude(deleted=True).order_by("id"):
+        row = []
+        for field in Entry._meta.fields:
+            do_write = True
+            for exclude in excludes:
+                if exclude == field.name:
+                    do_write = False
+                    break
+            if do_write:
+                row_content = getattr(obj, field.name)
+                row.append(row_content)
+        writer.writerow(row)
+    return response
 
 def view_car(request,vin):
     user_ip = request.META['REMOTE_ADDR']
