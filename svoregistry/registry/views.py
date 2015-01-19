@@ -28,6 +28,9 @@ def index(request):
         random_entry = None
     return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
+def lookup_car(request, vin):
+    pass
+
 def new(request):
     #display the newest entries
     entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:5]

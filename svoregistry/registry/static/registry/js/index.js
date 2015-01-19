@@ -1,4 +1,9 @@
-(function drawMap() {
+$(document).ready(function() {
+    document.getElementById("divMap").style.display = "block";
+    drawMap();
+});
+
+var drawMap = function() {
 	$.get('/map/', function(data) {
 		var map = new google.maps.Map(document.getElementById('divMap'), {
 			zoom: 4,
@@ -28,4 +33,9 @@
     	var mapOptions = {gridSize: 30, maxZoom: 7};
     	var mc = new MarkerClusterer(map, markers, mapOptions);		
 	});
-})();
+};
+
+var lookupVin = function() {
+	alert("look up vin");
+	return false;
+};

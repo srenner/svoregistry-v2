@@ -6,20 +6,20 @@
 {% load filters %}
 {%block content %}
 <h1>Home of the 1984 - 1986 Mustang SVO Registry</h1>
-<form class="form-horizontal form-inline">
-	<div class="jumbotron svo-2R text-center h3 row spacer-medium">
+<form action="lookup" onsubmit="return lookupVin()">
+	<div id="divLookupContainer" class="jumbotron svo-2R text-center h3 row spacer-medium">
 		<label for="txtVIN">Find or add a VIN here:</label> 
 		<div class="input-group input-group-lg col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
 			<input id="txtVIN" type="text" class="form-control" style="text-transform: uppercase" placeholder="1FABP28TXXXXXXXXX" />
 			<span class="input-group-btn">
-				<button type="button" class="btn btn-success">Go</button>				
+				<button id="btnLookup" type="submit" class="btn btn-success">Go</button>				
 			</span>
 		</div>
 	</div>
 </form>
 <div class="row spacer-medium">
 	<div class="col-md-9 col-sm-12">
-		<div id="divMap" class="big-map"></div>		
+		<div id="divMap" class="big-map" style="display: none"></div>
 	</div>
 	<div class="col-md-3 col-sm-12">
 		<div class="twitter-widget text-center">
