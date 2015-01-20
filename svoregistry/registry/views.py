@@ -230,9 +230,12 @@ def meta_car(request, vin):
     return HttpResponse(json, 'application/json')
 
 def flag_entry(request, entry_id):
-    entry = Entry.objects.get(pk=entry_id)
-    entry.entry_flag += 1
-    entry.save()
+    try:
+        entry = Entry.objects.get(pk=entry_id)
+        entry.entry_flag += 1
+        entry.save()
+    except Entry.DoesNotExist:
+        pass
     return HttpResponse("")
 
 
