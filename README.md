@@ -9,4 +9,4 @@ Significant changes include:
 * Responsive web design
 
 Task list:
-[]Database migration scripts
+-[ ] Database migration scripts
