@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Mustang SVO Registry{% endblock %}
+{% block head %}
+{% load staticfiles %}
+{% endblock %}
+{%block content %}
+<h1>New VIN</h1>
+
+<p class="text-center">The VIN <strong>{{vin}}</strong> was not in the database. Would you like to add it?</p>
+<div class="btn-toolbar text-center">
+	<form class="display-inline" action="/{{vin}}/" method="POST">
+		{% csrf_token %}
+		<button class="btn btn-success">Yes</button>
+	</form>
+	<a class="btn btn-default" href="/">No</a>
+</div>
+
+{% endblock %}
+{% block scripts %}
+{% endblock %}

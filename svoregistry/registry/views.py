@@ -13,6 +13,7 @@ from django.db import connection
 import json
 from django.http import HttpResponseBadRequest
 import csv
+from django.shortcuts import redirect
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -31,6 +32,13 @@ def index(request):
 def lookup_car(request):
     #capture vin in query string for noscript form compatibility
     vin = request.GET.get('vin')
+    try:
+        car = Car.objects.get(pk=vin)
+        #def view_car(request,vin):
+        return redirect('car', vin=vin)
+    except Car.DoesNotExist:
+        car = None
+        return render_to_response('lookup_404.html', { 'vin': vin }, context_instance=RequestContext(request))
     return HttpResponse("lookup for " + vin)
     pass
 
@@ -140,22 +148,31 @@ def download(request):
 def view_car(request,vin):
     user_ip = request.META['REMOTE_ADDR']
     if request.method == 'POST':
-        form = AddEntryForm(request.POST)
-        if form.is_valid():
-            #data = form.cleaned_data
-            car = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
-                      interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
-                      option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
-                      has_23=form.cleaned_data['has_23'], on_road=form.cleaned_data['on_road'], deceased=form.cleaned_data['deceased'])
-            car.save()
-            #TODO: reduce db calls
-            new_entry = form.save()
-            new_entry.ip = user_ip
-            new_entry.save()
-            if request.FILES.get("photo"):
-                new_entry.photo = request.FILES['photo']
+        
+        try:
+            car = Car.objects.get(vin=vin)
+            form = AddEntryForm(request.POST)
+            if form.is_valid():
+                #data = form.cleaned_data
+                car = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
+                          interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
+                          option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
+                          has_23=form.cleaned_data['has_23'], on_road=form.cleaned_data['on_road'], deceased=form.cleaned_data['deceased'])
+                car.save()
+                #TODO: reduce db calls
+                new_entry = form.save()
+                new_entry.ip = user_ip
                 new_entry.save()
-            return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry 
+                if request.FILES.get("photo"):
+                    new_entry.photo = request.FILES['photo']
+                    new_entry.save()
+        
+        except Car.DoesNotExist:
+            #create car
+            car = Car(vin=vin)
+            car.save()
+        return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry     
+
     else:
         pass
     car = Car.objects.get(pk=vin)
