@@ -8,4 +8,5 @@ Significant changes include:
 * Use newest available version of Django
 * Responsive web design
 
-More details to follow.
+Task list:
+[]Database migration scripts
