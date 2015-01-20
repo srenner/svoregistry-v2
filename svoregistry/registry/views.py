@@ -28,7 +28,10 @@ def index(request):
         random_entry = None
     return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
-def lookup_car(request, vin):
+def lookup_car(request):
+    #capture vin in query string for noscript form compatibility
+    vin = request.GET.get('vin')
+    return HttpResponse("lookup for " + vin)
     pass
 
 def new(request):
