@@ -7,6 +7,3 @@ Significant changes include:
 * PostgreSQL instead of MySQL
 * Use newest available version of Django
 * Responsive web design
-
-Task list:
--[ ] Database migration scripts
