@@ -30,17 +30,18 @@ def index(request):
     return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
 def lookup_car(request):
-    #capture vin in query string for noscript form compatibility
-    vin = request.GET.get('vin')
+    vin = request.GET.get('vin') #capture vin in query string for noscript form compatibility
     try:
         car = Car.objects.get(pk=vin)
-        #def view_car(request,vin):
-        return redirect('car', vin=vin)
+        if request.is_ajax():
+            return HttpResponse("1") #car was found
+        else:
+            return redirect('car', vin=vin) #car was found
     except Car.DoesNotExist:
-        car = None
-        return render_to_response('lookup_404.html', { 'vin': vin }, context_instance=RequestContext(request))
-    return HttpResponse("lookup for " + vin)
-    pass
+        if request.is_ajax():
+            return HttpResponse("0") #car not found
+        else:
+            return render_to_response('lookup_404.html', { 'vin': vin }, context_instance=RequestContext(request)) #car not found
 
 def new(request):
     #display the newest entries
@@ -148,7 +149,6 @@ def download(request):
 def view_car(request,vin):
     user_ip = request.META['REMOTE_ADDR']
     if request.method == 'POST':
-        
         try:
             car = Car.objects.get(vin=vin)
             form = AddEntryForm(request.POST)

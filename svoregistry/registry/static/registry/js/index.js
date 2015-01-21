@@ -1,6 +1,10 @@
 $(document).ready(function() {
     document.getElementById("divMap").style.display = "block";
     drawMap();
+    
+    $("#btnAddNo").click(function() { hideAddCar(); });
+    $("#btnAddYes").click(function() { addCar(); });
+    
 });
 
 var drawMap = function() {
@@ -36,6 +40,23 @@ var drawMap = function() {
 };
 
 var lookupVin = function() {
-	alert("look up vin");
+	hideAddCar();
+	$.get('/lookup?vin=' + document.getElementById("txtVIN").value, function(data) {
+		if(data === "1") {
+			window.location = '/' + vin + '/';
+		}
+		else {
+			document.getElementById("divAddCar").className = "show";
+		}
+	});
 	return false;
+};
+
+var hideAddCar = function() {
+	document.getElementById("divAddCar").className = "hidden";
+};
+
+var addCar = function() {
+	var vin = document.getElementById("txtVIN").value;
+	$.post('/' + vin + '/');
 };
