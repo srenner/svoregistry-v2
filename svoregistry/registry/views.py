@@ -14,10 +14,12 @@ import json
 from django.http import HttpResponseBadRequest
 import csv
 from django.shortcuts import redirect
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
 
+@ensure_csrf_cookie
 def index(request):
     #avoiding order_by('?') because it is a very expensive db call
     entries = Entry.objects.exclude(photo__isnull=True).exclude(photo__exact='').exclude(deleted=True)
@@ -146,6 +148,7 @@ def download(request):
         writer.writerow(row)
     return response
 
+@ensure_csrf_cookie
 def view_car(request,vin):
     user_ip = request.META['REMOTE_ADDR']
     if request.method == 'POST':
