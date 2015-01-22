@@ -41,7 +41,8 @@ var drawMap = function() {
 
 var lookupVin = function() {
 	hideAddCar();
-	$.get('/lookup?vin=' + document.getElementById("txtVIN").value, function(data) {
+	var vin = document.getElementById("txtVIN").value;
+	$.get('/lookup?vin=' + vin, function(data) {
 		if(data === "1") {
 			window.location = '/' + vin + '/';
 		}
@@ -58,5 +59,8 @@ var hideAddCar = function() {
 
 var addCar = function() {
 	var vin = document.getElementById("txtVIN").value;
-	$.post('/' + vin + '/');
+	$.post('/' + vin + '/', function(data) {
+		//server should redirect but set window here if it doesn't
+		window.location = '/' + vin + '/';
+	});
 };
