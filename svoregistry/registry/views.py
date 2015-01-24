@@ -7,6 +7,7 @@ from registry.models import Entry
 from registry.models import Car
 from json import dumps
 from registry.utils import xstr
+from registry.utils import validate_vin
 from registry.forms import AddEntryForm
 from django.http.response import HttpResponseRedirect
 from django.db import connection
@@ -241,6 +242,8 @@ def flag_entry(request, entry_id):
         pass
     return HttpResponse("")
 
+def validate(request, vin):
+    return HttpResponse(validate_vin(vin))
 
 # Helper methods ##############################################################
 
