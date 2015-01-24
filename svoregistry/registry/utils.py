@@ -14,7 +14,7 @@ def validate_vin(vin):
     
     #9th character is a digit or X
     if is_valid:
-        if vin[8] not in ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'X']:
+        if vin[8] not in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'X'):
             is_valid = False
     
     #10th character determines year, but cannot differentiate between 1985 and 1985.5. default to 1985    
