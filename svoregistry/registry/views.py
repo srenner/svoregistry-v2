@@ -243,7 +243,7 @@ def flag_entry(request, entry_id):
     return HttpResponse("")
 
 def validate(request, vin):
-    return HttpResponse(validate_vin(vin))
+    return HttpResponse(json.dumps(validate_vin(vin)), content_type="application/json")
 
 # Helper methods ##############################################################
 

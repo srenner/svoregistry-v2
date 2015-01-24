@@ -40,4 +40,4 @@ def validate_vin(vin):
         elif int(vin[11:17]) < 100001:
             is_valid = False
 
-    return (is_svo, is_valid, year)
+    return dict(svo=is_svo, valid=is_valid, year=year)
