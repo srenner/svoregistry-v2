@@ -176,7 +176,7 @@ def view_car(request,vin):
         
         except Car.DoesNotExist:
             #create car
-            car = Car(vin=vin)
+            car = Car(vin=vin, year = validate_vin(vin)['year'])
             car.save()
         return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry     
 
