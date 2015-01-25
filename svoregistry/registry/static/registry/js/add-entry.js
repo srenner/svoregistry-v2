@@ -14,12 +14,10 @@ else {
 }
 colorChanged();
 
-
 tinyMCE.init({
-        theme : "modern",
-        mode : "textareas",
-        width: "100%",
-        skin_url: DjangoURL.static + 'css/vendor/tinymce/skins/lightgray'
-
-
+    selector: "textarea",
+    toolbar: "bold italic bullist",
+	menubar: false,
+	statusbar: false,
+	height: 150
 });
