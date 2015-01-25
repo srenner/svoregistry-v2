@@ -8,11 +8,11 @@ from registry.models import Car
 from json import dumps
 from registry.utils import xstr
 from registry.utils import validate_vin
+from registry.utils import dictfetchall
 from registry.forms import AddEntryForm
 from django.http.response import HttpResponseRedirect
 from django.db import connection
 import json
-from django.http import HttpResponseBadRequest
 import csv
 from django.shortcuts import redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
@@ -244,13 +244,3 @@ def flag_entry(request, entry_id):
 
 def validate(request, vin):
     return HttpResponse(json.dumps(validate_vin(vin)), content_type="application/json")
-
-# Helper methods ##############################################################
-
-def dictfetchall(cursor):
-    "Returns all rows from a cursor as a dict"
-    desc = cursor.description
-    return [
-        dict(zip([col[0] for col in desc], row))
-        for row in cursor.fetchall()
-    ]
