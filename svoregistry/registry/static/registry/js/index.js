@@ -3,8 +3,7 @@ $(document).ready(function() {
     drawMap();
     
     $("#btnAddNo").click(function() { hideAddCar(); });
-    $("#btnAddYes").click(function() { addCar(); });
-    
+    $("#btnAddYes").click(function() { addCar(); });    
 });
 
 var drawMap = function() {
@@ -42,14 +41,27 @@ var drawMap = function() {
 var lookupVin = function() {
 	hideAddCar();
 	var vin = document.getElementById("txtVIN").value;
-	$.get('/lookup?vin=' + vin, function(data) {
-		if(data === "1") {
-			window.location = '/' + vin + '/';
+	
+	$.get('/validate/' + vin, function(data) {
+		
+		if(data.valid) {
+			$.get('/lookup?vin=' + vin, function(data) {
+				if(data === "1") {
+					window.location = '/' + vin + '/';
+				}
+				else {
+					document.getElementById("divAddCar").className = "show";
+				}
+			});				
 		}
 		else {
-			document.getElementById("divAddCar").className = "show";
+			$("#formLookup").effect("shake", { times:8, distance: 6, direction: 'left' }, 400);
 		}
+		
+	
 	});
+	
+
 	return false;
 };
 

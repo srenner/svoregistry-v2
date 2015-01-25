@@ -22,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^map/', views.map_data, name='map_data'),
     url(r'^flag/(?P<entry_id>\d+)/$', views.flag_entry, name='flag_entry'),
     url(r'^download/$', views.download, name='download'),
-    url(r'^validate/(?P<vin>\w{17})/$', views.validate, name='validate'),
+    url(r'^validate/(?P<vin>\w+)/$', views.validate, name='validate'),
 
 
     url(r'^admin/', include(admin.site.urls)),
