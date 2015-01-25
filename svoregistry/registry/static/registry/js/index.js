@@ -1,7 +1,6 @@
 $(document).ready(function() {
     document.getElementById("divMap").style.display = "block";
     drawMap();
-    
     $("#btnAddNo").click(function() { hideAddCar(); });
     $("#btnAddYes").click(function() { addCar(); });    
 });
@@ -41,7 +40,6 @@ var drawMap = function() {
 var lookupVin = function() {
 	hideAddCar();
 	var vin = document.getElementById("txtVIN").value;
-	
 	$.get('/validate/' + vin, function(data) {
 		
 		if(data.valid) {
@@ -57,11 +55,7 @@ var lookupVin = function() {
 		else {
 			$("#formLookup").effect("shake", { times:8, distance: 6, direction: 'left' }, 400);
 		}
-		
-	
 	});
-	
-
 	return false;
 };
 
