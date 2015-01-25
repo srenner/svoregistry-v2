@@ -1,4 +1,15 @@
-(function drawCarMap() {
+$(document).ready(function() {
+    document.getElementById("divMap").style.display = "block";
+    drawCarMap();
+    initializeDatepicker();
+    $("#btnCancel").click(function() { hideAddEntry(); });
+});
+
+function hideAddEntry() {
+	document.getElementById('divEntry').style.display = 'none';
+}
+
+function drawCarMap() {
 	$.get('/map/' + activeCar + '/', function(data) {
 		var map = new google.maps.Map(document.getElementById('divMap'), {
 			zoom: 4,
@@ -28,9 +39,9 @@
     	var mapOptions = {gridSize: 30, maxZoom: 7};
     	var mc = new MarkerClusterer(map, markers, mapOptions);		
 	});
-})();
+}
 
-(function initializeDatepicker() {
+function initializeDatepicker() {
     var picker = new Pikaday(
     {
         field: document.getElementById('id_entry_datetime'),
@@ -41,4 +52,4 @@
         }
     });
     picker.setMoment(moment());
-})();
+};
