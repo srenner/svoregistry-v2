@@ -44,7 +44,10 @@ def lookup_car(request):
         if request.is_ajax():
             return HttpResponse("0") #car not found
         else:
-            return render_to_response('lookup_404.html', { 'vin': vin }, context_instance=RequestContext(request)) #car not found
+            if validate_vin(vin)['valid']:
+                return render_to_response('lookup_add.html', { 'vin': vin }, context_instance=RequestContext(request)) #car not found
+            else:
+                return render_to_response('lookup_invalid.html', { 'vin': vin }, context_instance=RequestContext(request)) #vin was invalid
 
 def new(request):
     #display the newest entries
