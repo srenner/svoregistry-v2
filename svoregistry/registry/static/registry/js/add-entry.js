@@ -13,3 +13,13 @@ else {
 	ddlColor.addEventListener('change', colorChanged , false);	
 }
 colorChanged();
+
+
+tinyMCE.init({
+        theme : "modern",
+        mode : "textareas",
+        width: "100%",
+        skin_url: DjangoURL.static + 'css/vendor/tinymce/skins/lightgray'
+
+
+});
