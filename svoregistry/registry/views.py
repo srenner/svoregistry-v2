@@ -178,7 +178,7 @@ def view_car(request,vin):
             #create car
             car = Car(vin=vin, year = validate_vin(vin)['year'])
             car.save()
-        return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry     
+        #return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry     
 
     else:
         pass
