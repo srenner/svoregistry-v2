@@ -196,7 +196,7 @@ def view_car(request,vin):
             twitter_description = 'View info for SVO with VIN ' + car.vin
     else:
         twitter_description = 'View info for SVO with VIN ' + car.vin
-    form = AddEntryForm()
+    form = AddEntryForm({'car': vin})
     return render_to_response('car.html', {'car': car, 'entries': entries, 'twitter_description': twitter_description, 'form': form}, context_instance=RequestContext(request))
 
 def map_data(request):

@@ -75,7 +75,7 @@
 	</div>
 	<form role="form" id="formAdd" name="formAdd" enctype="multipart/form-data" method="post" action="/add" onsubmit="return addEntryAjax()">
 		{% csrf_token %}
-		<span class="">{{ form.car }}</span>
+		<span class="hidden">{{ form.car }}</span>
 		<div class="row hidden">
 			<div id="divForSale" class="col-md-3">
 				<span>{{ form.for_sale }}</span>
