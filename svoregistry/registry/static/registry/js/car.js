@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	document.getElementById("divEntry").style.display = "none";
+	document.getElementById("btnShowForm").style.display = "";
     document.getElementById("divMap").style.display = "block";
     drawCarMap();
     initializeDatepicker();

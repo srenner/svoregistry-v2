@@ -23,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^flag/(?P<entry_id>\d+)/$', views.flag_entry, name='flag_entry'),
     url(r'^download/$', views.download, name='download'),
     url(r'^validate/(?P<vin>\w+)/$', views.validate, name='validate'),
+    url(r'^add$', views.add_entry, name='add_entry'),
 
 
     url(r'^admin/', include(admin.site.urls)),

@@ -34,7 +34,7 @@ var addEntryAjax = function() {
 	var fd = new FormData(document.getElementById("formAdd"));
 
 	$.ajax({
-		url: "/" + activeCar + "/",
+		url: "/add",
 		data: fd,
 		processData: false,
 		contentType: false,

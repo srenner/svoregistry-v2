@@ -152,20 +152,21 @@ def download(request):
         writer.writerow(row)
     return response
 
-@ensure_csrf_cookie
-def view_car(request,vin):
+def add_entry(request):
+    vin=''
     user_ip = request.META['REMOTE_ADDR']
     if request.method == 'POST':
         try:
-            car = Car.objects.get(vin=vin)
             form = AddEntryForm(request.POST)
             if form.is_valid():
                 #data = form.cleaned_data
-                car = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
+                vin=str(form.cleaned_data['car'])
+                #carObject = Car.objects.get(vin=vin)
+                carObject = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
                           interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
                           option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
                           has_23=form.cleaned_data['has_23'], on_road=form.cleaned_data['on_road'], deceased=form.cleaned_data['deceased'])
-                car.save()
+                carObject.save()
                 #TODO: reduce db calls
                 new_entry = form.save()
                 new_entry.ip = user_ip
@@ -173,15 +174,20 @@ def view_car(request,vin):
                 if request.FILES.get("photo"):
                     new_entry.photo = request.FILES['photo']
                     new_entry.save()
-        
+                if request.is_ajax():
+                    return render_to_response("entry.html", { 'entry': new_entry }, context_instance=RequestContext(request))
+            else:
+                return HttpResponse("invalid form")
         except Car.DoesNotExist:
             #create car
-            car = Car(vin=vin, year = validate_vin(vin)['year'])
-            car.save()
-        #return HttpResponseRedirect('/' + vin + '/') #redirect to self as a GET to prevent an F5 duplicate entry     
+            carObject = Car(vin=vin, year = validate_vin(vin)['year'])
+            carObject.save()
+        
+        return HttpResponseRedirect('/' + vin)
 
-    else:
-        pass
+
+@ensure_csrf_cookie
+def view_car(request,vin):
     car = Car.objects.get(pk=vin)
     entries = Entry.objects.filter(car=car).exclude(deleted=True).order_by('-entry_datetime')
     if(entries.count() > 0):

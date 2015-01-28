@@ -62,20 +62,20 @@
 <div class="row col-md-12 text-center">
 	<a name="entries"></a>
 	<h2 class="inline-header">Entries</h2>
-	<button class="btn btn-lg btn-default" onclick="document.getElementById('divEntry').style.display=''"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
+	<button id="btnShowForm" class="btn btn-lg btn-default" style="display: none" onclick="document.getElementById('divEntry').style.display=''"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
 </div>
 
 <div class="row"></div>
 
-<div class="registry-entry row container" id="divEntry" style="display: none">
+<div class="registry-entry row container" id="divEntry">
 	<div class="row registry-entry-header svo-{{car.color}}">
 		<div class="col-md-12 col-sm-12">
 			Add Entry for VIN {{car.vin}}
 		</div>
 	</div>
-	<form role="form" id="formAdd" name="formAdd" enctype="multipart/form-data" method="post" onsubmit="return addEntryAjax()">
+	<form role="form" id="formAdd" name="formAdd" enctype="multipart/form-data" method="post" action="/add" onsubmit="return addEntryAjax()">
 		{% csrf_token %}
-		<span class="hidden">{{ form.car }}</span>
+		<span class="">{{ form.car }}</span>
 		<div class="row hidden">
 			<div id="divForSale" class="col-md-3">
 				<span>{{ form.for_sale }}</span>
