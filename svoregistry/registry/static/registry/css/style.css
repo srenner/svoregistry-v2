@@ -101,6 +101,9 @@ h2.inline-header {
 	border: solid 3px transparent;
 	font-size: 18px;
 }
+.text-bigger {
+	font-size: 18px;
+}
 .registry-entry-compact:hover {
 	border: solid 3px #EFEFEF;
 }
