@@ -5,6 +5,11 @@
 {% endblock %}
 {%block content %}
 <h1>Newest Entries</h1>
+<ul class="list-unstyled">
+	{% for entry in entries %}
+		<li>{% include 'entry_compact.html' %}</li>
+	{% endfor %}
+</ul>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
