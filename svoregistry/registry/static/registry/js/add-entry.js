@@ -43,9 +43,7 @@ var addEntryAjax = function() {
 		return true;
 	}
 	//if we made it this far we can perform file upload via ajax	
-
 	var fd = new FormData(document.getElementById("formAdd"));
-
 	$.ajax({
 		url: "/add",
 		data: fd,
@@ -57,6 +55,5 @@ var addEntryAjax = function() {
 				//alert(data);
 			}
 	});
-
 	return false;
 };
