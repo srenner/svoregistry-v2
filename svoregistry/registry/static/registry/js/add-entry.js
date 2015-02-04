@@ -22,18 +22,19 @@ var colorChanged = function() {
 };
 
 var yearChanged = function() {
-	var selectedColor = $('#id_color').val();
-	$('#id_color').empty();
+	var ddlColor = $('#id_color');
+	var selectedColor = ddlColor.val();
+	ddlColor.empty();
 	var colorOptions = svoColorChoices($('#id_year').val());
 	for(var i = 0; i < colorOptions.length; i++) {
-		$('#id_color')
+		ddlColor
 			.append($("<option></option>")
 			.attr("value", colorOptions[i].code)
 			.text(colorOptions[i].descr));
-		$('#id_color').val(selectedColor);
+		ddlColor.val(selectedColor);
 	}
-	if(!$('#id_color').val()) {
-		$('#id_color').val(colorOptions[0].code);
+	if(!ddlColor.val()) {
+		ddlColor.val(colorOptions[0].code);
 		colorChanged();
 	}
 };
