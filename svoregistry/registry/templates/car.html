@@ -25,37 +25,8 @@
 <div class="row">
 	<div id="divMap" class="map-small col-md-8 text-center"></div>
 	<div id="divMeta" class="col-md-4">
-		
-		{% with count=entries.count %}
-		<a id="aEntryLink" href="#entries">
-			This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
-		</a>
-		{% endwith %}
-		<dl id="dlMeta" class="dl-horizontal">
-			{% if car.year == "1984" %}
-			<dt>Slapper bars</dt>
-			<dd>{{car.slappers|yesno:"Yes,No"}}</dd>
-			{% endif %}
-			<dt>Interior</dt>
-		    <dd>{{car.interior|default_if_none:"Unknown"}}</dd>
-			
-			<dt>Sunroof</dt>
-			<dd>{{car.sunroof|yesno:"Yes,No"}}</dd>
-			
-			<dt>Original engine</dt>
-			<dd>{{car.has_23|yesno:"Yes,No"}}</dd>
-			
-			<dt>Wing delete</dt>
-			<dd>{{car.wing_delete|yesno:"Yes,No"}}</dd>
-			
-			<dt>On road</dt>
-			<dd>{{car.on_road|yesno:"Yes,No"}}</dd>
-			
-			<dt>Deceased</dt>
-			<dd>{{car.deceased|yesno:"Yes,No"}}</dd>
-		</dl> 
+		{% include 'metadata.html' %}
 	</div>
-
 </div>
 <hr>
 
@@ -155,7 +126,6 @@
 	document.getElementById("{{ form.has_23.auto_id }}").value = "{{ car.has_23|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.deceased.auto_id }}").value = "{{ car.deceased|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.car.auto_id }}").value = "{{car.vin}}";
-	
 </script>
 <script src="{% static 'registry/js/vendor/tinymce/tinymce.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/vendor/tinymce/themes/modern/theme.min.js' %}" type="text/javascript"></script>
@@ -168,5 +138,4 @@
 <script src="{% static 'registry/js/svo-colors.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/add-entry.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/entry.js' %}" type="text/javascript"></script>
-
 {% endblock %}

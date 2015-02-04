@@ -1,0 +1,28 @@
+{% with count=entries.count %}
+<a id="aEntryLink" href="#entries">
+	This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
+</a>
+{% endwith %}
+<dl id="dlMeta" class="dl-horizontal">
+	{% if car.year == "1984" %}
+	<dt>Slapper bars</dt>
+	<dd>{{car.slappers|yesno:"Yes,No"}}</dd>
+	{% endif %}
+	<dt>Interior</dt>
+    <dd>{{car.interior|default_if_none:"Unknown"}}</dd>
+	
+	<dt>Sunroof</dt>
+	<dd>{{car.sunroof|yesno:"Yes,No"}}</dd>
+	
+	<dt>Original engine</dt>
+	<dd>{{car.has_23|yesno:"Yes,No"}}</dd>
+	
+	<dt>Wing delete</dt>
+	<dd>{{car.wing_delete|yesno:"Yes,No"}}</dd>
+	
+	<dt>On road</dt>
+	<dd>{{car.on_road|yesno:"Yes,No"}}</dd>
+	
+	<dt>Deceased</dt>
+	<dd>{{car.deceased|yesno:"Yes,No"}}</dd>
+</dl> 
