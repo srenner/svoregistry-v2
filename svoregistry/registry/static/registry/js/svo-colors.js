@@ -18,7 +18,7 @@ var svoColorChoices = function(year) {
 						colors.nineW];
 		break;
 		case '1985':
-			return 	[	colors.oneB,
+			return	[	colors.oneB,
 						colors.oneC,
 						colors.oneE,
 						colors.twoA,
@@ -27,7 +27,7 @@ var svoColorChoices = function(year) {
 						colors.nineL];
 		break;
 		case '1985.5':
-			return 	[	colors.oneB,
+			return	[	colors.oneB,
 						colors.oneC,
 						colors.oneE,
 						colors.twoA,
