@@ -1,12 +1,9 @@
 $(document).ready(function() {
-	var ddlColor = document.getElementById('id_color');
-	if(ddlColor.attachEvent) {
-		ddlColor.attachEvent('onchange', colorChanged);	
-	}
-	else {
-		ddlColor.addEventListener('change', colorChanged , false);	
-	}
+	$('#id_color').change(colorChanged);
 	colorChanged();
+
+	$('#id_year').change(yearChanged);
+	yearChanged();
 	
 	tinyMCE.init({
 	    selector: "textarea",
@@ -24,6 +21,22 @@ var colorChanged = function() {
 	ddl.className = "svo-" + newColor;
 };
 
+var yearChanged = function() {
+	var selectedColor = $('#id_color').val();
+	$('#id_color').empty();
+	var colorOptions = svoColorChoices($('#id_year').val());
+	for(var i = 0; i < colorOptions.length; i++) {
+		$('#id_color')
+			.append($("<option></option>")
+			.attr("value", colorOptions[i].code)
+			.text(colorOptions[i].descr));
+		$('#id_color').val(selectedColor);
+	}
+	if(!$('#id_color').val()) {
+		$('#id_color').val(colorOptions[0].code);
+		colorChanged();
+	}
+};
 
 var addEntryAjax = function() {
 	if(!window.FormData) {
