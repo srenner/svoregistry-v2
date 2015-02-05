@@ -103,11 +103,9 @@
 		</div>
 	</form>
 </div>
-<div class="row col-md-12">
+<div id="divEntries" class="row col-md-12">
 	{% for entry in entries %}
-		<div class="car-entry" name="entry_{{entry.id}}">
 		{% include 'entry.html' %}
-		</div>		
 	{% endfor %}
 </div>
 

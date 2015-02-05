@@ -40,6 +40,7 @@ var yearChanged = function() {
 };
 
 var addEntryAjax = function() {
+	tinyMCE.triggerSave();
 	if(!window.FormData) {
 		return true;
 	}
@@ -53,7 +54,13 @@ var addEntryAjax = function() {
 		type: 'POST',	  
 		success: 
 			function(data) {
-				//alert(data);
+				hideAddEntry();
+				var divEntries = document.getElementById("divEntries");
+				if(divEntries) {
+					var newEntry = document.createElement("div");
+					newEntry.innerHTML = data;
+					divEntries.insertBefore(newEntry, divEntries.firstChild);
+				}
 			}
 	});
 	return false;

@@ -159,9 +159,7 @@ def add_entry(request):
         try:
             form = AddEntryForm(request.POST)
             if form.is_valid():
-                #data = form.cleaned_data
                 vin=str(form.cleaned_data['car'])
-                #carObject = Car.objects.get(vin=vin)
                 carObject = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
                           interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
                           option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
@@ -177,19 +175,16 @@ def add_entry(request):
                 if request.is_ajax():
                     return render_to_response("entry.html", { 'entry': new_entry }, context_instance=RequestContext(request))
             else:
-                return HttpResponse("invalid form")
+                return HttpResponse(form.errors)
         except Car.DoesNotExist:
-            #create car
             carObject = Car(vin=vin, year = validate_vin(vin)['year'])
             carObject.save()
-        
         return HttpResponseRedirect('/' + vin)
-
 
 @ensure_csrf_cookie
 def view_car(request,vin):
     car = Car.objects.get(pk=vin)
-    entries = Entry.objects.filter(car=car).exclude(deleted=True).order_by('-entry_datetime')
+    entries = Entry.objects.filter(car=car).exclude(deleted=True).order_by('-entry_datetime', '-id')
     if(entries.count() > 0):
         twitter_description = entries[entries.count() - 1].comments[:201]
         if len(twitter_description) == 0:

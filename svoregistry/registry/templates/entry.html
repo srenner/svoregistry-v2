@@ -1,44 +1,46 @@
 {% load filters %}
 {% load humanize %}
-<div class="registry-entry container row">
-	<a name="{{entry.id}}"></a>
-	<div class="row registry-entry-header svo-{{entry.color}}">
-		<div class="col-md-6 col-sm-6">
-			{% if entry.mileage = 0 or entry.mileage = None %}
-			Unknown
-			{% else %}
-			{{entry.mileage|intcomma}} 
+<div class="car-entry" name="entry_{{entry.id}}">
+	<div class="registry-entry container row">
+		<a name="{{entry.id}}"></a>
+		<div class="row registry-entry-header svo-{{entry.color}}">
+			<div class="col-md-6 col-sm-6">
+				{% if entry.mileage = 0 or entry.mileage = None %}
+				Unknown
+				{% else %}
+				{{entry.mileage|intcomma}} 
+				{% endif %}
+				Miles on {{entry.entry_datetime|date}}
+			</div>
+			<div class="col-md-6 col-sm-6 text-right">
+				{% if entry.owner = '' %}
+				Unknown owner
+				{% else %}
+				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
+				{% endif %}
+				in
+				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
+			</div>
+		</div>
+		<div class="row registry-entry-body">
+			{% if entry.photo %}
+			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
 			{% endif %}
-			Miles on {{entry.entry_datetime|date}}
+			<h3>Entry Comments:</h3>
+			<div class="registry-entry-comments col-md-12">
+				{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
+			</div>
 		</div>
-		<div class="col-md-6 col-sm-6 text-right">
-			{% if entry.owner = '' %}
-			Unknown owner
-			{% else %}
-			Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
-			{% endif %}
-			in
-			{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
-		</div>
-	</div>
-	<div class="row registry-entry-body">
-		{% if entry.photo %}
-		<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
-		{% endif %}
-		<h3>Entry Comments:</h3>
-		<div class="registry-entry-comments col-md-12">
-			{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
-		</div>
-	</div>
-	<div class="row registry-entry-footer">
-		<div class="pull-left text-left">
-			<a href="/{{entry.car_id}}/#{{entry.id}}"><span class="glyphicon glyphicon-link"></span>Link directly to this entry</a>
-		</div>
-		<div class="pull-right text-right">
-			<a class="flag-entry" data-entry-id="{{entry.id}}">
-			<span>Flag this entry for review</span>
-			<span class="glyphicon glyphicon-flag"></span>
-			</a>
+		<div class="row registry-entry-footer">
+			<div class="pull-left text-left">
+				<a href="/{{entry.car_id}}/#{{entry.id}}"><span class="glyphicon glyphicon-link"></span>Link directly to this entry</a>
+			</div>
+			<div class="pull-right text-right">
+				<a class="flag-entry" data-entry-id="{{entry.id}}">
+				<span>Flag this entry for review</span>
+				<span class="glyphicon glyphicon-flag"></span>
+				</a>
+			</div>
 		</div>
 	</div>
 </div>
