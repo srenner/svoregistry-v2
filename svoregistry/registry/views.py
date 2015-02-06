@@ -116,6 +116,15 @@ def statistics_status(request):
     report = dictfetchall(cursor)
     return HttpResponse(json.dumps(report), 'application/json')
 
+def statistics_entry_year(request):
+    cursor = connection.cursor()
+    cursor.execute("""select count(id) as count, extract(year from date(entry_datetime)) as entry_year
+                        from registry_entry
+                        group by entry_year
+                        order by entry_year""")
+    report = dictfetchall(cursor)
+    return HttpResponse(json.dumps(report), 'application/json')
+
 def about(request):
     #display the 'about this site' page
     template = loader.get_template('about.html')

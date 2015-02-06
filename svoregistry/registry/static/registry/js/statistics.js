@@ -72,3 +72,36 @@
 		});		
 	});	
 })();
+
+
+
+
+
+
+
+
+
+(function getTimelineData() {
+	$.get('/statistics/timeline', function(data) {
+		var labels = [];
+		var cars = [];
+		var totals = [];
+		for(var i = 0; i < data.length; i++) {
+			labels.push(data[i].entry_year);
+			cars.push(data[i].count);
+		}
+		new Chartist.Bar('#stats-timeline', 
+		{
+			labels: labels,
+		  	series: [cars]
+		}, 
+		{
+			axisX: 
+		  	{
+		  	},
+		  	axisY: 
+		  	{
+		  	}
+		});		
+	});	
+})();

@@ -9,7 +9,6 @@
 <h1>Registry Statistics</h1>
 <p class="text-center">The registry now contains {{cars}} cars and {{entries}} entries!</p>
 <div class="row">
-	
 	<div class="col-md-12 stat-box">
 		<h4 class="text-center">Registered Cars by Color Code</h4>
 		<noscript>
@@ -32,7 +31,14 @@
 			<p class="text-center">Enable JavaScript to view</p>
 		</noscript>
 		<div class="ct-chart" id="stats-status"></div>
-	</div>	
+	</div>
+	<div class="col-md-12 stat-box">
+		<h4 class="text-center">Entries Logged Per Year</h4>
+		<noscript>
+			<p class="text-center">Enable JavaScript to view</p>
+		</noscript>
+		<div class="ct-chart" id="stats-timeline"></div>
+	</div>
 </div>
 {% endblock %}
 {% block scripts %}
