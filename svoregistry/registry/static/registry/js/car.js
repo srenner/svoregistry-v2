@@ -97,6 +97,7 @@ var yearChanged = function() {
 
 var addEntryAjax = function() {
 	tinyMCE.triggerSave();
+	document.getElementById('id_mileage').value = document.getElementById('id_mileage').value.replace(",", "");
 	if(!window.FormData) {
 		return true;
 	}
