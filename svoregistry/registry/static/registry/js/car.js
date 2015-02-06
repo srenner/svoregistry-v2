@@ -4,6 +4,7 @@ $(document).ready(function() {
     document.getElementById("divMap").style.display = "block";
     drawCarMap();
     initializeDatepicker();
+    drawTimeline();
     $("#btnCancel").click(function() { hideAddEntry(); });
     
 	$('#id_color').change(colorChanged);
@@ -21,6 +22,41 @@ $(document).ready(function() {
 		skin_url: DjangoURL.static + 'registry/css/vendor/tinymce/skins/lightgray',
 	});	
 });
+
+function drawTimeline() {
+		var container = document.getElementById('divTimeline');
+	
+	// Create a DataSet with data 
+	var data = new vis.DataSet([{
+	    id: 1,
+	    content: 'First event',
+	    start: '2008-08-01'
+	}, {
+	    id: 2,
+	    content: 'Pi and Mash<br>Line2<br>Akron, OH',
+	    start: '2011-08-08'
+	}, {
+	    id: 3,
+	    content: 'Wikimania',
+	    start: '2014-08-08'
+	}, {
+	    id: 4,
+	    content: 'Something else',
+	    start: '2015-08-20'
+	}]);
+	
+	// Configuration for the Timeline as JSON object
+	var options = {
+	    width: '100%',
+	    editable: true, /* this option means you can add or remove items by clicking on the timeline */
+	    margin: {
+	        item: 20
+	    }
+	};
+
+// Create a Timeline
+var timeline = new vis.Timeline(container, data, options);
+}
 
 function hideAddEntry() {
 	document.getElementById('divEntry').style.display = 'none';

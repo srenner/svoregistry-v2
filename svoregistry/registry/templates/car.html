@@ -9,6 +9,7 @@
 	<meta name="twitter:description" content="{{twitter_description|truncatechars:200|striptags}}">
 	<meta name="twitter:domain" content="SVOregistry.com">
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
 {% endblock %}
 
 {% load humanize %}
@@ -23,14 +24,13 @@
 </header>
 
 <div class="row">
-	<div id="divMap" class="map-small col-sm-6 text-center"></div>
+	<div id="divMap" class="map-small col-sm-6"></div>
 	<div id="divMeta" class="col-sm-6">
 		{% include 'metadata.html' %}
 	</div>
 </div>
 <div class="row">
 	<div id="divTimeline" class="col-sm-12">
-		
 	</div>
 </div>
 <hr>
