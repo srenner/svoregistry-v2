@@ -13,7 +13,8 @@ class Car(models.Model):
         ('4E', '4E (Dark Sage)'),
         ('7B', '7B (Dark Shadow Blue)'),
         ('9L', '9L (Oxford White)'),
-        ('9W', '9W (Dark Charcoal)')
+        ('9W', '9W (Dark Charcoal)'),
+        (''  , 'Unknown or Custom')
     )
     vin = models.CharField(max_length=17, primary_key=True, unique=True)
     #these fields are in two models in case users disagree about what the car has
@@ -58,7 +59,8 @@ class Entry(models.Model):
         ('4E', '4E (Dark Sage)'),
         ('7B', '7B (Dark Shadow Blue)'),
         ('9L', '9L (Oxford White)'),
-        ('9W', '9W (Dark Charcoal)')
+        ('9W', '9W (Dark Charcoal)'),
+        (''  , 'Unknown or Custom')
     )
     INTERIOR_CHOICES = (
         ('Cloth', 'Cloth'),

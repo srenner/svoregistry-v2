@@ -10,12 +10,14 @@ var svoColorChoices = function(year) {
 	colors.sevenB = {code: '7B', descr: '7B Shadow Blue'};
 	colors.nineL  = {code: '9L', descr: '9L Oxford White'};
 	colors.nineW  = {code: '9W', descr: '9W Dark Charcoal Metallic'};
+	colors.none   = {code: ''  , descr: 'Unknown or Custom'};
 	switch(year) {
 		case '1984':
 			return	[	colors.oneC, 
 						colors.oneE,
 						colors.twoA,
-						colors.nineW];
+						colors.nineW,
+						colors.none];
 		break;
 		case '1985':
 			return	[	colors.oneB,
@@ -24,7 +26,8 @@ var svoColorChoices = function(year) {
 						colors.twoA,
 						colors.twoR,
 						colors.fourE,
-						colors.nineL];
+						colors.nineL,
+						colors.none];
 		break;
 		case '1985.5':
 			return	[	colors.oneB,
@@ -33,7 +36,8 @@ var svoColorChoices = function(year) {
 						colors.twoA,
 						colors.twoR,
 						colors.fourE,
-						colors.nineL];	
+						colors.nineL,
+						colors.none];	
 		break;
 		case '1986':
 			return	[	colors.oneC,
@@ -43,7 +47,8 @@ var svoColorChoices = function(year) {
 						colors.twoR,
 						colors.fourE,
 						colors.sevenB,
-						colors.nineL];
+						colors.nineL,
+						colors.none];
 		break;
 		default:
 			return	[	colors.oneB,
@@ -55,6 +60,7 @@ var svoColorChoices = function(year) {
 						colors.fourE,
 						colors.sevenB,
 						colors.nineL,
-						colors.nineW];
+						colors.nineW,
+						colors.none];
 	}
 };
