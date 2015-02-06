@@ -62,8 +62,8 @@ input[type=file] {
 .map-small {
 	background-color: #EFEFEF;
 	border-radius: 4px;
-	height: 450px;
-	max-height: 450px;
+	height: 300px;
+	max-height: 300px;
 }
 .car-entry {
 	margin-top: 35px;

@@ -29,9 +29,9 @@ function hideAddEntry() {
 function drawCarMap() {
 	$.get('/map/' + activeCar + '/', function(data) {
 		var map = new google.maps.Map(document.getElementById('divMap'), {
-			zoom: 4,
+			zoom: 3,
 			scrollwheel: false,
-			center: new google.maps.LatLng(40.5, -98.4160),
+			center: new google.maps.LatLng(39.0997, -94.5783),
 			mapTypeId: google.maps.MapTypeId.ROADMAP
 		});
     	var infowindow = new google.maps.InfoWindow();
