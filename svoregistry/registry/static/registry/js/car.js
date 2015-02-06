@@ -6,8 +6,6 @@ $(document).ready(function() {
     initializeDatepicker();
     $("#btnCancel").click(function() { hideAddEntry(); });
     
-    
-    
 	$('#id_color').change(colorChanged);
 	colorChanged();
 
@@ -73,8 +71,6 @@ function initializeDatepicker() {
     picker.setMoment(moment());
 };
 
-
-
 var colorChanged = function() {
 	var ddl = document.getElementById("id_color");
 	var newColor = ddl.value;
@@ -121,6 +117,7 @@ var addEntryAjax = function() {
 					newEntry.innerHTML = data;
 					divEntries.insertBefore(newEntry, divEntries.firstChild);
 				}
+				//todo update statistics and map
 			}
 	});
 	return false;
