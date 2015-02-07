@@ -227,6 +227,17 @@ def map_car(request, vin):
                   } for entry in entries])
     return HttpResponse(json, 'application/json')
 
+def car_entries(request, vin):
+    entries = Entry.objects.filter(car=vin).order_by('entry_datetime').exclude(deleted=True)
+    json = dumps([{
+                    'entry_id': entry.id,
+                    'date': entry.entry_datetime.strftime('%b %d, %Y'),
+                    'dateformat': entry.entry_datetime.strftime('%Y-%m-%d'),
+                    'owner': xstr(entry.owner),
+                    'location': (xstr(entry.city) + ' ' + xstr(entry.state) + ' ' + xstr(entry.country)).strip()
+                  } for entry in entries])
+    return HttpResponse(json, 'application/json')    
+
 def meta_car(request, vin):
     car = Car.objects.get(pk=vin)
     count = Entry.objects.filter(car=car).exclude(deleted=True).count()
