@@ -161,6 +161,7 @@ def download(request):
         writer.writerow(row)
     return response
 
+@ensure_csrf_cookie
 def add_car(request, vin):
     carObject = Car(vin=vin, year = validate_vin(vin)['year'])
     carObject.save()
