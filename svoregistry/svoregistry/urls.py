@@ -26,6 +26,7 @@ urlpatterns = patterns('',
     url(r'^download/$', views.download, name='download'),
     url(r'^validate/(?P<vin>\w+)/$', views.validate, name='validate'),
     url(r'^add$', views.add_entry, name='add_entry'),
+    url(r'^add/(?P<vin>\w+)/$', views.add_car, name='add_car'),
 
 
     url(r'^admin/', include(admin.site.urls)),

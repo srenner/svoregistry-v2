@@ -65,8 +65,12 @@ var hideAddCar = function() {
 
 var addCar = function() {
 	var vin = document.getElementById("txtVIN").value;
-	$.post('/' + vin + '/', function(data) {
-		//server should redirect but set window here if it doesn't
-		window.location = '/' + vin + '/';
+	$.ajax({
+		url: "/add/" + vin + "/",
+		type: 'POST',	  
+		success: function(data) {
+			//server should redirect but set window here if it doesn't
+			window.location = '/' + vin + '/';	
+		}
 	});
 };
