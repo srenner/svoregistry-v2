@@ -30,8 +30,7 @@ input[type=file] {
 	border-radius: 0 0 5px 5px;
 	box-shadow: 5px 5px 5px #888888;
 	margin: 20px 0px 20px 0px;
-	padding: 15px;
-	padding: 7px 15px 5px 15px;
+	padding: 0px 15px 5px 15px;
 }
 
 
@@ -65,11 +64,7 @@ input[type=file] {
 .map-small {
 	background-color: #EFEFEF;
 	border-radius: 4px;
-	height: 300px;
 	max-height: 300px;
-}
-.car-entry {
-	/*margin-top: 35px;*/
 }
 .spacer-small {
 	margin-bottom: 8px;
@@ -77,7 +72,6 @@ input[type=file] {
 .spacer-medium {
 	margin-bottom: 15px
 }
-
 h2.inline-header {
 	display: inline-block;
 	vertical-align: bottom;

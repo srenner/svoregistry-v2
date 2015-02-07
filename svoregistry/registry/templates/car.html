@@ -28,8 +28,10 @@
 	</div>
 </div>
 <div class="row row-space">
-	<div id="divTimeline" class="col-sm-12">
-	</div>
+	<div id="divTimeline" class="col-sm-12"></div>
+</div>
+<div class="row">
+	<div class="col-sm-12"></div>
 </div>
 <hr>
 <div class="text-center">
@@ -37,8 +39,6 @@
 	<h2 class="inline-header">Entries</h2>
 	<button id="btnShowForm" class="btn btn-lg btn-default" style="display: none"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
 </div>
-
-
 <div class="registry-entry" id="divEntry">
 	<div class="registry-entry-header row svo-{{car.color}}">
 		<div class="col-md-12 col-sm-12">
@@ -102,13 +102,11 @@
 		</div>
 	</form>
 </div>
-
-<div id="divEntries" class="">
+<div id="divEntries">
 	{% for entry in entries %}
 		{% include 'entry.html' %}
 	{% endfor %}
 </div>
-
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript">
