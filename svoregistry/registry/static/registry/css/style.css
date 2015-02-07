@@ -124,3 +124,8 @@ h2.inline-header {
 	display: inline;
 }
 
+.vis.timeline .item {
+	box-shadow: 2px 2px 2px #888888;
+	background-color: #EFEFEF;
+	border-radius: 3px;
+}
