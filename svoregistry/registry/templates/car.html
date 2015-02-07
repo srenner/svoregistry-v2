@@ -11,7 +11,6 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
 {% endblock %}
-
 {% load humanize %}
 {%block content %}
 <header>
@@ -22,29 +21,26 @@
 	</h1>
 	<p class="text-center">VIN {{car.vin}}</p>	
 </header>
-
 <div class="row">
 	<div id="divMap" class="map-small col-sm-6"></div>
 	<div id="divMeta" class="col-sm-6">
 		{% include 'metadata.html' %}
 	</div>
 </div>
-<div class="row">
+<div class="row row-space">
 	<div id="divTimeline" class="col-sm-12">
 	</div>
 </div>
 <hr>
-
-<div class="row col-md-12 text-center">
+<div class="text-center">
 	<a name="entries"></a>
 	<h2 class="inline-header">Entries</h2>
-	<button id="btnShowForm" class="btn btn-lg btn-default" style="display: none" onclick="document.getElementById('divEntry').style.display=''"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
+	<button id="btnShowForm" class="btn btn-lg btn-default" style="display: none"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
 </div>
 
-<div class="row"></div>
 
-<div class="registry-entry row container" id="divEntry">
-	<div class="row registry-entry-header svo-{{car.color}}">
+<div class="registry-entry" id="divEntry">
+	<div class="registry-entry-header row svo-{{car.color}}">
 		<div class="col-md-12 col-sm-12">
 			Add Entry for VIN {{car.vin}}
 		</div>
@@ -106,7 +102,8 @@
 		</div>
 	</form>
 </div>
-<div id="divEntries" class="row col-md-12">
+
+<div id="divEntries" class="">
 	{% for entry in entries %}
 		{% include 'entry.html' %}
 	{% endfor %}

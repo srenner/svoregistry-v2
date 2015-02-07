@@ -29,9 +29,12 @@ input[type=file] {
 	border: solid 1px #888888;
 	border-radius: 0 0 5px 5px;
 	box-shadow: 5px 5px 5px #888888;
-	margin-top: 15px;
-	margin-bottom: 15px;
+	margin: 20px 0px 20px 0px;
+	padding: 15px;
+	padding: 7px 15px 5px 15px;
 }
+
+
 .registry-entry-header {
 	border-bottom: solid 1px #888888;
 	font-size: 20px;
@@ -66,7 +69,7 @@ input[type=file] {
 	max-height: 300px;
 }
 .car-entry {
-	margin-top: 35px;
+	/*margin-top: 35px;*/
 }
 .spacer-small {
 	margin-bottom: 8px;
@@ -75,10 +78,6 @@ input[type=file] {
 	margin-bottom: 15px
 }
 
-.medium-canyon-red {
-	background-color: #923525;
-	color: #FFFFFF;
-}
 h2.inline-header {
 	display: inline-block;
 	vertical-align: bottom;
@@ -128,4 +127,8 @@ h2.inline-header {
 	box-shadow: 2px 2px 2px #888888;
 	background-color: #EFEFEF;
 	border-radius: 3px;
+}
+
+.row-space {
+	margin-top: 10px;
 }

@@ -5,7 +5,8 @@ $(document).ready(function() {
     drawCarMap();
     initializeDatepicker();
     drawTimeline();
-    $("#btnCancel").click(function() { hideAddEntry(); });
+    $('#btnShowForm').click(showAddEntry);
+    $("#btnCancel").click(hideAddEntry);
     
 	$('#id_color').change(colorChanged);
 	colorChanged();
@@ -57,6 +58,9 @@ function hideAddEntry() {
 	document.getElementById('divEntry').style.display = 'none';
 }
 
+function showAddEntry() {
+	document.getElementById('divEntry').style.display = '';
+}
 
 
 function drawCarMap() {
