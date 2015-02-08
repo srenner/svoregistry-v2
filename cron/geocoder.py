@@ -16,22 +16,19 @@ def main():
     conn.close()
     totalcount = len(entries)
     successcount = 0
+    firstpass = True
     for entry in entries:
+        if firstpass == False:
+            time.sleep(.1) #avoid request rate quota
+        firstpass = False
         id = entry[0]
         address = entry[1].replace(' ', '%20')
-        
         geocode_url = 'http://maps.googleapis.com/maps/api/geocode/json?address=' + address + '&sensor=false'
-        #print geocode_url + '\n'
         handle = urlopen(geocode_url)
         jsonResponse = handle.read().decode("utf-8")
         handle.close()
-        
-        
-        
         objs = json.loads(jsonResponse)
-        
         status = objs['status']
-        
         if status == 'OK':
             lat = objs['results'][0]['geometry']['location']['lat']
             lng = objs['results'][0]['geometry']['location']['lng']
@@ -42,6 +39,4 @@ def main():
             conn.close()
             successcount = successcount + 1
             print(str(successcount) + "/" + str(totalcount))
-            
-            time.sleep(.1) #avoid request rate quota
 main()
