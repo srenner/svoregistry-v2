@@ -30,23 +30,30 @@ var refreshCar = function() {
 	});
 };
 
-var refreshWidgets = function() {
-	$.get('/entries/' + activeCar + '/', function(data) {
-		if(data) {
-			if(data.length > 1) {
-				drawTimeline(data);
+var refreshWidgets = function(doGeocode) {
+	if(doGeocode) {
+		$.get('/geocode/', function(data) {
+			refreshWidgets(false);
+		});			
+	}
+	else {
+		$.get('/entries/' + activeCar + '/', function(data) {
+			if(data) {
+				if(data.length > 1) {
+					drawTimeline(data);
+				}
+				var mapData = [];
+				for(var i = 0; i < data.length; i++) {
+					if(data[i].lat) {
+						mapData.push(data[i]);
+					}				
+				}
+				if(mapData) {
+					drawCarMap(mapData);
+				}
 			}
-			var mapData = [];
-			for(var i = 0; i < data.length; i++) {
-				if(data[i].lat) {
-					mapData.push(data[i]);
-				}				
-			}
-			if(mapData) {
-				drawCarMap(mapData);
-			}
-		}
-	});
+		});
+	}
 };
 
 var drawTimeline = function(data) {
@@ -173,7 +180,7 @@ var addEntryAjax = function() {
 					divEntries.insertBefore(newEntry, divEntries.firstChild);
 				}
 				refreshCar();
-				refreshWidgets();				
+				refreshWidgets(true);				
 			}
 	});
 	return false;

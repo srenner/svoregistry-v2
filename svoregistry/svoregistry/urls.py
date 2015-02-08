@@ -13,6 +13,8 @@ urlpatterns = patterns('',
     
     url(r'^map/', views.map_data, name='map_data'),                                             #json
     
+    url(r'^geocode/$', views.geocode, name='geocode'),                                          #execute geocode script, do nothing
+    
     url(r'^download/$', views.download, name='download'),                                       #csv output
     
     url(r'^statistics/$', views.statistics, name='statistics'),

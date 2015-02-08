@@ -47,7 +47,8 @@ class Entry(models.Model):
     STATE_CHOICES = US_STATES + PROVINCE_CHOICES
     COUNTRY_CHOICES = (
         ('USA', 'USA'),
-        ('CA', 'Canada')
+        ('CA', 'Canada'),
+        ('', 'Other Country')
     )
     COLOR_CHOICES = (
         ('1B','1B (Medium Charcoal)'),

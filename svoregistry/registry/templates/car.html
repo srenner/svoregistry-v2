@@ -123,6 +123,7 @@
 	document.getElementById("{{ form.has_23.auto_id }}").value = "{{ car.has_23|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.deceased.auto_id }}").value = "{{ car.deceased|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.car.auto_id }}").value = "{{car.vin}}";
+	document.getElementById("{{ form.country.auto_id}}").selectedIndex = 0;
 </script>
 <script src="{% static 'registry/js/vendor/tinymce/tinymce.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/vendor/tinymce/themes/modern/theme.min.js' %}" type="text/javascript"></script>

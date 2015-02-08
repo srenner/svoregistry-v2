@@ -6,6 +6,7 @@ from django.core import serializers
 from registry.models import Entry
 from registry.models import Car
 from json import dumps
+from registry import geocoder
 from registry.utils import xstr
 from registry.utils import validate_vin
 from registry.utils import dictfetchall
@@ -16,6 +17,7 @@ import json
 import csv
 from django.shortcuts import redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
+from django.conf import settings
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -160,6 +162,9 @@ def download(request):
                 row.append(row_content)
         writer.writerow(row)
     return response
+
+def geocode(request):
+    return HttpResponse(geocoder.geocode(settings.DB_PASS))
 
 @ensure_csrf_cookie
 def add_car(request, vin):
