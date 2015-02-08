@@ -13,12 +13,16 @@
 			</div>
 			<div class="col-md-6 col-sm-6 text-right">
 				{% if entry.owner = '' %}
-				Unknown owner
+				Unknown Owner
 				{% else %}
 				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
 				{% endif %}
+				{% if entry.city or entry.state or entry.country or entry.zipcode %}
 				in
 				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:""}} {{entry.zipcode|default_if_none:""}}
+				{% else %}
+				in Unknown Location
+				{% endif %}
 			</div>
 		</div>
 		<div class="row registry-entry-body">
