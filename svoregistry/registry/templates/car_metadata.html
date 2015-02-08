@@ -1,9 +1,9 @@
-<table class="table table-condensed table-striped">
+<table class="table table-condensed">
 	<tbody>
 		{% if car.year == "1984" %}
 		<tr>
 			<th>Slapper bars</th>
-			<td>{{car.slappers|yesno:"Yes,No"}}</td>
+			<td>{{car.slappers|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
 		{% endif %}
 		<tr>
@@ -12,23 +12,35 @@
 		</tr>
 		<tr>
 			<th>Sunroof</th>
-			<td>{{car.sunroof|yesno:"Yes,No"}}</td>
+			<td>{{car.sunroof|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% if car.has_23 == False %}
+		<tr class="alert-danger">
+		{% else %}
 		<tr>
+		{% endif %}
 			<th>Original Engine</th>
-			<td>{{car.has_23|yesno:"Yes,No"}}</td>
+			<td>{{car.has_23|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
 		<tr>
 			<th>Wing Delete</th>
-			<td>{{car.wing_delete|yesno:"Yes,No"}}</td>
+			<td>{{car.wing_delete|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% if car.on_road == False %}
+		<tr class="alert-danger">
+		{% else %}
 		<tr>
+		{% endif %}
 			<th>On Road</th>
-			<td>{{car.on_road|yesno:"Yes,No"}}</td>
+			<td>{{car.on_road|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% if car.deceased == True %}
+		<tr class="alert-danger">
+		{% else %}
 		<tr>
+		{% endif %}
 			<th>Deceased</th>
-			<td>{{car.deceased|yesno:"Yes,No"}}</td>
+			<td>{{car.deceased|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
 	</tbody>
 </table>

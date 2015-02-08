@@ -5,6 +5,7 @@ $(document).ready(function() {
     drawCarMap();
     initializeDatepicker();
     drawTimeline();
+    drawMileageChart();
     $('#btnShowForm').click(showAddEntry);
     $("#btnCancel").click(hideAddEntry);
     
@@ -100,6 +101,15 @@ function drawCarMap() {
     	var mapOptions = {gridSize: 30, maxZoom: 7};
     	var mc = new MarkerClusterer(map, markers, mapOptions);		
 	});
+}
+
+function drawMileageChart() {
+	new Chartist.Line('#chart-mileage', {
+		labels: ['1985-01-01', '2010-09-20', '2013-12-31'],
+		series: [
+			[0,94000,96000],
+		],
+	}, {lineSmooth: false});
 }
 
 function initializeDatepicker() {
