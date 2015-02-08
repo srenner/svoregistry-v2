@@ -1,0 +1,34 @@
+<table class="table table-condensed table-striped">
+	<tbody>
+		{% if car.year == "1984" %}
+		<tr>
+			<th>Slapper bars</th>
+			<td>{{car.slappers|yesno:"Yes,No"}}</td>
+		</tr>
+		{% endif %}
+		<tr>
+			<th>Interior</th>
+			<td>{{car.interior|default_if_none:"Unknown"}}</td>
+		</tr>
+		<tr>
+			<th>Sunroof</th>
+			<td>{{car.sunroof|yesno:"Yes,No"}}</td>
+		</tr>
+		<tr>
+			<th>Original Engine</th>
+			<td>{{car.has_23|yesno:"Yes,No"}}</td>
+		</tr>
+		<tr>
+			<th>Wing Delete</th>
+			<td>{{car.wing_delete|yesno:"Yes,No"}}</td>
+		</tr>
+		<tr>
+			<th>On Road</th>
+			<td>{{car.on_road|yesno:"Yes,No"}}</td>
+		</tr>
+		<tr>
+			<th>Deceased</th>
+			<td>{{car.deceased|yesno:"Yes,No"}}</td>
+		</tr>
+	</tbody>
+</table>

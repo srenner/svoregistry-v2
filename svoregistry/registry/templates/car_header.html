@@ -1,0 +1,7 @@
+{% load filters %}
+<h1>
+	{{car.year|default_if_none:"Unknown Year"}} 
+	{{ car.COLOR_CHOICES|color_lookup:car.color }}
+	SVO
+</h1>
+<p class="text-center">VIN {{car.vin}}</p>

@@ -24,11 +24,19 @@ $(document).ready(function() {
 	});	
 });
 
+var refreshCar = function() {
+	$.get('/refresh/' + activeCar + '/', function(data) {
+		$('#header-car').html(data.header);
+		$('#div-metadata').html(data.metadata);
+	});
+};
+
 function drawTimeline() {
 	
 	$.get('/entries/' + activeCar + '/', function(data) {
 		if(data && data.length > 1) {
 			var container = document.getElementById('divTimeline');
+			container.innerHTML = "";
 			var dataCollection = [];
 			for(var i = 0; i < data.length; i++) {
 				var entry = {
@@ -61,7 +69,6 @@ function hideAddEntry() {
 function showAddEntry() {
 	document.getElementById('divEntry').style.display = '';
 }
-
 
 function drawCarMap() {
 	$.get('/map/' + activeCar + '/', function(data) {
@@ -155,7 +162,10 @@ var addEntryAjax = function() {
 					newEntry.innerHTML = data;
 					divEntries.insertBefore(newEntry, divEntries.firstChild);
 				}
-				//todo update statistics and map
+				//todo reduce db calls
+				refreshCar();
+				drawCarMap();
+				drawTimeline();
 			}
 	});
 	return false;

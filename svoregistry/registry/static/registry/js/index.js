@@ -40,7 +40,7 @@ var drawMap = function() {
 var lookupVin = function() {
 	hideAddCar();
 	var vin = document.getElementById("txtVIN").value;
-	$.get('/validate/' + vin, function(data) {
+	$.get('/validate/' + vin + '/', function(data) {
 		
 		if(data.valid) {
 			$.get('/lookup?vin=' + vin, function(data) {

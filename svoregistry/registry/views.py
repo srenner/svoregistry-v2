@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from django.template import RequestContext, loader
+
 from random import randint
 from django.core import serializers
 from registry.models import Entry
@@ -167,6 +168,16 @@ def add_car(request, vin):
     carObject.save()
     return HttpResponseRedirect('/' + vin + '/')
 
+def refresh_car(request, vin):
+    car = Car.objects.get(pk=vin)
+    metadata = loader.render_to_string("car_metadata.html", {'car': car})
+    header =  loader.render_to_string("car_header.html", {'car': car})
+    json = dumps({
+                   'metadata': metadata,
+                   'header': header
+                   })
+    return HttpResponse(json, 'application/json')
+
 def add_entry(request):
     vin=''
     user_ip = request.META['REMOTE_ADDR']
@@ -238,25 +249,6 @@ def car_entries(request, vin):
                     'location': (xstr(entry.city) + ' ' + xstr(entry.state) + ' ' + xstr(entry.country)).strip()
                   } for entry in entries])
     return HttpResponse(json, 'application/json')    
-
-def meta_car(request, vin):
-    car = Car.objects.get(pk=vin)
-    count = Entry.objects.filter(car=car).exclude(deleted=True).count()
-    json = dumps({
-                    'year': car.year or 'Unknown',
-                    'entry_count': count,
-                    'slappers': car.slappers,
-                    'color': car.color or 'Unknown',
-                    'interior': car.interior or 'Unknown',
-                    'sunroof': car.sunroof,
-                    'comp_prep': car.comp_prep,
-                    'option_delete': car.option_delete,
-                    'wing_delete': car.wing_delete,
-                    'original_engine': car.has_23,
-                    'on_road': car.on_road,
-                    'deceased': car.deceased
-                })
-    return HttpResponse(json, 'application/json')
 
 def flag_entry(request, entry_id):
     try:
