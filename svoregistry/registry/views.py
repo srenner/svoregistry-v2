@@ -226,18 +226,6 @@ def map_data(request):
                    } for l in locations])
     return HttpResponse(json, 'application/json')
 
-def map_car(request, vin):
-    #car = Car.objects.get(pk=vin)
-    entries = Entry.objects.filter(car=vin).exclude(geo_lat__isnull=True).order_by('-entry_datetime').exclude(deleted=True)
-    json = dumps([{
-                    'entry_id': entry.id,
-                    'date': entry.entry_datetime.strftime('%b %d, %Y'),
-                    'owner': xstr(entry.owner),
-                    'lat': float(entry.geo_lat),
-                    'long': float(entry.geo_long)
-                  } for entry in entries])
-    return HttpResponse(json, 'application/json')
-
 def car_entries(request, vin):
     entries = Entry.objects.filter(car=vin).order_by('entry_datetime').exclude(deleted=True)
     json = dumps([{
@@ -245,9 +233,11 @@ def car_entries(request, vin):
                     'date': entry.entry_datetime.strftime('%b %d, %Y'),
                     'dateformat': entry.entry_datetime.strftime('%Y-%m-%d'),
                     'owner': xstr(entry.owner),
-                    'location': (xstr(entry.city) + ' ' + xstr(entry.state) + ' ' + xstr(entry.country)).strip()
+                    'location': (xstr(entry.city) + ' ' + xstr(entry.state) + ' ' + xstr(entry.country)).strip(),
+                    'lat': float('0' if entry.geo_lat is None else str(entry.geo_lat)),
+                    'long': float('0' if entry.geo_long is None else str(entry.geo_long))
                   } for entry in entries])
-    return HttpResponse(json, 'application/json')    
+    return HttpResponse(json, 'application/json')       
 
 def flag_entry(request, entry_id):
     try:

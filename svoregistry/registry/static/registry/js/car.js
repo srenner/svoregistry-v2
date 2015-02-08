@@ -2,9 +2,8 @@ $(document).ready(function() {
 	document.getElementById("divEntry").style.display = "none";
 	document.getElementById("btnShowForm").style.display = "";
     document.getElementById("divMap").style.display = "block";
-    drawCarMap();
     initializeDatepicker();
-    drawTimeline();
+	refreshWidgets();
     $('#btnShowForm').click(showAddEntry);
     $("#btnCancel").click(hideAddEntry);
     
@@ -31,78 +30,89 @@ var refreshCar = function() {
 	});
 };
 
-function drawTimeline() {
-	
+var refreshWidgets = function() {
 	$.get('/entries/' + activeCar + '/', function(data) {
-		if(data && data.length > 1) {
-			var container = document.getElementById('divTimeline');
-			container.innerHTML = "";
-			var dataCollection = [];
-			for(var i = 0; i < data.length; i++) {
-				var entry = {
-					id: data[i].entry_id,
-					content: data[i].owner + "<br>" + data[i].location + "<br><a href=#" + data[i].entry_id + ">" + data[i].date + "</a>",
-					start: data[i].dateformat
-				};
-				dataCollection.push(entry);
+		if(data) {
+			if(data.length > 1) {
+				drawTimeline(data);
 			}
-			var dataset = new vis.DataSet(dataCollection);
-			var options = {
-				min: new Date('1983', '01', '01'),
-				max: new Date(),
-			    editable: false, 
-			    margin: {
-			        item: 20
-				},
-				clickToUse: true
-						
-			};
-			var timeline = new vis.Timeline(container, dataset, options);
+			var mapData = [];
+			for(var i = 0; i < data.length; i++) {
+				if(data[i].lat) {
+					mapData.push(data[i]);
+				}				
+			}
+			if(mapData) {
+				drawCarMap(mapData);
+			}
 		}
 	});
 };
 
-function hideAddEntry() {
+var drawTimeline = function(data) {
+	var container = document.getElementById('divTimeline');
+	container.innerHTML = "";
+	var dataCollection = [];
+	for(var i = 0; i < data.length; i++) {
+		var entry = {
+			id: data[i].entry_id,
+			content: data[i].owner + "<br>" + data[i].location + "<br><a href=#" + data[i].entry_id + ">" + data[i].date + "</a>",
+			start: data[i].dateformat
+		};
+		dataCollection.push(entry);
+	}
+	var dataset = new vis.DataSet(dataCollection);
+	var options = {
+		min: new Date('1983', '01', '01'),
+		max: new Date(),
+	    editable: false, 
+	    margin: {
+	        item: 20
+		},
+		clickToUse: true
+	};
+	var timeline = new vis.Timeline(container, dataset, options);
+};
+
+var hideAddEntry = function() {
 	document.getElementById('divEntry').style.display = 'none';
-}
+};
 
-function showAddEntry() {
+var showAddEntry = function() {
 	document.getElementById('divEntry').style.display = '';
-}
+};
 
-function drawCarMap() {
-	$.get('/map/' + activeCar + '/', function(data) {
-		var map = new google.maps.Map(document.getElementById('divMap'), {
-			zoom: 3,
-			scrollwheel: false,
-			center: new google.maps.LatLng(39.0997, -94.5783),
-			mapTypeId: google.maps.MapTypeId.ROADMAP
-		});
-    	var infowindow = new google.maps.InfoWindow();
-    	var oms = new OverlappingMarkerSpiderfier(map, { keepSpiderfied: true });
-		oms.addListener('click', function(marker) {
-			infowindow.setContent(marker.desc);
-			infowindow.open(map, marker);
-		});
-		oms.addListener('spiderfy', function(markers) {
-			infowindow.close();
-		});
-		var markers = [];
-		for (var i = 0; i < data.length; i++) {
-			var marker = new google.maps.Marker({
-	        	position: new google.maps.LatLng(data[i].lat, data[i].long),
-	        	desc: "<div style='min-width: 150px'><a href='#" + data[i].entry_id + "'>" + data[i].date + "</a><br>" + data[i].owner + "</div>",
-	        	map: map
-			});
-			markers.push(marker);
-			oms.addMarker(marker);
-		}
-    	var mapOptions = {gridSize: 30, maxZoom: 7};
-    	var mc = new MarkerClusterer(map, markers, mapOptions);		
+var drawCarMap = function(data) {
+	var map = new google.maps.Map(document.getElementById('divMap'), {
+		zoom: 3,
+		scrollwheel: false,
+		center: new google.maps.LatLng(39.0997, -94.5783),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 	});
-}
+	var infowindow = new google.maps.InfoWindow();
+	var oms = new OverlappingMarkerSpiderfier(map, { keepSpiderfied: true });
+	oms.addListener('click', function(marker) {
+		infowindow.setContent(marker.desc);
+		infowindow.open(map, marker);
+	});
+	oms.addListener('spiderfy', function(markers) {
+		infowindow.close();
+	});
+	var markers = [];
+	for (var i = 0; i < data.length; i++) {
+		var marker = new google.maps.Marker({
+        	position: new google.maps.LatLng(data[i].lat, data[i].long),
+        	desc: "<div style='min-width: 150px'><a href='#" + data[i].entry_id + "'>" + data[i].date + "</a><br>" + data[i].owner + "</div>",
+        	map: map
+		});
+		markers.push(marker);
+		oms.addMarker(marker);
+	}
+	var mapOptions = {gridSize: 30, maxZoom: 7};
+	var mc = new MarkerClusterer(map, markers, mapOptions);	
+};
 
-function initializeDatepicker() {
+var initializeDatepicker = function() {
     var picker = new Pikaday(
     {
         field: document.getElementById('id_entry_datetime'),
@@ -162,10 +172,8 @@ var addEntryAjax = function() {
 					newEntry.innerHTML = data;
 					divEntries.insertBefore(newEntry, divEntries.firstChild);
 				}
-				//todo reduce db calls
 				refreshCar();
-				drawCarMap();
-				drawTimeline();
+				refreshWidgets();				
 			}
 	});
 	return false;
