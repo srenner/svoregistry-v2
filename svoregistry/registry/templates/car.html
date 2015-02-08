@@ -10,8 +10,6 @@
 	<meta name="twitter:domain" content="SVOregistry.com">
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/chartist.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/chartist-custom.css' %}" />
 {% endblock %}
 {% load humanize %}
 {%block content %}
@@ -35,9 +33,6 @@
 </div>
 <div class="row row-space">
 	<div id="divTimeline" class="col-sm-12"></div>
-</div>
-<div class="row">
-	<div class="col-sm-12 ct-chart hidden" id="chart-mileage" style="height: 300px"></div>
 </div>
 <hr>
 <div class="text-center">
@@ -137,7 +132,6 @@
 <script src="{% static 'registry/js/vendor/markerclusterer_compiled.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/vendor/oms.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/vendor/vis.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'registry/js/vendor/chartist.min.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/car.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/svo-colors.js' %}" type="text/javascript"></script>
 <script src="{% static 'registry/js/entry.js' %}" type="text/javascript"></script>
