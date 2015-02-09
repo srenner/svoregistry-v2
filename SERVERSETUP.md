@@ -4,4 +4,9 @@ Server setup for deployment
 * Start with new DigitalOcean droplet (Ubuntu 14.04)
 * sudo apt-get update
 * sudo apt-get upgrade
-* diverge from standard virtualenv instructions due to python3...
+* apt-get install python3-pip
+* pip3 install virtualenv
+* mkdir svoregistry.com
+* cd svoregistry.com
+* virtualenv env
+* source env/bin/activate
