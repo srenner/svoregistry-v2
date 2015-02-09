@@ -8,7 +8,3 @@ Phase 1 upgrades from previous site:
 * Django 1.7+
 * Completely new responsive UI using Bootstrap
 * AJAX file upload for modern browsers using FormData
-
-Phase 2:
-* Search (implemented with Haystack)
-* Support for site moderators
