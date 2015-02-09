@@ -11,3 +11,5 @@ Server setup for deployment
 * virtualenv env
 * source env/bin/activate
 * pip3 install django
+* mkdir site
+* 
