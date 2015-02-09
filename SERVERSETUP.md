@@ -10,3 +10,4 @@ Server setup for deployment
 * cd svoregistry.com
 * virtualenv env
 * source env/bin/activate
+* pip3 install django
