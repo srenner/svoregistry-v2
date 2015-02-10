@@ -12,4 +12,17 @@ Server setup for deployment
 * source env/bin/activate
 * pip3 install django
 * mkdir site (project files will eventually go here)
+* deactivate (we don't need virtalenv for a while)
+* sudo apt-get install libpq-dev python-dev
+* sudo apt-get install postgresql postgresql-contrib
+* sudo apt-get install nginx
+* source env/bin/activate
+* sudo su - postgres
+* createdb svoregistry
+* psql
+* create user svo with password '***';
+* grant all privileges to database svoregistry to svo;
+* \q
+* exit
+* pip3 install psycopg2
 * 
