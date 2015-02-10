@@ -25,4 +25,8 @@ Server setup for deployment
 * \q
 * exit
 * pip3 install psycopg2
-* 
+* sudo su - postgres
+* ...
+* pip3 install easy_thumbnails
+* pip3 install django-localflavor
+* set up gunicorn
