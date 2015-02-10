@@ -30,3 +30,5 @@ Server setup for deployment
 * pip3 install easy_thumbnails
 * pip3 install django-localflavor
 * set up gunicorn
+* set up gunicorn config file
+* /root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi
