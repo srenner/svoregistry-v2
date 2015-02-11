@@ -15,7 +15,7 @@ def geocode(password):
     entries = cursor.fetchall()
     conn.close()
     totalcount = len(entries)
-    print(str(totalcount) + " to update.")
+    #print(str(totalcount) + " to update.")
     successcount = 0
     firstpass = True
     for entry in entries:
@@ -39,7 +39,7 @@ def geocode(password):
             conn.commit()
             conn.close()
             successcount = successcount + 1
-            print(str(successcount) + "/" + str(totalcount))
+            #print(str(successcount) + "/" + str(totalcount))
     return successcount
 
 if __name__ == '__main__':
