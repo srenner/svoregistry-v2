@@ -32,3 +32,5 @@ Server setup for deployment
 * set up gunicorn
 * set up gunicorn config file
 * /root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi
+* sudo service nginx start
+* 
