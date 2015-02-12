@@ -35,7 +35,7 @@ def index(request):
     return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
 
 def lookup_car(request):
-    vin = request.GET.get('vin') #capture vin in query string for noscript form compatibility
+    vin = request.GET.get('vin').upper() #capture vin in query string for noscript form compatibility
     try:
         car = Car.objects.get(pk=vin)
         if request.is_ajax():
@@ -168,6 +168,7 @@ def geocode(request):
 
 @ensure_csrf_cookie
 def add_car(request, vin):
+    vin = vin.upper()
     carObject = Car(vin=vin, year = validate_vin(vin)['year'])
     carObject.save()
     return HttpResponseRedirect('/' + vin + '/')
@@ -254,4 +255,5 @@ def flag_entry(request, entry_id):
     return HttpResponse("")
 
 def validate(request, vin):
+    vin = vin.upper()
     return HttpResponse(json.dumps(validate_vin(vin)), content_type="application/json")
