@@ -120,6 +120,7 @@
 	document.getElementById("{{ form.option_delete.auto_id }}").value = "{{ car.option_delete|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.wing_delete.auto_id }}").value = "{{ car.wing_delete|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.has_23.auto_id }}").value = "{{ car.has_23|yesno:'2,3,1' }}";
+	document.getElementById("{{ form.on_road.auto_id }}").value = "{{ car.on_road|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.deceased.auto_id }}").value = "{{ car.deceased|yesno:'2,3,1' }}";
 	document.getElementById("{{ form.car.auto_id }}").value = "{{car.vin}}";
 	document.getElementById("{{ form.country.auto_id}}").selectedIndex = 0;
