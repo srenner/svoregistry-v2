@@ -115,8 +115,7 @@ var drawCarMap = function(data) {
 		markers.push(marker);
 		oms.addMarker(marker);
 	}
-	var mapOptions = {gridSize: 30, maxZoom: 7};
-	var mc = new MarkerClusterer(map, markers, mapOptions);	
+	var mapOptions = {gridSize: 30, maxZoom: 7};	
 };
 
 var initializeDatepicker = function() {
