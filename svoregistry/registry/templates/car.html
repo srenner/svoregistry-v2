@@ -107,6 +107,21 @@
 		{% include 'entry.html' %}
 	{% endfor %}
 </div>
+{% with similarcount=similar.count %}
+{% if similarcount > 0 %}
+<hr>
+<div class="row">
+	<div class="col-sm-12 text-center">
+		<h3>{{similar.count}} Similar Car{{similarcount|pluralize}}</h3>
+		<ul class="list-group">
+			{% for similarcar in similar %}
+			<li class="list-group-item col-md-3 col-sm-4 col-xs-6"><a href="/{{similarcar.vin}}/">{{similarcar.vin}}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+{% endif %}
+{% endwith %}
 {% endblock %}
 {% block scripts %}
 <script type="text/javascript">
