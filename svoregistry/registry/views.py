@@ -185,7 +185,10 @@ def refresh_car(request, vin):
 
 def add_entry(request):
     vin=''
-    user_ip = request.META['HTTP_X_REAL_IP']
+    try:
+        user_ip = request.META['HTTP_X_REAL_IP']
+    except:
+        user_ip = '0.0.0.0'
     if request.method == 'POST':
         form = AddEntryForm(request.POST)
         if form.is_valid():
