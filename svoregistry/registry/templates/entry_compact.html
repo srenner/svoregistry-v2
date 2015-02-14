@@ -21,20 +21,17 @@
 			</div>
 			<div class="row col-sm-12">
 				{% if entry.owner = '' %}
-				Unknown owner
 				{% else %}
-				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
+				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in 
 				{% endif %}
-				in
 				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
 			</div>
 			<div class="row col-sm-12">
 				{% if entry.mileage = 0 or entry.mileage = None %}
-				Unknown
 				{% else %}
-				{{entry.mileage|intcomma}} 
+				{{entry.mileage|intcomma}} Miles on
 				{% endif %}
-				Miles on {{entry.entry_datetime|date}}				
+				{{entry.entry_datetime|date}}				
 			</div>
 		</div>
 	</div>

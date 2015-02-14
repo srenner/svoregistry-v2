@@ -1,7 +1,11 @@
+{% load filters %}
 {{ object.year }}
 {{ object.color }}
+{{ object.COLOR_CHOICES|color_lookup:object.color}}
 {{ object.city }}
 {{ object.state }}
+{{ object.STATE_CHOICES|state_lookup:object.state}}
+{{ object.COUNTRY_CHOICES|country_lookup:object.country }}
 {{ object.interior }}
-{{ object.entry_datetime }}
+{{ object.owner }}
 {{ object.comments }}
