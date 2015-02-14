@@ -112,7 +112,10 @@ h2.inline-header {
 
 .jumbotron {
 	padding: 10px;
-	margin: 5px 0px 5px 0px;
+	margin: 5px 0px 8px 0px;
+	box-shadow: 3px 3px 3px #d7d7d7;
+	border-top: solid 1px #EFEFEF;
+	border-left: solid 1px #EFEFEF;
 }
 
 .display-inline {
