@@ -1,0 +1,7 @@
+{{ object.year }}
+{{ object.color }}
+{{ object.city }}
+{{ object.state }}
+{{ object.interior }}
+{{ object.entry_datetime }}
+{{ object.comments }}

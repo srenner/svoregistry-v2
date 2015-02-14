@@ -37,6 +37,7 @@ urlpatterns = patterns('',
     url(r'^refresh/(?P<vin>\w+)/$', views.refresh_car, name='refresh_car'),                     #called after adding an entry
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^search/', include('haystack.urls')),
 )
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
