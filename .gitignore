@@ -175,3 +175,4 @@ media/photos/*
 *.bak
 
 svoregistry/media/photos/*
+svoregistry/svoregistry/whoosh_index/*
