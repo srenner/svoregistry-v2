@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load filters %}
-{% block title %}Mustang SVO Registry{% endblock %}
+{% block title %}Mustang SVO Registry - {{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}}{% endblock %}
 {% block head %}
 {% load staticfiles %}
 	<meta name="twitter:card" content="summary">
@@ -8,6 +8,8 @@
 	<meta name="twitter:title" content="{{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}} SVO {{car.vin}}">
 	<meta name="twitter:description" content="{{twitter_description|truncatechars:200|striptags}}">
 	<meta name="twitter:domain" content="SVOregistry.com">
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/skin.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/content.min.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
 {% endblock %}

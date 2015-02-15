@@ -10,13 +10,11 @@
 	margin-bottom: 0;
 	padding-bottom: 0;
 }
-
 footer {
 	font-size: 12px;
 }
 input, textarea, select {
 	/*border-radius: 4px;*/
-	
 }
 input[type=file] {
 	width: 100%;
@@ -26,7 +24,6 @@ input[type=file] {
 	height: 500px;
 	background-color: #EFEFEF;
 }
-
 .registry-entry {
 	border: solid 1px #888888;
 	border-radius: 0 0 5px 5px;
@@ -34,12 +31,9 @@ input[type=file] {
 	margin: 20px 0px 20px 0px;
 	padding: 0px 15px 5px 15px;
 }
-
-
 .registry-entry-header {
 	border-bottom: solid 1px #888888;
 	font-size: 20px;
-	
 }
 .registry-entry-body {
 	padding: 5px;
@@ -109,7 +103,6 @@ h2.inline-header {
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
-
 .jumbotron {
 	padding: 10px;
 	margin: 5px 0px 8px 0px;
@@ -117,34 +110,76 @@ h2.inline-header {
 	border-top: solid 1px #EFEFEF;
 	border-left: solid 1px #EFEFEF;
 }
-
 .display-inline {
 	display: inline;
 }
-
 .vis.timeline .item {
 	box-shadow: 2px 2px 2px #888888;
 	background-color: #EFEFEF;
 	border-radius: 3px;
 }
-
 .row-space {
 	margin-top: 10px;
 }
-
 .similar-vin {
 	padding: 5px 0 5px  0;
 	margin: 5px 0 5px 0;
 }
-
 .list-group-item {
 	border-radius: 0 !important;
 }
-
 .list-group-item:hover {
 	background-color: #EFEFEF;
 }
-
 .tiny-text {
 	font-size: .7em;
+}
+/* colors */
+.svo-1B {
+	background-color: #7C7F85;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-1C {
+	background-color: #000000;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-1D {
+	background-color: #5D5E5B;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-1E {
+	background-color: #BCC3C5;
+	color: #000000;
+}
+.svo-2A {
+	background-color: #923525;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-2R {
+	background-color: #FF2020;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-4E {
+	background-color: #003826;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-7B {
+	background-color: #061d50;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.svo-9L {
+	background-color: #FEFEFE;
+	color: #000000;
+}
+.svo-9W {
+	background-color: #202020;
+	color: #FFFFFF;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
