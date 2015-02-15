@@ -13,7 +13,9 @@
 	  ga('send', 'pageview');
 	</script>
 	{% load staticfiles %}
+	{% block head %}{% endblock %}
 	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/bootstrap/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/style.css' %}" />
 	<style type="text/css">
 		.navbar-brand {
 			background-image: url("{% static 'img/shadow_logo.png' %}");
@@ -21,8 +23,6 @@
 			padding-left: 120px;
 		}
 	</style>
-	{% block head %}{% endblock %}
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/style.css' %}" />
 </head>
 <body>
 	<nav class="container-fluid navbar navbar-default navbar-static-top" role="navigation">
