@@ -4,7 +4,7 @@ This is the newest version of svoregistry.com. The registry is for owners and fa
 
 Technical Details
 -----------------
-* Programming language: Python 3.4
+* Programming Language: Python 3.4
 * Web Framework: Django 1.7
 * Database: PostgreSQL
 * Search Engine: django-haystack + Whoosh
