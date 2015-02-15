@@ -8,6 +8,6 @@ Technical Details
 * Web Framework: Django 1.7
 * Database: PostgreSQL
 * Search Engine: django-haystack + Whoosh
-* CSS Framework: Bootsrap 3
+* CSS Framework: Bootstrap 3
 * Server OS: Ubuntu Server 14.04
 * Web Server: nginx + Gunicorn
