@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Mustang SVO Registry{% endblock %}
+{% block title %}Mustang SVO Registry - New Entries{% endblock %}
 {% block head %}
 {% load staticfiles %}
 {% endblock %}
 {%block content %}
-<h1>Newest Entries</h1>
+<header>
+	<h1>Newest Entries</h1>
+</header>
 <ul class="list-unstyled">
 	{% for entry in entries %}
 		<li>{% include 'entry_compact.html' %}</li>

@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% block title %}Mustang SVO Registry{% endblock %}
+{% block title %}Mustang SVO Registry - Search{% endblock %}
 {% block content %}
-    <h1 class="hidden-xs">Search Registry Entries</h1>
+	<header>
+    	<h1 class="hidden-xs">Search Registry Entries</h1>
+    </header>
     <form method="get" action=".">
 		<div class="input-group input-group-lg col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
 			<input type="search" class="form-control" name="q" id="id_q" placeholder="Search ideas: Hertz, MAC Tools, Canada" />

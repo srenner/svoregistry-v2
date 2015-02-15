@@ -5,7 +5,9 @@
 {% endblock %}
 {% load filters %}
 {%block content %}
-<h1 class="hidden-xs">1984 - 1986 Ford Mustang SVO Registry</h1>
+<header>
+	<h1 class="hidden-xs">1984 - 1986 Ford Mustang SVO Registry</h1>
+</header>
 <div id="divLookupContainer" class="jumbotron svo-{{entry.color}} text-center h3 row spacer-medium">
 	<form id="formLookup" action="lookup" onsubmit="return lookupVin()" method="get">
 		<label for="txtVIN">Find or add a VIN here:</label> 
@@ -38,8 +40,10 @@
 	</div>
 </div>
 <div class="random-entry-container">
-	<h2>Random Entry</h2>
-	<h4 class="text-center"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
+	<header>
+		<h2>Random Entry</h2>
+		<h4 class="text-center"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
+	</header>
 	<div>{% include 'entry.html' %}</div>
 </div>
 {% endblock %}
