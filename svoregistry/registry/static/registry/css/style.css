@@ -94,13 +94,13 @@ h2.inline-header {
 	margin: 5px;
 	border-radius: 5px;
 	border: solid 3px transparent;
-	font-size: 18px;
 }
 .text-bigger {
 	font-size: 18px;
 }
 .registry-entry-compact:hover {
 	border: solid 3px #EFEFEF;
+	background-color: #FEFEFE;
 }
 .stat-box {
 	height: 240px;
@@ -143,4 +143,8 @@ h2.inline-header {
 
 .list-group-item:hover {
 	background-color: #EFEFEF;
+}
+
+.tiny-text {
+	font-size: .7em;
 }

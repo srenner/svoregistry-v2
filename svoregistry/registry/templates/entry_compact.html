@@ -4,7 +4,7 @@
 {% load thumbnail %}
 <div class="registry-entry-compact">
 	<div class="row">
-		<div class="col-sm-2">
+		<div class="col-sm-2 col-xs-3">
 			<a href="/{{entry.car }}/">
 				{% if entry.photo|length > 0 %}
 					{% thumbnail entry.photo 120x120 upscale as thumb %}
@@ -14,24 +14,25 @@
 				{% endif %}
 			</a>
 		</div>
-		<div class="col-sm-10">
-			<div class="row col-sm-12">
-				<a href="/{{entry.car }}/">{{ entry.car }}</a> - {{ entry.year }}
-				{{ entry.COLOR_CHOICES|color_lookup:entry.color }}
+		<div class="col-sm-10 col-xs-9">
+			<div>
+				<a href="/{{entry.car }}/">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a>
 			</div>
-			<div class="row col-sm-12">
+			<div>
 				{% if entry.owner = '' %}
 				{% else %}
 				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in 
 				{% endif %}
 				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
 			</div>
-			<div class="row col-sm-12">
+			<div>
 				{% if entry.mileage = 0 or entry.mileage = None %}
 				{% else %}
 				{{entry.mileage|intcomma}} Miles on
 				{% endif %}
-				{{entry.entry_datetime|date}}				
+				{{entry.entry_datetime|date}}
+				<br>
+				<small class="tiny-text">{{ entry.car }}</small>				
 			</div>
 		</div>
 	</div>
