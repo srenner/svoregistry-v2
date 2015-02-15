@@ -3,25 +3,21 @@
 <div class="registry-entry" name="entry_{{entry.id}}">
 		<a name="{{entry.id}}"></a>
 		<div class="row registry-entry-header svo-{{entry.color}}">
-			<div class="col-md-6 col-sm-6">
+			<div class="col-sm-6 col-xs-12 text-left">
 				{% if entry.mileage = 0 or entry.mileage = None %}
-				Unknown
 				{% else %}
-				{{entry.mileage|intcomma}} 
+				{{entry.mileage|intcomma}} Miles on 
 				{% endif %}
-				Miles on {{entry.entry_datetime|date}}
+				{{entry.entry_datetime|date}}
 			</div>
-			<div class="col-md-6 col-sm-6 text-right">
+			<div class="col-sm-6 col-xs-12 text-right">
 				{% if entry.owner = '' %}
-				Unknown Owner
 				{% else %}
-				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}}
+				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in
 				{% endif %}
 				{% if entry.city or entry.state or entry.country or entry.zipcode %}
-				in
 				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:""}} {{entry.zipcode|default_if_none:""}}
 				{% else %}
-				in Unknown Location
 				{% endif %}
 			</div>
 		</div>
