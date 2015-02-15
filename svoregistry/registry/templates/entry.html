@@ -27,7 +27,9 @@
 			{% endif %}
 			<h3>Entry Comments:</h3>
 			<div class="registry-entry-comments col-md-12">
-				{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
+				<article>
+					{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
+				</article>
 			</div>
 		</div>
 		<div class="row registry-entry-footer">
