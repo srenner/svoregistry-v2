@@ -1,6 +1,7 @@
 {% load filters %}
 {% load humanize %}
-<div class="registry-entry" name="entry_{{entry.id}}">
+<article>
+	<div class="registry-entry" name="entry_{{entry.id}}">
 		<a name="{{entry.id}}"></a>
 		<div class="row registry-entry-header svo-{{entry.color}}">
 			<div class="col-sm-6 col-xs-12 text-left">
@@ -8,7 +9,8 @@
 				{% else %}
 				{{entry.mileage|intcomma}} Miles on 
 				{% endif %}
-				{{entry.entry_datetime|date}}
+				
+				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
 			</div>
 			<div class="col-sm-6 col-xs-12 text-right">
 				{% if entry.owner = '' %}
@@ -23,14 +25,16 @@
 		</div>
 		<div class="row registry-entry-body">
 			{% if entry.photo %}
-			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" />	
+			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" />	
 			{% endif %}
-			<h3>Entry Comments:</h3>
-			<div class="registry-entry-comments col-md-12">
-				<article>
+			<section>
+				<header>
+					<h3>Entry Comments:</h3>
+				</header>
+				<div class="registry-entry-comments col-md-12">
 					{{entry.comments|safe|default:"<em>No comments for this entry.</em>"}}
-				</article>
-			</div>
+				</div>
+			</section>
 		</div>
 		<div class="row registry-entry-footer">
 			<div class="pull-left text-left">
@@ -43,4 +47,5 @@
 				</a>
 			</div>
 		</div>
-</div>
+	</div>
+</article>

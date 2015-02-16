@@ -3,15 +3,16 @@
 {% block title %}Mustang SVO Registry - {{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}}{% endblock %}
 {% block head %}
 {% load staticfiles %}
-	<meta name="twitter:card" content="summary">
-	<meta name="twitter:site" content="@svoregistry">
-	<meta name="twitter:title" content="{{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}} SVO {{car.vin}}">
-	<meta name="twitter:description" content="{{twitter_description|truncatechars:200|striptags}}">
-	<meta name="twitter:domain" content="SVOregistry.com">
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/skin.min.css' %}" />
-	<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/content.min.css' %}" />
+<meta name="description" content="Details of {{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}} Mustang SVO with VIN {{car.vin}}" />
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@svoregistry">
+<meta name="twitter:title" content="{{car.year}} {{car.COLOR_CHOICES|color_lookup:car.color}} SVO {{car.vin}}">
+<meta name="twitter:description" content="{{twitter_description|truncatechars:200|striptags}}">
+<meta name="twitter:domain" content="SVOregistry.com">
+<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/pikaday.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/vis.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/skin.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/content.min.css' %}" />
 {% endblock %}
 {% load humanize %}
 {%block content %}
