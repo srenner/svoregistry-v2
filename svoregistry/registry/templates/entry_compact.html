@@ -8,9 +8,9 @@
 			<a href="/{{entry.car }}/">
 				{% if entry.photo|length > 0 %}
 					{% thumbnail entry.photo 120x120 upscale as thumb %}
-					<img src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" />
+					<img src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" alt="SVO photo thumbnail" />
 				{% else %}
-					<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" />
+					<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" alt="thumbnail not available" />
 				{% endif %}
 			</a>
 		</div>
