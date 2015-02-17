@@ -2,7 +2,7 @@
 {% block title %}Mustang SVO Registry{% endblock %}
 {% block head %}
 {% load staticfiles %}
-<meta name="description" content="1984 - 1986 Ford Mustang SVO Registry" />
+<meta name="description" content="1984 - 1986 Ford Mustang SVO Registry. Features interactive maps, timelines, pictures, and a powerful search engine." />
 {% endblock %}
 {% load filters %}
 {%block content %}
@@ -31,7 +31,9 @@
 </div>
 <div class="row spacer-medium hidden-xs">
 	<div class="col-md-9 col-sm-12">
-		<div id="divMap" class="big-map" style="display: none"></div>
+		<div id="divMap" class="big-map text-center" style="display: none">
+			View SVO Registry entries on the interactive map
+		</div>
 	</div>
 	<div class="col-md-3 col-sm-12 hidden-sm">
 		<div class="twitter-widget text-center">
