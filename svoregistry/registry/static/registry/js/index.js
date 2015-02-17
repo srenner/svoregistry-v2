@@ -49,6 +49,7 @@ var lookupVin = function() {
 				}
 				else {
 					document.getElementById("divAddCar").className = "show";
+					document.getElementById("hVinNotFound").innerHTML = "This VIN is not in the database. Would you like to add it now?";
 				}
 			});				
 		}
