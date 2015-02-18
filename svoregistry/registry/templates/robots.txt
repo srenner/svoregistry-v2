@@ -1,0 +1,15 @@
+User-agent: *
+Disallow: /map/
+Disallow: /geocode/
+Disallow: /download/
+Disallow: /statistics/year/
+Disallow: /statistics/timeline/
+Disallow: /statistics/color/
+Disallow: /statistics/status/
+Disallow: /entries/
+Disallow: /flag/
+Disallow: /lookup/
+Disallow: /validate/
+Disallow: /add/
+Disallow: /refresh/
+Disallow: /admin/
