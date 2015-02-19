@@ -1,4 +1,5 @@
 {% load filters %}
+{{ object.car_id }}
 {{ object.year }}
 {{ object.color }}
 {{ object.COLOR_CHOICES|color_lookup:object.color}}
