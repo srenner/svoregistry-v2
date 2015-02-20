@@ -1,0 +1,19 @@
+server {
+	server_name 104.236.248.133;
+	access_log off;
+	
+    location /static/ {
+        alias /root/svoregistry.com/site/registry/static/;
+    }
+    
+	location /media/ {
+		alias /root/svoregistry.com/site/media/;
+	}
+	
+    location / {
+	    proxy_pass http://127.0.0.1:8001;
+	    proxy_set_header X-Forwarded-Host $server_name;
+	    proxy_set_header X-Real-IP $remote_addr;
+	    add_header P3P 'CP="ALL DSP COR PSAa PSDa OUR NOR ONL UNI COM NAV"';
+    }  
+}
