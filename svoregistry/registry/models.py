@@ -105,6 +105,8 @@ class Entry(models.Model):
     deleted = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = 'Entries'
+    #def get_absolute_url(self):
+    #    return "/" + self.car_id + "/"
     def __str__(self):
         return str(self.id) + ' - ' + str(self.car) + ' ' + str(self.entry_datetime)
     

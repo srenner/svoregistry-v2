@@ -4,11 +4,14 @@ from registry import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+from django.conf.urls import patterns
+from registry.feed import LatestEntriesFeed
 
 urlpatterns = patterns('',
     #url(r'^$', views.coming_soon, name='home'),
     url(r'^$', views.index, name='home'),                                                       #landing page
     url(r'^new/$', views.new, name='new'),                                                      #simple page
+    url(r'^new/feed/$', LatestEntriesFeed()),
     #url(r'^forsale/$', views.forsale, name='forsale'),                                         #may not use
     url(r'^about/$', views.about, name='about'),                                                #simple page
     
