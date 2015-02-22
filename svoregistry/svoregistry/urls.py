@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     #url(r'^$', views.coming_soon, name='home'),
     url(r'^$', views.index, name='home'),                                                       #landing page
     url(r'^new/$', views.new, name='new'),                                                      #simple page
-    url(r'^new/feed/$', LatestEntriesFeed()),
+    url(r'^feed/$', LatestEntriesFeed()),
     #url(r'^forsale/$', views.forsale, name='forsale'),                                         #may not use
     url(r'^about/$', views.about, name='about'),                                                #simple page
     

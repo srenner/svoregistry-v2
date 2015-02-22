@@ -62,19 +62,23 @@
 	</div>
 	<footer id="divFooter" class="container text-right">
 		<hr>
+		<div class="pull-left">
+			<div class="g-plusone" data-size="medium" data-annotation="none"></div>
+			<script type="text/javascript">
+			  (function() {
+			    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			    po.src = 'https://apis.google.com/js/plusone.js';
+			    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+			  })();
+			</script>
+		</div>
 		<span class="hidden-xs">developed by </span><a href="http://www.shawnrenner.com/">srenner</a>
 		|
 		<a href="https://github.com/srenner/svoregistry-v2">github</a>
 		|
-		<a href="mailto:webmaster@svoregistry.com">webmaster@svoregistry.com</a>
-		<div class="g-plusone" data-size="medium" data-annotation="none"></div>
-		<script type="text/javascript">
-		  (function() {
-		    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-		    po.src = 'https://apis.google.com/js/plusone.js';
-		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		  })();
-		</script>
+		<a href="mailto:webmaster@svoregistry.com">email</a>
+		|
+		<a href="/feed/"><img src="{% static 'img/feed-icon-14x14.png' %}" alt="Feed" /></a>
 	</footer>
 	<script src="{% static 'registry/js/vendor/jquery-2.1.3.min.js' %}"></script>
 	<script src="{% static 'registry/js/vendor/jquery-ui.min.js' %}"></script>
