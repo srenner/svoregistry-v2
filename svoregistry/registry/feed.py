@@ -4,7 +4,7 @@ from registry.models import Entry
 
 class LatestEntriesFeed(Feed):
     title = "Mustang SVO Registry"
-    link = 'http://www.svoregistry.com/new/'
+    link = '/new/'
     description = "Newest entries to the SVO Registry"
 
     def items(self):
@@ -17,5 +17,4 @@ class LatestEntriesFeed(Feed):
         return item.comments
 
     def item_link(self, item):
-        return 'http://www.svoregistry.com/' + str(item.car_id) + '/'
-        #return reverse('car', args=[item.car_id])
+        return reverse('car', args=[item.car_id])
