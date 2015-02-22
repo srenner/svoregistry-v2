@@ -31,6 +31,8 @@ class Car(models.Model):
     on_road = models.NullBooleanField(default=True, null=True, blank=True)
     deceased = models.NullBooleanField(default=False, null=True, blank=True)
     #
+    def get_absolute_url(self):
+        return "/" + self.vin + "/"
     def __str__(self):
         return self.vin
     
@@ -105,8 +107,8 @@ class Entry(models.Model):
     deleted = models.BooleanField(default=False)
     class Meta:
         verbose_name_plural = 'Entries'
-    #def get_absolute_url(self):
-    #    return "/" + self.car_id + "/"
+    def get_absolute_url(self):
+        return "/" + self.car_id + "/"
     def __str__(self):
         return str(self.id) + ' - ' + str(self.car) + ' ' + str(self.entry_datetime)
     
