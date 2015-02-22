@@ -1,6 +1,9 @@
 {% load filters %}
 <h1>
-	{{car.year|default_if_none:"Unknown Year"}} 
-	{{ car.COLOR_CHOICES|color_lookup:car.color }}
+	{{car.year|default_if_none:"Unknown Year"}}
+	<span itemprop="name">Mustang SVO</span>
 </h1>
-<p class="text-center">VIN {{car.vin}}</p>
+<h3 class="text-center">
+	<span itemprop="color">{{ car.COLOR_CHOICES|color_lookup:car.color }}</span>
+</h3>
+<p class="text-center">VIN <span itemprop="productID">{{car.vin}}</span></p>

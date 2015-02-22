@@ -16,6 +16,7 @@
 {% endblock %}
 {% load humanize %}
 {%block content %}
+<div itemscope itemtype="http://schema.org/Car">
 <header id="header-car">
 	{% include 'car_header.html' %}
 </header>
@@ -128,6 +129,7 @@
 {% endif %}
 {% endwith %}
 {% endblock %}
+</div>
 {% block scripts %}
 <script type="text/javascript">
 	var activeCar = "{{car.vin}}";

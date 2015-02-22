@@ -3,12 +3,12 @@
 {% load staticfiles %}
 {% load thumbnail %}
 <div class="registry-entry-compact">
-	<div class="row">
+	<div class="row" itemscope itemtype="http://schema.org/Car">
 		<div class="col-sm-2 col-xs-3">
 			<a href="/{{entry.car }}/">
 				{% if entry.photo|length > 0 %}
 					{% thumbnail entry.photo 120x120 upscale as thumb %}
-					<img src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" alt="SVO photo thumbnail" />
+					<img itemprop="image" src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" alt="SVO photo thumbnail" />
 				{% else %}
 					<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" alt="thumbnail not available" />
 				{% endif %}
@@ -16,7 +16,7 @@
 		</div>
 		<div class="col-sm-10 col-xs-9">
 			<div>
-				<a href="/{{entry.car }}/">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a>
+				<a href="/{{entry.car }}/"><span itemprop="name">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</span></a>
 			</div>
 			<div>
 				{% if entry.owner = '' %}
@@ -32,7 +32,7 @@
 				{% endif %}
 				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
 				<br>
-				<small class="text-muted">{{ entry.car }}</small>				
+				<small class="text-muted" itemprop="productID">{{ entry.car }}</small>				
 			</div>
 		</div>
 	</div>
