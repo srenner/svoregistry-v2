@@ -30,7 +30,7 @@
 				{% else %}
 				{{entry.mileage|intcomma}} Miles on
 				{% endif %}
-				{{entry.entry_datetime|date}}
+				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
 				<br>
 				<small class="text-muted">{{ entry.car }}</small>				
 			</div>
