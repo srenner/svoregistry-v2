@@ -36,16 +36,7 @@
 </p>
 <hr>
 <div class="row spacer-medium">
-	<div class="col-md-6">
-		<div class="random-entry-container">
-			<header>
-				<h2>Random <span class="hidden-xs">Entry</span> - <a href="/{{entry.car}}/">{{entry.year|default_if_none:"19??"}} {{entry.color}}</a></h2>
-				<h4 class="text-center hidden"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
-			</header>
-			<div>{% include 'entry.html' %}</div>
-		</div>
-	</div>
-	<div class="col-md-6">
+	<div class="col-lg-5 col-md-6">
 		<header>
 			<h2>Latest Updates</h2>
 		</header>
@@ -54,6 +45,15 @@
 				<li>{% include 'entry_compact.html' %}</li>
 			{% endfor %}
 		</ul>
+	</div>
+	<div class="col-lg-7 col-md-6">
+		<div class="random-entry-container">
+			<header>
+				<h2>Random <span class="hidden-xs">Entry</span> - <a href="/{{entry.car}}/">{{entry.year|default_if_none:"19??"}} {{entry.color}}</a></h2>
+				<h4 class="text-center hidden"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
+			</header>
+			<div>{% include 'entry.html' %}</div>
+		</div>
 	</div>
 </div>
 <hr>
