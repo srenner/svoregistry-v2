@@ -32,7 +32,8 @@ def index(request):
         random_entry = entries[index]
     else:
         random_entry = None
-    return render_to_response('index.html', { 'entry': random_entry }, context_instance=RequestContext(request))
+    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:5]
+    return render_to_response('index.html', { 'entry': random_entry, 'entries': entries }, context_instance=RequestContext(request))
 
 def lookup_car(request):
     vin = request.GET.get('vin').upper() #capture vin in query string for noscript form compatibility

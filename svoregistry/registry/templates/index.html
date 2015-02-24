@@ -29,27 +29,45 @@
 			</div>
 		</div>
 	</div>
+	<hr>
+	<p>
+		The SVO Registry is the only publicly available online registry for the 1984 - 1986 Ford Mustang SVO.
+		Every entry is important and helps SVO enthusiasts track the history of each car.
+	</p>
 </div>
+<hr>
+<div class="row spacer-medium">
+	<div class="col-md-6">
+		<div class="random-entry-container">
+			<header>
+				<h2>Random Entry - <a href="/{{entry.car}}/">{{entry.year|default_if_none:"19??"}} {{entry.color}}</a></h2>
+				<h4 class="text-center hidden"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
+			</header>
+			<div>{% include 'entry.html' %}</div>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<header>
+			<h2>Latest Updates</h2>
+		</header>
+		<ul class="list-unstyled">
+			{% for entry in entries %}
+				<li>{% include 'entry_compact.html' %}</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>
+<hr>
 <div class="row spacer-medium hidden-xs">
-	<div class="col-md-9 col-sm-12">
+	<div class="col-sm-12">
+		<header class="">
+			<h2>SVOs Around The World</h2>
+			<p class="text-center">Use the interactive map to see where SVOs have been</p>
+		</header>
 		<div id="divMap" class="big-map text-center" style="display: none">
 			View SVO Registry entries on the interactive map
 		</div>
 	</div>
-	<div class="col-md-3 col-sm-12 hidden-sm">
-		<div class="twitter-widget text-center">
-			<a class="twitter-timeline" href="https://twitter.com/SVOregistry" data-widget-id="469321231313813505">Tweets by @SVOregistry</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</div>
-	</div>
-</div>
-<hr>
-<div class="random-entry-container">
-	<header>
-		<h2>Random Entry</h2>
-		<h4 class="text-center"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
-	</header>
-	<div>{% include 'entry.html' %}</div>
 </div>
 {% endblock %}
 {% block scripts %}
