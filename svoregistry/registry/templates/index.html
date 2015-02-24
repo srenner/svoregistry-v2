@@ -31,7 +31,7 @@
 	</div>
 	<hr>
 	<p>
-		The SVO Registry is the only publicly available online registry for the 1984 - 1986 Ford Mustang SVO.
+		<span class="hidden-xs">The SVO Registry is the only publicly available online registry for the 1984 - 1986 Ford Mustang SVO.</span>
 		Every entry is important and helps SVO enthusiasts track the history of each car.
 	</p>
 </div>
@@ -40,7 +40,7 @@
 	<div class="col-md-6">
 		<div class="random-entry-container">
 			<header>
-				<h2>Random Entry - <a href="/{{entry.car}}/">{{entry.year|default_if_none:"19??"}} {{entry.color}}</a></h2>
+				<h2>Random <span class="hidden-xs">Entry</span> - <a href="/{{entry.car}}/">{{entry.year|default_if_none:"19??"}} {{entry.color}}</a></h2>
 				<h4 class="text-center hidden"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
 			</header>
 			<div>{% include 'entry.html' %}</div>
