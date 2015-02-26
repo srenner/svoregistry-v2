@@ -87,6 +87,9 @@ class Entry(models.Model):
     deceased = models.NullBooleanField(default=False, null=True, blank=True)
     #
     for_sale = models.BooleanField(default=False)
+    list_price = models.DecimalField(max_digits=9, decimal_places=2, null=True, blank=True)
+    transaction_price = models.DecimalField(max_digits=9, decimal_places=2, null=True, blank=True)
+    url = models.URLField(null=True, blank=True)
     entry_datetime = models.DateTimeField(auto_now=False, verbose_name='Entry Date')
     owner = models.CharField(max_length=255, null=True, blank=True)
     city = models.CharField(max_length=255, null=True, blank=True)
