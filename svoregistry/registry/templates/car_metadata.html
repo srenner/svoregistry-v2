@@ -16,16 +16,16 @@
 		</tr>
 		{% if car.has_23 == False %}
 		<tr class="alert-danger">
-		{% else %}
-		<tr>
-		{% endif %}
 			<th>Original Engine</th>
 			<td>{{car.has_23|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% endif %}
+		{% if car.wing_delete == True %}
 		<tr>
 			<th>Wing Delete</th>
 			<td>{{car.wing_delete|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% endif %}
 		{% if car.on_road == False %}
 		<tr class="alert-danger">
 		{% else %}
@@ -34,6 +34,7 @@
 			<th>On Road</th>
 			<td>{{car.on_road|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% if car.on_road == False %}
 		{% if car.deceased == True %}
 		<tr class="alert-danger">
 		{% else %}
@@ -42,5 +43,6 @@
 			<th>Deceased</th>
 			<td>{{car.deceased|yesno:"Yes,No,Unknown"}}</td>
 		</tr>
+		{% endif %}
 	</tbody>
 </table>
