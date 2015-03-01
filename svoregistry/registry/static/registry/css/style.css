@@ -19,17 +19,23 @@
 }
 .form-section {
 	margin-top: 15px;
-	margin-bottom: 40px;
+	margin-bottom: 30px;
+	padding-bottom: 10px;
 }
 
 .form-section h4 {
 	margin: 0;
 	margin-bottom: 15px;
-	background-color: #FAFAFA;
+	color: #5D5E5B;
 	border-bottom: solid 4px #C0C0C0;
 	font-style: italic;
 	padding-left: 10px;
 	padding-right: 10px;
+}
+
+.form-field label {
+	margin: 0;
+	padding: 0;
 }
 
 footer {

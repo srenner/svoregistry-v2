@@ -62,37 +62,44 @@
 				</label>
 			</div>
 		</div>
-		<div class="form-section form-group">
-			<h4>The Basics</h4>
-					<span class="form-field col-md-2 col-sm-6 col-xs-6">{{ form.year.label_tag }} {{ form.year }}</span>	
-					<span class="form-field col-md-2 col-sm-6 col-xs-6">{{ form.mileage.label_tag }} {{ form.mileage }}</span>	
-				<span class="form-field col-md-4 col-sm-6 col-xs-12">{{ form.color.label_tag }} {{ form.color }} </span>	
-				<span class="form-field col-md-4 col-sm-6 col-xs-12">{{ form.photo.label_tag }} {{ form.photo }}</span>
+		<div class="form-section">
+			<div class="form-group">
+				<h4>The Basics</h4>
+				<span class="form-field col-md-6 col-sm-6 col-xs-12">{{ form.photo.label_tag }} {{ form.photo }}</span>
+			</div>
+
+			<div class="form-group">
+
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.year.label_tag }} {{ form.year }}</span>	
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
+				<span class="form-field col-md-4 col-sm-6 col-xs-12">{{ form.color.label_tag }} {{ form.color }} </span>
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.interior.label_tag }} {{ form.interior }}</span>
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
+			</div>
+
 		</div>
 		
 		<div class="form-section form-group">
 			<h4>Owner Info</h4>
-				<span class="form-field col-sm-6 col-xs-12">{{ form.owner.label_tag }} {{ form.owner }}</span>
-				<span class="form-field col-sm-4 col-xs-12">{{ form.city.label_tag }} {{ form.city }}</span>
-				<span class="form-field col-sm-4 col-xs-6">{{ form.state.label_tag }} {{ form.state }}</span>
-				<span class="form-field col-sm-2 col-xs-6">{{ form.country.label_tag }} {{ form.country }}</span>
-				<span class="form-field col-sm-3 col-xs-6">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
-				<span class="form-field col-sm-3 col-xs-6">{{ form.entry_datetime.label_tag }} <span class="datepicker">{{ form.entry_datetime }}</span></span>
+				<span class="form-field col-lg-4 col-sm-6 col-xs-12">{{ form.owner.label_tag }} {{ form.owner }}</span>
+				<span class="form-field col-lg-3 col-sm-4 col-xs-12">{{ form.city.label_tag }} {{ form.city }}</span>
+				<span class="form-field col-lg-3 col-sm-4 col-xs-6">{{ form.state.label_tag }} {{ form.state }}</span>
+				<span class="form-field col-lg-2 col-sm-2 col-xs-6">{{ form.country.label_tag }} {{ form.country }}</span>
+				<span class="form-field col-lg-2 col-sm-3 col-xs-6">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
+				<span class="form-field col-lg-2 col-sm-3 col-xs-6">{{ form.entry_datetime.label_tag }} <span class="datepicker">{{ form.entry_datetime }}</span></span>
 		</div>
 		<div class="form-section form-group">
-			<h4>Car Options</h4>
-				<span class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.interior.label_tag }} {{ form.interior }}</span>
-				<span class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
-				<span class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.comp_prep.label_tag }} {{ form.comp_prep }}</span>
-				<span id="spanOptionDelete" class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.option_delete.label_tag }} {{ form.option_delete }}</span>
-				<span class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.wing_delete.label_tag }} {{ form.wing_delete }}</span>
-				<span id="spanSlappers" class="form-field col-md-2 col-sm-2 col-xs-6">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
+			<h4>Additional Options</h4>
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.comp_prep.label_tag }} {{ form.comp_prep }}</span>
+				<span id="spanOptionDelete" class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.option_delete.label_tag }} {{ form.option_delete }}</span>
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.wing_delete.label_tag }} {{ form.wing_delete }}</span>
+				<span id="spanSlappers" class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.slappers.label_tag }} {{ form.slappers }}</span>
 		</div>
 		<div class="form-section form-group">
 			<h4>Car Status</h4>
-				<span class="form-field col-lg-2 col-md-2 col-sm-2 col-xs-4">{{ form.has_23.label_tag }} {{ form.has_23 }}</span>
-				<span class="form-field col-lg-2 col-md-2 col-sm-2 col-xs-4">{{ form.on_road.label_tag }} {{ form.on_road }}</span>
-				<span id="spanDeceased" class="form-field col-lg-2 col-md-2 col-sm-2 col-xs-4">{{ form.deceased.label_tag }} {{ form.deceased }}</span>
+				<span class="form-field col-lg-2 col-md-2 col-sm-3 col-xs-4">{{ form.has_23.label_tag }} {{ form.has_23 }}</span>
+				<span class="form-field col-lg-2 col-md-2 col-sm-3 col-xs-4">{{ form.on_road.label_tag }} {{ form.on_road }}</span>
+				<span id="spanDeceased" class="form-field col-lg-3 col-md-2 col-sm-3 col-xs-4">{{ form.deceased.label_tag }} {{ form.deceased }}</span>
 		</div>
 		<div class="form-section form-group">
 			<h4>Entry Comments</h4>

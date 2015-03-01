@@ -80,9 +80,9 @@ class Entry(models.Model):
     interior = models.CharField(max_length=50, choices=INTERIOR_CHOICES, null=True, blank=True)
     sunroof = models.NullBooleanField(default=False, null=True, blank=True)
     comp_prep = models.NullBooleanField(default=False, null=True, blank=True)
-    option_delete = models.NullBooleanField('Option del.', default=False, null=True, blank=True)
-    wing_delete = models.NullBooleanField('Wing del.', default=False, null=True, blank=True)
-    has_23 = models.NullBooleanField('Has 2.3L', default=True, null=True, blank=True)
+    option_delete = models.NullBooleanField(default=False, null=True, blank=True)
+    wing_delete = models.NullBooleanField(default=False, null=True, blank=True)
+    has_23 = models.NullBooleanField('Has 2.3L:', default=True, null=True, blank=True)
     on_road = models.NullBooleanField(default=True, null=True, blank=True)
     deceased = models.NullBooleanField(default=False, null=True, blank=True)
     #

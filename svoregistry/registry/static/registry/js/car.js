@@ -134,7 +134,7 @@ var initializeDatepicker = function() {
 var colorChanged = function() {
 	var ddl = document.getElementById("id_color");
 	var newColor = ddl.value;
-	ddl.className = "svo-" + newColor;
+	ddl.className += " svo-" + newColor;
 };
 
 var yearChanged = function() {
