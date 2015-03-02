@@ -48,7 +48,7 @@
 <div class="registry-entry" id="divEntry">
 	<div class="registry-entry-header row svo-{{car.color}}">
 		<div class="col-md-12 col-sm-12">
-			Add Entry for VIN {{car.vin}}
+			Add Entry for VIN {{ car.vin }}
 		</div>
 	</div>
 	<form role="form" class="form-horizontal" id="formAdd" name="formAdd" enctype="multipart/form-data" method="post" action="/add" onsubmit="return addEntryAjax()">
@@ -59,18 +59,14 @@
 				<h4>The Basics</h4>
 				<span class="form-field col-md-6 col-sm-6 col-xs-12">{{ form.photo.label_tag }} {{ form.photo }}</span>
 			</div>
-
 			<div class="form-group">
-
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.year.label_tag }} {{ form.year }}</span>	
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
 				<span class="form-field col-md-4 col-sm-6 col-xs-12">{{ form.color.label_tag }} {{ form.color }} </span>
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.interior.label_tag }} {{ form.interior }}</span>
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.sunroof.label_tag }} {{ form.sunroof }}</span>
 			</div>
-
 		</div>
-		
 		<div class="form-section">
 			<div class="form-group">
 			<h4>Owner Info</h4>
