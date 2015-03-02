@@ -54,14 +54,6 @@
 	<form role="form" class="form-horizontal" id="formAdd" name="formAdd" enctype="multipart/form-data" method="post" action="/add" onsubmit="return addEntryAjax()">
 		{% csrf_token %}
 		<span class="hidden">{{ form.car }}</span>
-		<div class="row hidden">
-			<div id="divForSale" class="col-md-3">
-				<span>{{ form.for_sale }}</span>
-				<label for={{ form.for_sale.auto_id }}>
-					Car is for sale
-				</label>
-			</div>
-		</div>
 		<div class="form-section">
 			<div class="form-group">
 				<h4>The Basics</h4>
@@ -79,14 +71,30 @@
 
 		</div>
 		
-		<div class="form-section form-group">
+		<div class="form-section">
+			<div class="form-group">
 			<h4>Owner Info</h4>
-				<span class="form-field col-lg-4 col-sm-6 col-xs-12">{{ form.owner.label_tag }} {{ form.owner }}</span>
+				<span class="form-field col-lg-5 col-sm-6 col-xs-12">{{ form.owner.label_tag }} {{ form.owner }}</span>
 				<span class="form-field col-lg-3 col-sm-4 col-xs-12">{{ form.city.label_tag }} {{ form.city }}</span>
 				<span class="form-field col-lg-3 col-sm-4 col-xs-6">{{ form.state.label_tag }} {{ form.state }}</span>
 				<span class="form-field col-lg-2 col-sm-2 col-xs-6">{{ form.country.label_tag }} {{ form.country }}</span>
 				<span class="form-field col-lg-2 col-sm-3 col-xs-6">{{ form.zipcode.label_tag }} {{ form.zipcode }}</span>
 				<span class="form-field col-lg-2 col-sm-3 col-xs-6">{{ form.entry_datetime.label_tag }} <span class="datepicker">{{ form.entry_datetime }}</span></span>
+			</div>
+			<div class="form-group">
+				<div id="divForSale" class="row-space col-md-12">
+					<label for="{{ form.for_sale.auto_id }}">
+						Car is for sale or sold recently
+						{{ form.for_sale }}
+					</label>
+					<span class=""></span>
+				</div>
+				<div id="divForSaleFields" class="hidden">
+					<div class="form-field col-lg-2 col-md-3">{{ form.list_price.label_tag }} {{ form.list_price }}</div>
+					<div class="form-field col-lg-2 col-md-3">{{ form.transaction_price.label_tag }} {{ form.transaction_price }}</div>
+					<div class="form-field col-lg-8 col-md-6 col-sm-12 col-xs-12">{{ form.url.label_tag }} {{ form.url }}</div>
+				</div>
+			</div>
 		</div>
 		<div class="form-section form-group">
 			<h4>Additional Options</h4>

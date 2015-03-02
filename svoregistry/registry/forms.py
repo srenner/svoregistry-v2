@@ -1,6 +1,6 @@
 from django.forms.models import ModelForm
 from registry.models import Entry
-from django.forms.widgets import Textarea, TextInput, Select, ClearableFileInput, NullBooleanSelect
+from django.forms.widgets import Textarea, TextInput, Select, ClearableFileInput, NullBooleanSelect, NumberInput
 from django import forms
 
 class AddEntryForm(ModelForm):
@@ -31,6 +31,10 @@ class AddEntryForm(ModelForm):
             'has_23': NullBooleanSelect(attrs={ 'class': 'form-control' }),
             'on_road': NullBooleanSelect(attrs={ 'class': 'form-control' }),
             'deceased': NullBooleanSelect(attrs={ 'class': 'form-control' }),
+            
+            'list_price': NumberInput(attrs={ 'class': 'form-control' }),
+            'transaction_price': NumberInput(attrs={ 'class': 'form-control' }),
                         
-            'comments': Textarea(attrs={'rows': 5, 'cols': 120, 'maxlength': 10000, 'placeholder': 'Enter information about the car here.'})
+            'comments': Textarea(attrs={'rows': 5, 'cols': 120, 'maxlength': 10000, 'placeholder': 'Enter information about the car here.'}),
+            'url': TextInput(attrs={'class': 'form-control'})
         }

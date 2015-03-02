@@ -22,7 +22,6 @@
 	margin-bottom: 30px;
 	padding-bottom: 10px;
 }
-
 .form-section h4 {
 	margin: 0;
 	margin-bottom: 15px;
@@ -32,18 +31,12 @@
 	padding-left: 10px;
 	padding-right: 10px;
 }
-
 .form-field label {
 	margin: 0;
 	padding: 0;
 }
-
 footer {
 	font-size: 12px;
-}
-input, textarea, select {
-	/*border-radius: 4px;*/
-	
 }
 input[type=file] {
 	width: 100%;
@@ -104,14 +97,9 @@ h2.inline-header {
 .form-field {
 	whitespace: nowrap;
 	display: inline-block;
-
 }
 .form-field label {
 	display: block;
-}
-.form-field textarea, input, select, label {
-	width: 100%;	
-
 }
 .registry-entry-compact {
 	padding: 5px;
@@ -163,6 +151,9 @@ h2.inline-header {
 }
 .tiny-text {
 	font-size: .7em;
+}
+.horizontal-spacer {
+	margin-right: 15px;
 }
 /* colors */
 .svo-1B {

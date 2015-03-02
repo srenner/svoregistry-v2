@@ -9,7 +9,6 @@
 				{% else %}
 				{{entry.mileage|intcomma}} Miles on 
 				{% endif %}
-				
 				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
 			</div>
 			<div class="col-sm-6 col-xs-12 text-right">
@@ -24,6 +23,23 @@
 			</div>
 		</div>
 		<div class="row registry-entry-body">
+			{% if entry.for_sale %}
+			<section class="spacer-small">
+				{% if entry.transaction_price %}
+				    Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
+					{% if entry.list_price %}
+						Was listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
+					{% endif %}
+				{% else %}
+					{% if entry.list_price %}
+					Listed for sale for ${{ entry.list_price | floatformat:0 | intcomma }}.
+					{% endif %}
+				{% endif %}
+				{% if entry.url and entry.entry_flag < 10 %}
+					<br><a href="{{entry.url}}"><span class="glyphicon glyphicon-link"></span>External link to ad</a> 
+				{% endif %}
+			</section>
+			{% endif %}
 			{% if entry.photo %}
 			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" itemprop="image" />	
 			{% endif %}

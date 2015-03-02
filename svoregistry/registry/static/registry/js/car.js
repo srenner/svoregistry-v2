@@ -13,6 +13,9 @@ $(document).ready(function() {
 	$('#id_year').change(yearChanged);
 	yearChanged();
 	
+	$('#id_for_sale').click(toggleForSale);
+	toggleForSale();
+	
 	tinyMCE.init({
 	    selector: "textarea",
 	    toolbar: "bold italic bullist",
@@ -158,6 +161,8 @@ var yearChanged = function() {
 var addEntryAjax = function() {
 	tinyMCE.triggerSave();
 	document.getElementById('id_mileage').value = document.getElementById('id_mileage').value.replace(",", "");
+	document.getElementById('id_list_price').value = document.getElementById('id_list_price').value.replace('$', '');
+	document.getElementById('id_transaction_price').value = document.getElementById('id_transaction_price').value.replace('$', '');
 	if(!window.FormData) {
 		return true;
 	}
@@ -183,4 +188,14 @@ var addEntryAjax = function() {
 			}
 	});
 	return false;
+};
+
+var toggleForSale = function() {
+	var chk = $('#id_for_sale');
+	if(chk.prop('checked')) {
+		$('#divForSaleFields').removeClass('hidden');
+	}
+	else {
+		$('#divForSaleFields').addClass('hidden');
+	}
 };
