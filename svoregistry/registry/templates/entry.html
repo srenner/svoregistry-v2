@@ -23,8 +23,12 @@
 			</div>
 		</div>
 		<div class="row registry-entry-body">
+			{% if entry.photo %}
+			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" itemprop="image" />	
+			{% endif %}
 			{% if entry.for_sale %}
-			<section class="spacer-small">
+			<section class="row-space">
+				<div class="alert alert-success">
 				{% if entry.transaction_price %}
 				    Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
 					{% if entry.list_price %}
@@ -33,15 +37,15 @@
 				{% else %}
 					{% if entry.list_price %}
 					Listed for sale for ${{ entry.list_price | floatformat:0 | intcomma }}.
+					{% else %}
+					Listed for sale.
 					{% endif %}
 				{% endif %}
 				{% if entry.url and entry.entry_flag < 10 %}
 					<br><a href="{{entry.url}}"><span class="glyphicon glyphicon-link"></span>External link to ad</a> 
 				{% endif %}
+				</div>
 			</section>
-			{% endif %}
-			{% if entry.photo %}
-			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" itemprop="image" />	
 			{% endif %}
 			<section>
 				<header>
