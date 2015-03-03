@@ -65,7 +65,7 @@ var hideAddCar = function() {
 };
 
 var addCar = function() {
-	var vin = document.getElementById("txtVIN").value;
+	var vin = document.getElementById("txtVIN").value.toUpperCase();
 	$.ajax({
 		url: "/add/" + vin + "/",
 		type: 'POST',	  
