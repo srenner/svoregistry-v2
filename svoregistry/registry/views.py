@@ -72,7 +72,7 @@ def statistics(request):
     
     cursor = connection.cursor()
     cursor.execute("select count(*) from registry_entry")
-    entries = cursor.fetchall()[0][0]    
+    entries = cursor.fetchall()[0][0]
     
     return render_to_response("statistics.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
 
@@ -129,7 +129,14 @@ def statistics_entry_year(request):
     return HttpResponse(json.dumps(report), 'application/json')
 
 def about(request):
-    #display the 'about this site' page
+    cursor = connection.cursor()
+    cursor.execute("select count(*) from registry_car")
+    cars = cursor.fetchall()[0][0]
+    cursor = connection.cursor()
+    cursor.execute("select count(*) from registry_entry")
+    entries = cursor.fetchall()[0][0]
+    return render_to_response("about.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
+    
     template = loader.get_template('about.html')
     context = RequestContext(request)
     return HttpResponse(template.render(context))
