@@ -4,7 +4,7 @@ from registry.models import Entry
 
 class LatestEntriesFeed(Feed):
     title = "Mustang SVO Registry"
-    link = '/new/'
+    link = '/'
     description = "Newest entries to the SVO Registry"
 
     def items(self):
