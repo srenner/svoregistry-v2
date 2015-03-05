@@ -59,6 +59,11 @@
 		<div class="row registry-entry-footer">
 			<div class="pull-left text-left">
 				<a href="/{{entry.car_id}}/#{{entry.id}}"><span class="glyphicon glyphicon-link"></span>Direct link</a>
+				{% if user.is_staff %}
+				<span>
+					| <a href="/admin/registry/entry/{{entry.id}}/" target="_blank"><span class="glyphicon glyphicon-pencil"></span></a>
+				</span>
+				{% endif %}
 			</div>
 			<div class="pull-right text-right">
 				<a class="flag-entry" data-entry-id="{{entry.id}}">
