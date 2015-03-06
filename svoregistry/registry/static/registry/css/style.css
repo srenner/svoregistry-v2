@@ -155,6 +155,12 @@ h2.inline-header {
 .horizontal-spacer {
 	margin-right: 15px;
 }
+.scatter-box {
+	height: 240px;
+	padding: 4px;
+	border: solid 3px #EFEFEF;
+	border-radius: 5px;
+}
 /* colors */
 .svo-1B {
 	background-color: #7C7F85;

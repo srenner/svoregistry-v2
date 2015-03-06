@@ -9,11 +9,98 @@
 	<h1>Mustang SVO Market</h1>
 	<p class="text-center">Cars for sale and data on recent sales</p>
 </header>
-<ul class="list-unstyled">
-	{% for entry in entries %}
-		<li>{% include 'entry_compact.html' %}</li>
-	{% endfor %}
-</ul>
+<div class="row">
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<h2>Recent Listings</h2>
+		<ul class="list-unstyled">
+			{% for entry in entries %}
+				<li>{% include 'entry_compact.html' %}</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+		<h2>Price Data</h2>
+		<div id="divScatterBox" class="scatter-box"></div>
+		<div class="hidden">
+		<h3 class="text-center">2015 Sales</h3>
+		<table class="table table-condensed table-striped">
+			<tbody>
+				<tr>
+					<th>Cars Listed</th>
+					<td>0</td>
+				</tr>
+				<tr>
+					<th>Average List Price</th>
+					<td>$0 (based on 0 listings)</td>
+				</tr>
+				<tr>
+					<th>Average Sale Price</th>
+					<td>$ (based on 0 sales)</td>
+				</tr>
+				<tr>
+					<th>List price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+				<tr>
+					<th>Sale price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3 class="text-center">2014 Sales</h3>
+		<table class="table table-condensed table-striped">
+			<tbody>
+				<tr>
+					<th>Cars Listed</th>
+					<td>0</td>
+				</tr>
+				<tr>
+					<th>Average List Price</th>
+					<td>$0 (based on 0 listings)</td>
+				</tr>
+				<tr>
+					<th>Average Sale Price</th>
+					<td>$ (based on 0 sales)</td>
+				</tr>
+				<tr>
+					<th>List price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+				<tr>
+					<th>Sale price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+			</tbody>
+		</table>
+		<h3 class="text-center">2013 Sales</h3>
+		<table class="table table-condensed table-striped">
+			<tbody>
+				<tr>
+					<th>Cars Listed</th>
+					<td>0</td>
+				</tr>
+				<tr>
+					<th>Average List Price</th>
+					<td>$0 (based on 0 listings)</td>
+				</tr>
+				<tr>
+					<th>Average Sale Price</th>
+					<td>$ (based on 0 sales)</td>
+				</tr>
+				<tr>
+					<th>List price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+				<tr>
+					<th>Sale price per 10k miles</th>
+					<td>$0</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
