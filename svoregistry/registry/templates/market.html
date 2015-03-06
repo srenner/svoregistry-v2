@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Mustang SVO Registry - The SVO Market{% endblock %}
+{% block head %}
+{% load staticfiles %}
+<meta name="description" content="Market and price data for the Mustang SVO" />
+{% endblock %}
+{%block content %}
+<header>
+	<h1>Mustang SVO Market</h1>
+	<p class="text-center">Cars for sale and data on recent sales</p>
+</header>
+<ul class="list-unstyled">
+	{% for entry in entries %}
+		<li>{% include 'entry_compact.html' %}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

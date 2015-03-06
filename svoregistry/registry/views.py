@@ -58,11 +58,10 @@ def new(request):
     strJson = serializers.serialize("json", entries)
     return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
-def forsale(request):
-    #display SVOs for sale
-    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:5]
+def market(request):
+    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:10]
     strJson = serializers.serialize("json", entries)
-    return render_to_response("forsale.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
+    return render_to_response("market.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def statistics(request):
     #display registry statistics

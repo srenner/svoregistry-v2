@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='home'),                                                       #landing page
     url(r'^new/$', views.new, name='new'),                                                      #simple page
     url(r'^feed/$', LatestEntriesFeed()),
-    #url(r'^forsale/$', views.forsale, name='forsale'),                                         #may not use
+    url(r'^market/$', views.market, name='market'),                                             #market(sales, etc.)
     url(r'^about/$', views.about, name='about'),                                                #simple page
     
     url(r'^map/', views.map_data, name='map_data'),                                             #json
