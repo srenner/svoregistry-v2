@@ -13,7 +13,6 @@ from registry.sitemap import CarSitemap, StaticViewSitemap
 sitemaps = {
     'static': StaticViewSitemap,
     'cars': CarSitemap,
-    
 }
 
 urlpatterns = patterns('',
@@ -23,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^feed/$', LatestEntriesFeed()),
     url(r'^market/$', views.market, name='market'),                                             #market(sales, etc.)
     url(r'^about/$', views.about, name='about'),                                                #simple page
+    url(r'^moderator/$', views.moderator, name='moderator'),                                    #moderator console
     
     url(r'^map/', views.map_data, name='map_data'),                                             #json
     

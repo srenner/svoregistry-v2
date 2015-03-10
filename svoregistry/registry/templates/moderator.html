@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Mustang SVO Registry - Moderator{% endblock %}
+{% block head %}
+{% load staticfiles %}
+<meta name="description" content="Moderator Console" />
+{% endblock %}
+{%block content %}
+<header>
+	<h1>Flagged Entries</h1>
+</header>
+<ul class="list-unstyled">
+	{% for entry in entries %}
+		<li>{% include 'entry.html' %}</li>
+	{% endfor %}
+</ul>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

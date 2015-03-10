@@ -10,3 +10,4 @@ Disallow: /add/
 Disallow: /refresh/
 Disallow: /admin/
 Disallow: /1FABP28T?EF129622/
+Disallow: /moderator/

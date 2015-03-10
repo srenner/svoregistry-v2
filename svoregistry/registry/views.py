@@ -18,6 +18,7 @@ import csv
 from django.shortcuts import redirect
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.conf import settings
+from django.contrib.admin.views.decorators import staff_member_required
 
 def coming_soon(request):
     return HttpResponse('Welcome to the future home of the Mustang SVO registry')
@@ -268,3 +269,8 @@ def flag_entry(request, entry_id):
 def validate(request, vin):
     vin = vin.upper()
     return HttpResponse(json.dumps(validate_vin(vin)), content_type="application/json")
+
+@staff_member_required
+def moderator(request):
+    entries = Entry.objects.order_by('-entry_flag').exclude(deleted=True)[:10]
+    return render_to_response("moderator.html", { 'entries': entries }, context_instance=RequestContext(request))
