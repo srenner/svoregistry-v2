@@ -6,13 +6,32 @@
 {% endblock %}
 {%block content %}
 <header>
-	<h1>Flagged Entries</h1>
+	<h1>Moderator Console</h1>
 </header>
-<ul class="list-unstyled">
-	{% for entry in entries %}
-		<li>{% include 'entry.html' %}</li>
-	{% endfor %}
-</ul>
+<div class="row">
+	<div class="col-sm-6">
+		<h2>Flagged Entries</h2>
+		<ul class="list-unstyled">
+			{% for entry in entries %}
+				<li>{% include 'entry.html' %}</li>
+			{% endfor %}
+		</ul>
+		{% if entries.count == 0 %}
+		<p class="text-center">Nothing to show</p>
+		{% endif %}
+	</div>
+	<div class="col-sm-6">
+		<h2>Deleted Entries</h2>
+		<ul class="list-unstyled">
+			{% for entry in deleted %}
+				<li>{% include 'entry.html' %}</li>
+			{% endfor %}
+		</ul>
+		{% if deleted.count == 0 %}
+		<p class="text-center">Nothing to show</p>
+		{% endif %}
+	</div>
+</div>
 {% endblock %}
 {% block scripts %}
 {% endblock %}

@@ -273,4 +273,5 @@ def validate(request, vin):
 @staff_member_required
 def moderator(request):
     entries = Entry.objects.order_by('-entry_flag').exclude(deleted=True)[:10]
-    return render_to_response("moderator.html", { 'entries': entries }, context_instance=RequestContext(request))
+    deleted = Entry.objects.filter(deleted=True)[:10]
+    return render_to_response("moderator.html", { 'entries': entries, 'deleted': deleted }, context_instance=RequestContext(request))
