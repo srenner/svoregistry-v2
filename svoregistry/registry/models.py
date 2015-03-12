@@ -97,7 +97,7 @@ class Entry(models.Model):
     country = models.CharField(max_length=255, null=True, blank=True, choices=COUNTRY_CHOICES, default="USA")
     zipcode = models.CharField(max_length=15, null=True, blank=True)
     mileage = models.IntegerField(null=True, blank=True)
-    comments = models.CharField(max_length=10000, null=True, blank=True)
+    comments = models.TextField(max_length=10000, null=True, blank=True)
     entry_flag = models.IntegerField(default=0, null=True, blank=True)
     #photo = StdImageField(upload_to='photos', null=True, blank=True, size=(1000, 750))
     photo_height = models.PositiveIntegerField(null=True, blank=True)
