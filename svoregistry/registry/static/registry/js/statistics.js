@@ -73,14 +73,6 @@
 	});	
 })();
 
-
-
-
-
-
-
-
-
 (function getTimelineData() {
 	$.get('/statistics/timeline', function(data) {
 		var labels = [];
