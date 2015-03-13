@@ -62,7 +62,27 @@ def new(request):
 def market(request):
     entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:10]
     strJson = serializers.serialize("json", entries)
-    return render_to_response("market.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
+    cursor = connection.cursor()
+    #chartEntries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)
+    #cursor.execute("""SELECT id, car_id, list_price, transaction_price, mileage, entry_datetime
+    #                    FROM registry_entry 
+    #                    WHERE for_sale = True 
+    #                        AND (list_price IS NOT NULL OR transaction_price IS NOT NULL) 
+    #                    ORDER BY entry_datetime""")
+    #chartdata = dictfetchall(cursor)
+   # 
+    #json = dumps([{
+    #                'id': d['id'],
+    #                'vin': d['car_id'],
+    #                'list_price': float('0' if d['list_price'] is None else d['list_price']),
+    #                'transaction_price': float('0' if d['transaction_price'] is None else d['transaction_price']),
+    #                'mileage': float('0' if d['mileage'] is None else d['mileage']),
+    #                'date': d['entry_datetime'].strftime('%b %d, %Y'),
+    #                'dateformat': d['entry_datetime'].strftime('%Y-%m-%d'),
+    #              } for d in chartdata])
+    
+
+    return render_to_response("market.html", { 'entries': entries, 'chartdata': None }, context_instance=RequestContext(request))
 
 def statistics(request):
     #display registry statistics
