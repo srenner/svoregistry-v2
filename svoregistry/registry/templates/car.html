@@ -21,19 +21,22 @@
 	{% include 'car_header.html' %}
 </header>
 <div class="row">
-	<div id="divMap" class="map-small col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 text-center">
-		View this SVO on the map
+	<div class="col-sm-6 col-xs-12 text-center">
+		<div id="divMap" class="map-small">View this SVO on the map</div>
+		
 	</div>
-	<div id="divMeta" class="col-sm-6 col-xs-12">
-		{% with count=entries.count %}
-		<p class="text-center hidden">
-			<a id="aEntryLink" href="#entries">
-				This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
-			</a>
-		</p>
-		{% endwith %}
-		<div id="div-metadata">
-			{% include 'car_metadata.html' %}
+	<div class="col-sm-6 col-xs-12">
+		<div id="divMeta">
+			{% with count=entries.count %}
+			<p class="text-center hidden">
+				<a id="aEntryLink" href="#entries">
+					This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
+				</a>
+			</p>
+			{% endwith %}
+			<div id="div-metadata">
+				{% include 'car_metadata.html' %}
+			</div>
 		</div>
 	</div>
 </div>
