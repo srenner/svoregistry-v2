@@ -161,6 +161,13 @@ h2.inline-header {
 	border: solid 3px #EFEFEF;
 	border-radius: 5px;
 }
+.similar {
+	padding: 7px;
+	border-radius: 3px;
+}
+.similar:hover {
+	background-color: whitesmoke;
+}
 /* colors */
 .svo-1B {
 	background-color: #7C7F85;
