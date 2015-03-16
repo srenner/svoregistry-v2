@@ -159,6 +159,7 @@ var yearChanged = function() {
 };
 
 var addEntryAjax = function() {
+	document.getElementById("btnSave").disabled = true;
 	tinyMCE.triggerSave();
 	document.getElementById('id_mileage').value = document.getElementById('id_mileage').value.replace(",", "");
 	document.getElementById('id_list_price').value = document.getElementById('id_list_price').value.replace('$', '');
@@ -177,6 +178,7 @@ var addEntryAjax = function() {
 		success: 
 			function(data) {
 				hideAddEntry();
+				document.getElementById("btnSave").disabled = false;
 				var divEntries = document.getElementById("divEntries");
 				if(divEntries) {
 					var newEntry = document.createElement("div");
