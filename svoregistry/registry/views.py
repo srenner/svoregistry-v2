@@ -155,11 +155,21 @@ def about(request):
     cursor = connection.cursor()
     cursor.execute("select count(*) from registry_entry")
     entries = cursor.fetchall()[0][0]
-    return render_to_response("about.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
     
-    template = loader.get_template('about.html')
-    context = RequestContext(request)
-    return HttpResponse(template.render(context))
+    cursor = connection.cursor()
+    cursor.execute("""select year, count(year) as "count",
+                          case year
+                            when '1984' then 4506
+                            when '1985' then 1512
+                            when '1985.5' then 439
+                            when '1986' then 3378
+                          end as "total_production"
+                        from registry_car
+                        where year != 'NULL'
+                        group by year order by year""")
+    by_year = dictfetchall(cursor)
+    
+    return render_to_response("about.html", {'cars': cars, 'entries': entries, 'by_year': by_year}, context_instance=RequestContext(request))
 
 def download(request):
     excludes = ['scrape_id', 'entry_flag', 'ip', 'deleted']

@@ -28,12 +28,22 @@
 <h2>Registry Statistics</h2>
 <p class="text-center">The registry now contains {{cars}} cars and {{entries}} entries!</p>
 <div class="row">
-	<div class="col-md-12 stat-box">
-		<h4 class="text-center">Registered Cars by Color Code</h4>
-		<noscript>
-			<p class="text-center">Enable JavaScript to view</p>
-		</noscript>
-		<div class="ct-chart" id="stats-color"></div>
+	
+	<div class="col-md-6 col-sm-12 stat-box">
+		<table class="table table-condensed">
+			<thead>
+				<th>Year</th>
+				<th>Cars in Registry</th>
+				<th>Total Production</th>
+			</thead>
+			{% for year in by_year %}
+			<tr>
+				<th>{{year.year}}</th>
+				<td>{{year.count}}</td>
+				<td>{{year.total_production}}</td>
+			</tr>
+			{% endfor %}
+		</table>
 	</div>
 	<div class="col-md-6 col-sm-12 stat-box">
 		<h4 class="text-center">Registered Cars by Year</h4>
@@ -42,14 +52,23 @@
 		</noscript>
 		<div class="ct-chart" id="stats-year"></div>
 	</div>
-	<div class="col-md-6 col-sm-12 stat-box">
+	
+	<div class="col-md-12 stat-box">
+		<h4 class="text-center">Registered Cars by Color Code</h4>
+		<noscript>
+			<p class="text-center">Enable JavaScript to view</p>
+		</noscript>
+		<div class="ct-chart" id="stats-color"></div>
+	</div>
+
+	<div class="hidden col-md-6 col-sm-12 stat-box">
 		<h4 class="text-center">Vehicle Status</h4>
 		<noscript>
 			<p class="text-center">Enable JavaScript to view</p>
 		</noscript>
 		<div class="ct-chart" id="stats-status"></div>
 	</div>
-	<div class="col-md-12 stat-box">
+	<div class="col-md-12 hidden-sm hidden-xs stat-box">
 		<h4 class="text-center">Entries Logged Per Year</h4>
 		<noscript>
 			<p class="text-center">Enable JavaScript to view</p>
