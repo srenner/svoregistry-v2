@@ -17,6 +17,22 @@
 		<div class="col-sm-10 col-xs-9">
 			<div>
 				<a href="/{{entry.car }}/"><span itemprop="name">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</span></a>
+				{% if entry.for_sale %}
+					<span class="text-success">
+					{% if entry.transaction_price %}
+					    Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
+						{% if entry.list_price %}
+							Was listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
+						{% endif %}
+					{% else %}
+						{% if entry.list_price %}
+						Listed for sale for ${{ entry.list_price | floatformat:0 | intcomma }}.
+						{% else %}
+						Listed for sale.
+						{% endif %}
+					{% endif %}
+					</span>
+				{% endif %}
 			</div>
 			<div>
 				{% if entry.owner = '' %}
