@@ -86,6 +86,7 @@ var drawTimeline = function(data) {
 
 var hideAddEntry = function() {
 	document.getElementById('divEntry').style.display = 'none';
+	document.getElementById("btnSave").disabled = false;
 };
 
 var showAddEntry = function() {
@@ -178,7 +179,6 @@ var addEntryAjax = function() {
 		success: 
 			function(data) {
 				hideAddEntry();
-				document.getElementById("btnSave").disabled = false;
 				var divEntries = document.getElementById("divEntries");
 				if(divEntries) {
 					var newEntry = document.createElement("div");
