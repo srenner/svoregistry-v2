@@ -2,7 +2,8 @@ $(document).ready(function() {
     document.getElementById("divMap").style.display = "block";
     drawMap();
     $("#btnAddNo").click(function() { hideAddCar(); });
-    $("#btnAddYes").click(function() { addCar(); });    
+    $("#btnAddYes").click(function() { addCar(); });
+    $("#txtVIN").focus();
 });
 
 var drawMap = function() {
