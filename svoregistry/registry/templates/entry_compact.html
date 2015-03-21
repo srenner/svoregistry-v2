@@ -19,17 +19,14 @@
 				<a href="/{{entry.car }}/"><span itemprop="name">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</span></a>
 				{% if entry.for_sale %}
 					<span class="text-success">
+					{% if entry.list_price %}
+						Listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
+					{% endif %}
 					{% if entry.transaction_price %}
-					    Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
-						{% if entry.list_price %}
-							Was listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
-						{% endif %}
-					{% else %}
-						{% if entry.list_price %}
-						Listed for sale for ${{ entry.list_price | floatformat:0 | intcomma }}.
-						{% else %}
-						Listed for sale.
-						{% endif %}
+						Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
+					{% endif %}
+					{% if not entry.list_price and not entry.transaction_price %}
+						For sale.
 					{% endif %}
 					</span>
 				{% endif %}
