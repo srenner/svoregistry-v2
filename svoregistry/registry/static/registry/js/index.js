@@ -3,7 +3,6 @@ $(document).ready(function() {
     drawMap();
     $("#btnAddNo").click(function() { hideAddCar(); });
     $("#btnAddYes").click(function() { addCar(); });
-    $("#txtVIN").focus();
 });
 
 var drawMap = function() {
