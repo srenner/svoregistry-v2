@@ -11,3 +11,4 @@ Technical Details
 * CSS Framework: Bootstrap 3
 * Server OS: Ubuntu Server 14.04
 * Web Server: nginx + Gunicorn
+
