@@ -12,3 +12,9 @@ Technical Details
 * Server OS: Ubuntu Server 14.04
 * Web Server: nginx + Gunicorn
 
+Coming Soon
+-----------
+* Better documentation
+* Upgrade to Django 1.8
+* UI tweaks
+* Sale price analysis
