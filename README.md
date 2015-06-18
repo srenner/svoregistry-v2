@@ -14,7 +14,7 @@ Technical Details
 
 Coming Soon
 -----------
-* Better documentation
+* Improved documentation
 * Upgrade to Django 1.8
 * UI tweaks
 * Sale price analysis
