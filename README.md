@@ -4,8 +4,8 @@ This is the newest version of [svoregistry.com](http://www.svoregistry.com). The
 
 Technical Details
 -----------------
-* Programming Language: Python 3.4
-* Web Framework: Django 1.7
+* Programming Language: Python 3.x
+* Web Framework: Django
 * Database: PostgreSQL
 * Search Engine: django-haystack + Whoosh
 * CSS Framework: Bootstrap 3
@@ -15,6 +15,5 @@ Technical Details
 Coming Soon
 -----------
 * Improved documentation
-* Upgrade to Django 1.8
 * UI tweaks
 * Sale price analysis
