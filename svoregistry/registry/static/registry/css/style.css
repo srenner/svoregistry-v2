@@ -168,12 +168,18 @@ h2.inline-header {
 .similar:hover {
 	background-color: whitesmoke;
 }
+a .money {
+	color: black;
+}
+a .money:hover {
+	background-color: #D5FDD5;
+}
 .money {
 	padding: 5px 15px 5px 15px;
 	width: auto;
-	border: solid 1px #32CD32;
+	border: solid 1px #D5FDD5;
 	border-radius: 5px;
-	background-color: #9AFF9A;
+	background-color: #EEFEEE;
 	display: inline-block;
 }
 /* colors */

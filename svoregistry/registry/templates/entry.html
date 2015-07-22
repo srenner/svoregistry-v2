@@ -28,6 +28,9 @@
 			{% endif %}
 			{% if entry.for_sale %}
 			<section class="row-space">
+				{% if entry.url and entry.entry_flag < 5 %}
+				<a href="{{entry.url}}" target="_blank">
+				{% endif %}
 				<div class="money">
 				{% if entry.list_price %}
 					Listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
@@ -38,10 +41,10 @@
 				{% if not entry.list_price and not entry.transaction_price %}
 					For sale.
 				{% endif %}
-				{% if entry.url and entry.entry_flag < 10 %}
-					<br><a href="{{entry.url}}"><span class="glyphicon glyphicon-link"></span>External link to ad</a> 
-				{% endif %}
 				</div>
+				{% if entry.url and entry.entry_flag < 10 %}
+				</a> 
+				{% endif %} 
 			</section>
 			{% endif %}
 			<section>
