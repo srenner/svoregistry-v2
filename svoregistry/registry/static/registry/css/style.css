@@ -173,6 +173,8 @@ a .money {
 }
 a .money:hover {
 	background-color: #D5FDD5;
+	color: #2a6496;
+	text-decoration: underline;
 }
 .money {
 	padding: 5px 15px 5px 15px;
