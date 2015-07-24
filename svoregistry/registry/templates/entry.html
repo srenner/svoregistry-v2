@@ -32,6 +32,9 @@
 				<a href="{{entry.url}}" target="_blank">
 				{% endif %}
 				<div class="money">
+				{% if entry.url and entry.entry_flag < 5 %}
+				<span class="glyphicon glyphicon-link"></span>
+				{% endif %}
 				{% if entry.list_price %}
 					Listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
 				{% endif %}
