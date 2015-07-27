@@ -28,11 +28,11 @@
 			{% endif %}
 			{% if entry.for_sale %}
 			<section class="row-space">
-				{% if entry.url and entry.entry_flag < 5 %}
+				{% if entry.url and entry.timesince < 45 %}
 				<a href="{{entry.url}}" target="_blank">
 				{% endif %}
 				<div class="money">
-				{% if entry.url and entry.entry_flag < 5 %}
+				{% if entry.url and entry.timesince < 45 %}
 				<span class="glyphicon glyphicon-link"></span>
 				{% endif %}
 				{% if entry.list_price %}
@@ -45,7 +45,7 @@
 					For sale.
 				{% endif %}
 				</div>
-				{% if entry.url and entry.entry_flag < 5 %}
+				{% if entry.url and entry.timesince < 45 %}
 				</a> 
 				{% endif %} 
 			</section>

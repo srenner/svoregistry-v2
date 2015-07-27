@@ -1,6 +1,7 @@
 from django.db import models
 from localflavor.us.us_states import US_STATES
 from localflavor.ca.ca_provinces import PROVINCE_CHOICES
+import datetime
 
 class Car(models.Model):
     COLOR_CHOICES = (
@@ -108,6 +109,9 @@ class Entry(models.Model):
     geo_long = models.DecimalField(decimal_places=8, max_digits=11, null=True, blank=True)
     actual_entry_datetime = models.DateTimeField(auto_now=True, null=True, blank=True)
     deleted = models.BooleanField(default=False)
+    @property
+    def timesince(self):
+        return (datetime.datetime.today().date() - self.entry_datetime.date()).days
     class Meta:
         verbose_name_plural = 'Entries'
     def get_absolute_url(self):
