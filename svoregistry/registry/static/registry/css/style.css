@@ -172,7 +172,7 @@ a .money {
 	color: black;
 }
 a .money:hover {
-	background-color: #D5FDD5;
+	background-color: #EEFEEE; 
 	color: #2a6496;
 	text-decoration: underline;
 }
@@ -181,7 +181,7 @@ a .money:hover {
 	width: auto;
 	border: solid 1px #D5FDD5;
 	border-radius: 5px;
-	background-color: #EEFEEE;
+	background-color: #D5FDD5;
 	display: inline-block;
 }
 /* colors */
