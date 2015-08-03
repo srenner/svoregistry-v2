@@ -60,7 +60,7 @@ def new(request):
     return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
 
 def market(request):
-    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:10]
+    entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:35]
     strJson = serializers.serialize("json", entries)
     cursor = connection.cursor()
     #chartEntries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)

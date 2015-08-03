@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load humanize %}
 {% block title %}Mustang SVO Registry - The SVO Market{% endblock %}
 {% block head %}
 {% load staticfiles %}
@@ -9,6 +10,11 @@
 	var chartData = "{{ chartdata }}";
 	//alert(chartData);
 </script>
+<!--<style type="text/css">
+	.table-hover tbody tr:hover {
+		cursor: pointer;
+	}
+</style> -->
 {% endblock %}
 {%block content %}
 <header>
@@ -16,7 +22,7 @@
 	<p class="text-center">Cars for sale and data on recent sales</p>
 </header>
 <div class="row">
-	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+	<div class="hidden col-lg-6 col-md-6 col-sm-12 col-xs-12">
 		<h2>Recent Listings</h2>
 		<ul class="list-unstyled">
 			{% for entry in entries %}
@@ -25,9 +31,53 @@
 		</ul>
 	</div>
 
-	<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		<h2>Price Data</h2>
-		<div id="divScatterBox" class="scatter-box ct-chart"></div>
+	<div class="col-xs-12">
+		<table class="table table-condensed table-hover">
+			<thead>
+				<tr>
+					<th>Entry Date</th>
+					<th>Car Details</th>
+					<th>Mileage</th>
+					<th>List Price</th>
+					<th>Transaction Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for entry in entries %}
+					<tr>
+						<td>
+							<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
+						</td>
+						<td>
+							{% if entry.year %}
+							{{ entry.year }} 
+							{% endif %}
+							
+							{% if entry.color %}
+							{{ entry.color }}
+							{% endif %}
+						</td>
+						<td>
+							{% if entry.mileage %}
+							{{ entry.mileage | intcomma }}
+							{% endif %}
+						</td>
+						<td>
+							{% if entry.list_price %}
+							${{ entry.list_price | floatformat:0 | intcomma }}
+							{% endif %}
+						</td>
+						<td>
+							{% if entry.transaction_price %}
+							${{ entry.transaction_price | floatformat:0 | intcomma }}
+							{% endif %}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+		<div id="divScatterBox" class="scatter-box ct-chart hidden"></div>
 		<div class="hidden">
 		<h3 class="text-center">2015 Sales</h3>
 		<table class="table table-condensed table-striped">
