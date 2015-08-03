@@ -36,6 +36,7 @@
 			<thead>
 				<tr>
 					<th>Entry Date</th>
+					<th>VIN</th>
 					<th>Car Details</th>
 					<th>Mileage</th>
 					<th>List Price</th>
@@ -47,6 +48,9 @@
 					<tr>
 						<td>
 							<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
+						</td>
+						<td>
+							<a href="/{{entry.car}}/">{{ entry.car }}</a>
 						</td>
 						<td>
 							{% if entry.year %}
