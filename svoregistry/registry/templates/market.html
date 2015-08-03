@@ -64,16 +64,22 @@
 						<td>
 							{% if entry.mileage %}
 							{{ entry.mileage | intcomma }}
+							{% else %}
+							<small>Unknown</small>
 							{% endif %}
 						</td>
 						<td>
 							{% if entry.list_price %}
 							${{ entry.list_price | floatformat:0 | intcomma }}
+							{% else %}
+							<small>Unknown</small>
 							{% endif %}
 						</td>
 						<td>
 							{% if entry.transaction_price %}
 							${{ entry.transaction_price | floatformat:0 | intcomma }}
+							{% else %}
+							<small>Unknown</small>
 							{% endif %}
 						</td>
 					</tr>
