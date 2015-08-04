@@ -112,6 +112,18 @@ class Entry(models.Model):
     @property
     def timesince(self):
         return (datetime.datetime.today().date() - self.entry_datetime.date()).days
+    @property
+    def list_price_rate(self):
+        if self.mileage is not None and self.list_price is not None:
+            return round(int(self.list_price) / (self.mileage / 10000),2)
+        else:
+            return 0
+    @property
+    def transaction_price_rate(self):
+        if self.mileage is not None and self.transaction_price is not None:
+            return round(int(self.transaction_price) / (self.mileage / 10000),2)
+        else:
+            return 0
     class Meta:
         verbose_name_plural = 'Entries'
     def get_absolute_url(self):

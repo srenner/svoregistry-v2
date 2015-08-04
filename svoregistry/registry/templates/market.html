@@ -22,15 +22,6 @@
 	<p class="text-center">Cars for sale and data on recent sales</p>
 </header>
 <div class="row">
-	<div class="hidden col-lg-6 col-md-6 col-sm-12 col-xs-12">
-		<h2>Recent Listings</h2>
-		<ul class="list-unstyled">
-			{% for entry in entries %}
-				<li>{% include 'entry_compact.html' %}</li>
-			{% endfor %}
-		</ul>
-	</div>
-
 	<div class="col-xs-12">
 		<table class="table table-condensed table-hover">
 			<thead>
@@ -40,7 +31,9 @@
 					<th>Car Details</th>
 					<th>Mileage</th>
 					<th>List Price</th>
+					<th>Per 10k Miles</th>
 					<th>Transaction Price</th>
+					<th>Per 10k Miles</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -74,6 +67,15 @@
 							{% else %}
 							<small>Unknown</small>
 							{% endif %}
+							
+							
+						</td>
+						<td>
+						{% if entry.list_price_rate > 0 %}
+						${{ entry.list_price_rate | floatformat:0 | intcomma }}
+						{% else %}
+						---
+						{% endif %}
 						</td>
 						<td>
 							{% if entry.transaction_price %}
@@ -82,93 +84,22 @@
 							<small>Unknown</small>
 							{% endif %}
 						</td>
+						<td>
+						{% if entry.transaction_price_rate > 0 %}
+						${{ entry.transaction_price_rate | floatformat:0 | intcomma }}
+						{% else %}
+						---
+						{% endif %}
+						</td>
 					</tr>
 				{% endfor %}
 			</tbody>
 		</table>
-		
 		<div id="divScatterBox" class="scatter-box ct-chart hidden"></div>
-		<div class="hidden">
-		<h3 class="text-center">2015 Sales</h3>
-		<table class="table table-condensed table-striped">
-			<tbody>
-				<tr>
-					<th>Cars Listed</th>
-					<td>0</td>
-				</tr>
-				<tr>
-					<th>Average List Price</th>
-					<td>$0 (based on 0 listings)</td>
-				</tr>
-				<tr>
-					<th>Average Sale Price</th>
-					<td>$ (based on 0 sales)</td>
-				</tr>
-				<tr>
-					<th>List price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-				<tr>
-					<th>Sale price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-			</tbody>
-		</table>
-		<h3 class="text-center">2014 Sales</h3>
-		<table class="table table-condensed table-striped">
-			<tbody>
-				<tr>
-					<th>Cars Listed</th>
-					<td>0</td>
-				</tr>
-				<tr>
-					<th>Average List Price</th>
-					<td>$0 (based on 0 listings)</td>
-				</tr>
-				<tr>
-					<th>Average Sale Price</th>
-					<td>$ (based on 0 sales)</td>
-				</tr>
-				<tr>
-					<th>List price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-				<tr>
-					<th>Sale price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-			</tbody>
-		</table>
-		<h3 class="text-center">2013 Sales</h3>
-		<table class="table table-condensed table-striped">
-			<tbody>
-				<tr>
-					<th>Cars Listed</th>
-					<td>0</td>
-				</tr>
-				<tr>
-					<th>Average List Price</th>
-					<td>$0 (based on 0 listings)</td>
-				</tr>
-				<tr>
-					<th>Average Sale Price</th>
-					<td>$ (based on 0 sales)</td>
-				</tr>
-				<tr>
-					<th>List price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-				<tr>
-					<th>Sale price per 10k miles</th>
-					<td>$0</td>
-				</tr>
-			</tbody>
-		</table>
-		</div>
 	</div>
 </div>
 {% endblock %}
 {% block scripts %}
-<script src="{% static 'registry/js/vendor/chartist.min.js' %}" type="text/javascript"></script>
-<script src="{% static 'registry/js/market.js' %}" type="text/javascript"></script>
+<!--<script src="{% static 'registry/js/vendor/chartist.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'registry/js/market.js' %}" type="text/javascript"></script>  -->
 {% endblock %}
