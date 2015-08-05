@@ -36,7 +36,7 @@
 				<span class="glyphicon glyphicon-link"></span>
 				{% endif %}
 				{% if entry.list_price %}
-					Listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
+					Asking price ${{ entry.list_price | floatformat:0 | intcomma }}.
 				{% endif %}
 				{% if entry.transaction_price %}
 					Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.

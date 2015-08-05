@@ -20,7 +20,7 @@
 				{% if entry.for_sale %}
 					<span class="text-success">
 					{% if entry.list_price %}
-						Listed for ${{ entry.list_price | floatformat:0 | intcomma }}.
+						Asking ${{ entry.list_price | floatformat:0 | intcomma }}.
 					{% endif %}
 					{% if entry.transaction_price %}
 						Sold for ${{entry.transaction_price | floatformat:0 | intcomma }}.
