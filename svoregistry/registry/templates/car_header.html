@@ -1,12 +1,14 @@
 {% load filters %}
 {% load staticfiles %}
-<h1>
-	{{car.year|default_if_none:"Unknown Year"}}
-	<span itemprop="name">Mustang SVO</span>
-</h1>
-<h3 class="text-center">
-	<span itemprop="color">{{ car.COLOR_CHOICES|color_lookup:car.color }}</span>
-</h3>
+<header id="header-car" class="svo-{{car.color}}">
+	<h1>
+		{{car.year|default_if_none:"Unknown Year"}}
+		<span itemprop="name">Mustang SVO</span>
+	</h1>
+	<h3 class="text-center">
+		<span itemprop="color">{{ car.COLOR_CHOICES|color_lookup:car.color }}</span>
+	</h3>
+</header>
 <p class="text-center">VIN <span itemprop="productID">{{car.vin}}</span> 
 	<a href="https://www.google.com/search?q={{car.vin}}" target="_blank"><img src="{% static 'img/google.png' %}" style="margin-top: -3px; opacity: 0.6" title="Search Google" /></a>
 </p>

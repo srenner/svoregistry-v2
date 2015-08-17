@@ -1,3 +1,17 @@
+.navbar {
+	margin-bottom: 0;
+}
+.panel-heading-svo {
+	padding: 5px;
+	font-size: 18px;
+}
+header {
+	padding: 5px;
+	margin-bottom: 5px;
+}
+#header-car {
+	padding: 5px;
+}
 .h1, h1 {
 	text-align: center;
 	margin-top: 0;

@@ -3,10 +3,12 @@
 {% block head %}
 <meta name="description" content="Mustang SVO Registry Search Engine" />
 {% endblock %}
-{% block content %}
-	<header>
-    	<h1 class="hidden-xs">Search The <span class="hidden-sm">Mustang </span>SVO Registry</h1>
+{% block header %}
+	<header class="hidden-xs svo-1C">
+    	<h1>Search The <span class="hidden-sm">Mustang </span>SVO Registry</h1>
     </header>
+{% endblock %}
+{% block content %}
     <form method="get" action=".">
 		<div class="input-group input-group-lg col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
 			<input type="search" class="form-control" name="q" id="id_q" />

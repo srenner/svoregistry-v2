@@ -15,39 +15,16 @@
 <link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/tinymce/skins/lightgray/content.min.css' %}" />
 {% endblock %}
 {% load humanize %}
-{%block content %}
+{% block header %}
+{% include 'car_header.html' %}
+{% endblock %}
+{% block content %}
 <div itemscope itemtype="http://schema.org/Car">
-<header id="header-car">
-	{% include 'car_header.html' %}
-</header>
-<div class="row">
-	<div class="col-sm-6 col-xs-12 text-center">
-		<div id="divMap" class="map-small">View this SVO on the map</div>
-		
-	</div>
-	<div class="col-sm-6 col-xs-12">
-		<div id="divMeta">
-			{% with count=entries.count %}
-			<p class="text-center hidden">
-				<a id="aEntryLink" href="#entries">
-					This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
-				</a>
-			</p>
-			{% endwith %}
-			<div id="div-metadata">
-				{% include 'car_metadata.html' %}
-			</div>
-		</div>
-	</div>
-</div>
-<div class="row row-space">
-	<div id="divTimeline" class="col-sm-12"></div>
-</div>
-<hr>
 <div class="text-center">
 	<a name="entries"></a>
-	<button id="btnShowForm" class="btn btn-lg btn-success" style="display: none"><span class="glyphicon glyphicon-plus-sign"></span> Add Entry</button>
+	<button id="btnShowForm" class="btn btn-lg btn-success" style="display: none"><span class="glyphicon glyphicon-plus-sign"></span> Add Registry Entry</button>
 </div>
+<hr>
 <div class="registry-entry" id="divEntry">
 	<div class="registry-entry-header row svo-{{car.color}}">
 		<div class="col-md-12 col-sm-12">
@@ -121,6 +98,30 @@
 		</div>
 	</form>
 </div>
+
+<div class="row">
+	<div class="col-sm-6 col-xs-12 text-center">
+		<div id="divMap" class="map-small">View this SVO on the map</div>		
+	</div>
+	<div class="col-sm-6 col-xs-12">
+		<div id="divMeta">
+			{% with count=entries.count %}
+			<p class="text-center hidden">
+				<a id="aEntryLink" href="#entries">
+					This SVO has {{entries.count}} entr{{count|pluralize:"y,ies"}} in the registry.
+				</a>
+			</p>
+			{% endwith %}
+			<div id="div-metadata">
+				{% include 'car_metadata.html' %}
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row row-space">
+	<div id="divTimeline" class="col-sm-12"></div>
+</div>
+<hr>
 <div id="divEntries">
 	{% for entry in entries %}
 		{% include 'entry.html' %}

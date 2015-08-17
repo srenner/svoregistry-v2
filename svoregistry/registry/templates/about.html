@@ -6,8 +6,12 @@
 <link rel="stylesheet" type="text/css" href="{% static 'registry/css/vendor/chartist.min.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'registry/css/chartist-custom.css' %}" />
 {% endblock %}
-{%block content %}
+{% block header %}
+<header class="svo-1C">
 <h1>About The <span class="hidden-xs">Mustang SVO </span>Registry</h1>
+</header>
+{% endblock %}
+{%block content %}
 <div class="lead">
 	<div>
 		<img class="img-rounded img img-responsive center-block" src="{% static 'img/84ad.jpg' %}" alt="1984 Mustang SVO promotional image" />
