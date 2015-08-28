@@ -41,47 +41,38 @@
 	<header>
 		<h2>Latest Updates</h2>
 	</header>
-	<div class="col-sm-9 col-xs-12">
-		<ul class="list-unstyled">
-			{% for entry in entries %}
-				<li>{% include 'entry_compact.html' %}</li>
-			{% endfor %}
-		</ul>
+	<div class="col-md-6 col-sm-12 col-xs-12">
+	{% for entry in entries %}
+		{% if forloop.counter < 4 %}
+		{% include 'entry_compact.html' %}
+		{% endif %}
+	{% endfor %}	
 	</div>
-	<div class="col-sm-3 hidden-xs">
-		<div class="twitter-widget text-center">
-			<a class="twitter-timeline" href="https://twitter.com/SVOregistry" data-widget-id="469321231313813505">Tweets by @SVOregistry</a>
-			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-		</div>
-	</div>
-</div>
-
-<div class="row spacer-medium">
-	<div class="col-md-12">
-
+	<div class="col-md-6 col-sm-12 hidden-xs">
+	{% for entry in entries %}
+		{% if forloop.counter >= 4 %}
+		{% include 'entry_compact.html' %}
+		{% endif %}
+	{% endfor %}
 	</div>
 </div>
-
-
-
-		<div class="random-entry-container">
-			<header>
-				<h2>Random Entry</h2>
-				<h3 class="text-center"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
-			</header>
-			<div>{% include 'entry.html' %}</div>
-		</div>
-
-
-
+<hr>
+<div class="random-entry-container">
+	<header>
+		<h2>Random Entry</h2>
+		<h3 class="text-center"><a href="/{{entry.car}}/">{{ entry.year|default_if_none:"Unknown Year" }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</a></h4>
+	</header>
+	<div>{% include 'entry.html' %}</div>
+</div>
 <div class="hidden-xs">
-		<header>
-			<h2>SVOs Around The World</h2>
-			<p class="text-center">Use the interactive map to see where SVOs have been</p>
-		</header>
-		<div id="divMap" class="big-map text-center" style="display: none">
-			View SVO Registry entries on the interactive map
-		</div>
+	<hr>
+	<header>
+		<h2>SVOs Around The World</h2>
+		<p class="text-center">Use the interactive map to see where SVOs have been</p>
+	</header>
+	<div id="divMap" class="big-map text-center" style="display: none">
+		View SVO Registry entries on the interactive map
+	</div>
 </div>
 {% endblock %}
 {% block scripts %}

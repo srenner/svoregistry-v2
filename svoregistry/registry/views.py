@@ -33,7 +33,7 @@ def index(request):
         random_entry = entries[index]
     else:
         random_entry = None
-    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:5]
+    entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:6]
     return render_to_response('index.html', { 'entry': random_entry, 'entries': entries }, context_instance=RequestContext(request))
 
 def lookup_car(request):
