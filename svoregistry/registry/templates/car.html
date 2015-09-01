@@ -19,6 +19,9 @@
 {% include 'car_header.html' %}
 {% endblock %}
 {% block content %}
+<p class="text-center">VIN <span itemprop="productID">{{car.vin}}</span>
+	<a href="https://www.google.com/search?q={{car.vin}}" target="_blank"><img src="{% static 'img/google.png' %}" style="margin-top: -3px; opacity: 0.6" title="Search Google" /></a>
+</p>
 <div itemscope itemtype="http://schema.org/Car">
 <div class="text-center">
 	<a name="entries"></a>
@@ -40,7 +43,7 @@
 				<span class="form-field col-md-6 col-sm-6 col-xs-12">{{ form.photo.label_tag }} {{ form.photo }}</span>
 			</div>
 			<div class="form-group">
-				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.year.label_tag }} {{ form.year }}</span>	
+				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.year.label_tag }} {{ form.year }}</span>
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.mileage.label_tag }} {{ form.mileage }}</span>
 				<span class="form-field col-md-4 col-sm-6 col-xs-12">{{ form.color.label_tag }} {{ form.color }} </span>
 				<span class="form-field col-md-2 col-sm-3 col-xs-6">{{ form.interior.label_tag }} {{ form.interior }}</span>
@@ -92,8 +95,8 @@
 		<hr>
 		<div class="row spacer-small">
 			<div class="btn-toolbar col-md-12">
-				<button id="btnSave" class="btn btn-lg btn-success" type="submit">Save</button>				
-				<button id="btnCancel" class="btn btn-lg btn-default" type="button">Cancel</button>	
+				<button id="btnSave" class="btn btn-lg btn-success" type="submit">Save</button>
+				<button id="btnCancel" class="btn btn-lg btn-default" type="button">Cancel</button>
 			</div>
 		</div>
 	</form>
@@ -101,7 +104,7 @@
 
 <div class="row">
 	<div class="col-sm-6 col-xs-12 text-center">
-		<div id="divMap" class="map-small">View this SVO on the map</div>		
+		<div id="divMap" class="map-small">View this SVO on the map</div>
 	</div>
 	<div class="col-sm-6 col-xs-12">
 		<div id="divMeta">
