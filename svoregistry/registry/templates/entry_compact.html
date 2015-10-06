@@ -2,20 +2,9 @@
 {% load filters %}
 {% load staticfiles %}
 {% load thumbnail %}
-<div class="registry-entry-compact">
-	<div class="row" itemscope itemtype="http://schema.org/Car">
-		<div class="col-sm-2 col-xs-3">
-			<a href="/{{entry.car }}/">
-				{% if entry.photo|length > 0 %}
-					{% thumbnail entry.photo 120x120 upscale as thumb %}
-					<img itemprop="image" src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" alt="SVO photo thumbnail" />
-				{% else %}
-					<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" alt="thumbnail not available" />
-				{% endif %}
-			</a>
-		</div>
-		<div class="col-sm-10 col-xs-9">
-			<div>
+<div class="registry-entry-compact" itemscope itemtype="http://schema.org/Car">
+		<div class="registry-entry-compact-header svo-{{entry.color}}">
+			<span class="registry-entry-compact-header-text">
 				<a href="/{{entry.car }}/"><span itemprop="name">{{ entry.year }} {{ entry.COLOR_CHOICES|color_lookup:entry.color }}</span></a>
 				{% if entry.for_sale %}
 					<span class="text-success">
@@ -30,23 +19,35 @@
 					{% endif %}
 					</span>
 				{% endif %}
+		</div>
+		<div class="registry-entry-compact-body">
+			<div style="display: inline-block; vertical-align: top">
+				<a href="/{{entry.car }}/">
+					{% if entry.photo|length > 0 %}
+						{% thumbnail entry.photo 120x120 upscale as thumb %}
+						<img itemprop="image" src="{{ thumb.url }}" width="{{thumb.width}}" height="{{thumb.height}}" class="img img-rounded img-responsive" alt="SVO photo thumbnail" />
+					{% else %}
+						<img class="img img-rounded img-responsive" src="{% static 'img/svothumb.jpg' %}" alt="thumbnail not available" />
+					{% endif %}
+				</a>
 			</div>
-			<div>
-				{% if entry.owner = '' %}
-				{% else %}
-				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in 
-				{% endif %}
-				{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
-			</div>
-			<div>
-				{% if entry.mileage = 0 or entry.mileage = None %}
-				{% else %}
-				{{entry.mileage|intcomma}} Miles on
-				{% endif %}
-				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
-				<br>
-				<small class="text-muted" itemprop="productID">{{ entry.car }}</small>				
+			<div style="display: inline-block; vertical-align: top">
+				<div>
+					{% if entry.owner = '' %}
+					{% else %}
+					Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in
+					{% endif %}
+					{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
+				</div>
+				<div>
+					{% if entry.mileage = 0 or entry.mileage = None %}
+					{% else %}
+					{{entry.mileage|intcomma}} Miles on
+					{% endif %}
+					<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
+					<br>
+					<small class="text-muted" itemprop="productID">{{ entry.car }}</small>
+				</div>
 			</div>
 		</div>
-	</div>
 </div>
