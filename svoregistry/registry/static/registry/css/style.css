@@ -118,15 +118,15 @@ h2.inline-header {
 .registry-entry-compact {
 	padding: 5px;
 	margin: 5px;
-	border-radius: 5px;
-	border: solid 3px transparent;
+	border-radius: 0 0 5px 5px;
+	border: solid 1px transparent;
 }
 .text-bigger {
 	font-size: 18px;
 }
 .registry-entry-compact:hover {
-	border: solid 3px #EFEFEF;
-	background-color: #FEFEFE;
+	border: solid 1px #888888;
+	box-shadow: 3px 3px 3px #888888;
 }
 .stat-box {
 	height: 240px;
@@ -186,7 +186,7 @@ a .money {
 	color: black;
 }
 a .money:hover {
-	background-color: #EEFEEE; 
+	background-color: #EEFEEE;
 	color: #2a6496;
 	text-decoration: underline;
 }
