@@ -2,6 +2,12 @@ Server setup for deployment
 ===========================
 * Start with new DigitalOcean droplet (Ubuntu 14.04)
 * Install PostgreSQL(libpq-dev, python-dev, postgresql, postgresql-contrib)
+  * Setup
+    * sudo -u postgres psql;
+    * alter user postgres password 'mypassword';
+    * create user myusername createdb createuser password 'mypassword';
+    * create database mydatabase owner myusername;
+    * \q
 * Install pip3, setup a virtualenv
 * From within virtualenv, install django, haystack, easy_thumbnails, django-localflavor, psycopg2, gunicorn
 * Install nginx
