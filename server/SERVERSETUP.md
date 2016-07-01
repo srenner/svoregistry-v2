@@ -15,6 +15,7 @@ Server setup for deployment
   * source /path/to/activate #new python is now active
 * Install python packages from pip
   * django
+  * whoosh
   * django-haystack
   * easy_thumbnails
   * django-localflavor
