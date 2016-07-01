@@ -26,4 +26,5 @@ Server setup for deployment
 * sudo service nginx start
 * nginx config: /etc/nginx/sites-available/svoregistry
 * symlink /etc/nginx/sites-available/svoregistry to /etc/nginx/sites-enabled/svoregistry
-* 
+* Manually backup database
+  * pg_dump --username myusername --dbname mydbname > mydbname_mydatestamp.psql
