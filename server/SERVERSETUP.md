@@ -23,7 +23,7 @@ Server setup for deployment
   * gunicorn
 * Install nginx, configure files in /etc/nginx
 * set up gunicorn config file
-* To start gunicorn: /root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi &
+* To start gunicorn: "/root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi &" from same directory as manage.py
 * sudo service nginx start
 * nginx config: /etc/nginx/sites-available/svoregistry
 * symlink /etc/nginx/sites-available/svoregistry to /etc/nginx/sites-enabled/svoregistry
