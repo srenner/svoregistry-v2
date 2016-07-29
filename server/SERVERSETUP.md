@@ -11,7 +11,7 @@ Server setup for deployment
 * Install pip3, setup a virtualenv
   * sudo apt-get install python3-pip #for most modern ubuntu derivatives
   * sudo pip3 install virtualenv
-  * virtualenv svo #puts a python in a directory called svo
+  * virtualenv -p python3 svo #puts a python in a directory called svo
   * source /path/to/activate #new python is now active
 * Install python packages from pip
   * django
