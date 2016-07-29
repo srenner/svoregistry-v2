@@ -21,7 +21,7 @@ Server setup for deployment
   * django-localflavor
   * psycopg2
   * gunicorn
-* Install nginx
+* Install nginx, configure files in /etc/nginx
 * set up gunicorn config file
 * To start gunicorn: /root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi &
 * sudo service nginx start
