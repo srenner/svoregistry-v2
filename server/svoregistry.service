@@ -1,0 +1,13 @@
+[Unit]
+Description=Start Gunicorn
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/root/svoregistry.com/site
+Environment="PATH=/root/svoregistry.com/env/bin"
+ExecStart=/root/svoregistry.com/env/bin/gunicorn -c /root/svoregistry.com/env/gunicorn_config.py svoregistry.wsgi &
+
+[Install]
+WantedBy=multi-user.target
