@@ -32,8 +32,11 @@ var drawMap = function() {
 			markers.push(marker);
 			oms.addMarker(marker);
 		}
-    	var mapOptions = {gridSize: 30, maxZoom: 7};
-    	var mc = new MarkerClusterer(map, markers, mapOptions);		
+    	var mapOptions = {
+        gridSize: 30,
+        maxZoom: 7,
+        imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m'};
+    	var mc = new MarkerClusterer(map, markers, mapOptions);
 	});
 };
 
@@ -41,7 +44,7 @@ var lookupVin = function() {
 	hideAddCar();
 	var vin = document.getElementById("txtVIN").value.toUpperCase();
 	$.get('/validate/' + vin + '/', function(data) {
-		
+
 		if(data.valid) {
 			$.get('/lookup?vin=' + vin, function(data) {
 				if(data === "1") {
@@ -51,7 +54,7 @@ var lookupVin = function() {
 					document.getElementById("divAddCar").className = "show";
 					document.getElementById("hVinNotFound").innerHTML = "This VIN is not in the database. Would you like to add it now?";
 				}
-			});				
+			});
 		}
 		else {
 			$("#formLookup").effect("shake", { times:8, distance: 6, direction: 'left' }, 400);
@@ -68,10 +71,10 @@ var addCar = function() {
 	var vin = document.getElementById("txtVIN").value.toUpperCase();
 	$.ajax({
 		url: "/add/" + vin + "/",
-		type: 'POST',	  
+		type: 'POST',
 		success: function(data) {
 			//server should redirect but set window here if it doesn't
-			window.location = '/' + vin + '/';	
+			window.location = '/' + vin + '/';
 		}
 	});
 };
