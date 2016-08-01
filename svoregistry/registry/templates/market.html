@@ -16,11 +16,13 @@
 	}
 </style> -->
 {% endblock %}
-{%block content %}
-<header>
+{% block header %}
+<header class="svo-2A">
 	<h1>Mustang SVO Market</h1>
 	<p class="text-center">Cars for sale and data on recent sales</p>
 </header>
+{% endblock %}
+{%block content %}
 <div class="row">
 	<div class="col-xs-12">
 		<table class="table table-condensed table-hover">
@@ -47,9 +49,9 @@
 						</td>
 						<td>
 							{% if entry.year %}
-							{{ entry.year }} 
+							{{ entry.year }}
 							{% endif %}
-							
+
 							{% if entry.color %}
 							{{ entry.color }}
 							{% endif %}
@@ -67,8 +69,8 @@
 							{% else %}
 							---
 							{% endif %}
-							
-							
+
+
 						</td>
 						<td>
 						{% if entry.list_price_rate > 0 %}

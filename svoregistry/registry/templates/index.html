@@ -7,18 +7,18 @@
 {% endblock %}
 {% load filters %}
 {%block header%}
-<header class="svo-1C hidden-xs">
+<header class="svo-2A hidden-xs">
 	<h1>1984 - 1986 Ford Mustang SVO Registry</h1>
 </header>
 {%endblock%}
 {%block content %}
 <div id="divLookupContainer" class="text-center h3 row spacer-medium jumbotron svo-2A">
 	<form id="formLookup" action="lookup" onsubmit="return lookupVin()" method="get">
-		<label for="txtVIN"><span class="hidden-xs">Start by </span>Enter<span class="hidden-xs">ing</span> a VIN Here:</label> 
+		<label for="txtVIN"><span class="hidden-xs">Start by </span>Enter<span class="hidden-xs">ing</span> a VIN Here:</label>
 		<div class="input-group input-group-lg col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12">
 			<input id="txtVIN" name="vin" type="text" class="form-control" style="text-transform: uppercase" placeholder="1FABP28TXXXXXXXXX" />
 			<span class="input-group-btn">
-				<button id="btnLookup" type="submit" class="btn btn-success">Go</button>				
+				<button id="btnLookup" type="submit" class="btn btn-success">Go</button>
 			</span>
 		</div>
 	</form>
@@ -46,7 +46,7 @@
 		{% if forloop.counter < 4 %}
 		{% include 'entry_compact.html' %}
 		{% endif %}
-	{% endfor %}	
+	{% endfor %}
 	</div>
 	<div class="col-md-6 col-sm-12 hidden-xs">
 	{% for entry in entries %}
