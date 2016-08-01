@@ -9,7 +9,7 @@ Technical Details
 * Database: PostgreSQL
 * Search Engine: django-haystack + Whoosh
 * CSS Framework: Bootstrap 3
-* Server OS: Ubuntu Server 14.04
+* Server OS: Ubuntu Server 16.04
 * Web Server: nginx + Gunicorn
 
 Coming Soon
