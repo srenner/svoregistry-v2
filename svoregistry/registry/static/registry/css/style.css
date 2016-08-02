@@ -213,6 +213,11 @@ a .money:hover {
 	background-color: #D5FDD5;
 	display: inline-block;
 }
+
+.panel-heading-svo {
+	padding: 2px 2px 2px 9px;
+}
+
 /* colors */
 .svo-1B {
 	background-color: #7C7F85;
