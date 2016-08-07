@@ -5,14 +5,14 @@
 		<a name="{{entry.id}}"></a>
 		<div class="row registry-entry-header svo-{{entry.color}}">
 			<div class="col-sm-6 col-xs-12 text-left">
-				{% if entry.mileage = 0 or entry.mileage = None %}
+				{% if entry.mileage == 0 or entry.mileage == None %}
 				{% else %}
-				{{entry.mileage|intcomma}} Miles on 
+				{{entry.mileage|intcomma}} Miles on
 				{% endif %}
 				<time datetime="{{ entry.entry_datetime|date:"Y-m-d" }}">{{entry.entry_datetime|date}}</time>
 			</div>
 			<div class="col-sm-6 col-xs-12 text-right">
-				{% if entry.owner = '' %}
+				{% if entry.owner == '' %}
 				{% else %}
 				Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in
 				{% endif %}
@@ -24,7 +24,7 @@
 		</div>
 		<div class="row registry-entry-body">
 			{% if entry.photo %}
-			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" itemprop="image" />	
+			<img class="img-responsive" src="{{ MEDIA_URL }}{{entry.photo}}" alt="Entry Photo" itemprop="image" />
 			{% endif %}
 			{% if entry.for_sale %}
 			<section class="row-space">
@@ -46,8 +46,8 @@
 				{% endif %}
 				</div>
 				{% if entry.url and entry.timesince < 45 %}
-				</a> 
-				{% endif %} 
+				</a>
+				{% endif %}
 			</section>
 			{% endif %}
 			<section>

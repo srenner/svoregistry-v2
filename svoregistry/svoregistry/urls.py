@@ -1,21 +1,21 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 from registry import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
-from django.conf.urls import patterns
 from registry.feed import LatestEntriesFeed
 from django.contrib.sitemaps.views import sitemap
 from registry.models import Car
 from registry.sitemap import CarSitemap, StaticViewSitemap
+
 
 sitemaps = {
     'static': StaticViewSitemap,
     'cars': CarSitemap,
 }
 
-urlpatterns = patterns('',
+urlpatterns = [
     #url(r'^$', views.coming_soon, name='home'),
     url(r'^$', views.index, name='home'),                                                       #landing page
     url(r'^new/$', views.new, name='new'),                                                      #simple page
@@ -23,20 +23,20 @@ urlpatterns = patterns('',
     url(r'^market/$', views.market, name='market'),                                             #market(sales, etc.)
     url(r'^about/$', views.about, name='about'),                                                #simple page
     url(r'^moderator/$', views.moderator, name='moderator'),                                    #moderator console
-    
+
     url(r'^map/', views.map_data, name='map_data'),                                             #json
-    
+
     url(r'^geocode/$', views.geocode, name='geocode'),                                          #execute geocode script, do nothing
-    
+
     url(r'^download/$', views.download, name='download'),                                       #csv output
-    
+
     url(r'^statistics/$', views.statistics, name='statistics'),
     url(r'^statistics/year/$', views.statistics_year, name='statistics_year'),                  #json
     url(r'^statistics/timeline/$', views.statistics_entry_year, name='statistics_entry_year'),  #json
     url(r'^statistics/color/$', views.statistics_color, name='statistics_color'),               #json
     url(r'^statistics/status/$', views.statistics_status, name='statistics_status'),            #json
-    
-    
+
+
     url(r'^(?P<vin>\w{17})/$', views.view_car, name='car'),                                     #main car page
     #url(r'^map/(?P<vin>\w{17})/$', views.map_car, name='map_car'),                              #get map for car
     url(r'^entries/(?P<vin>\w{17})/$', views.car_entries, name='car_entries'),                  #get json entries for car
@@ -44,17 +44,17 @@ urlpatterns = patterns('',
 
     url(r'^lookup$', views.lookup_car, name='lookup'),                                          #adding vin
     url(r'^validate/(?P<vin>\w+)/$', views.validate, name='validate'),                          #adding vin
-    
+
     url(r'^add$', views.add_entry, name='add_entry'),                                           #add entry
     url(r'^add/(?P<vin>\w+)/$', views.add_car, name='add_car'),                                 #add car without entry
     url(r'^refresh/(?P<vin>\w+)/$', views.refresh_car, name='refresh_car'),                     #called after adding an entry
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^search/', include('haystack.urls')),
-    
+
     url(r'^robots\.txt$', TemplateView.as_view(template_name='robots.txt', content_type='text/plain')),
-    
+
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
-)
+]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

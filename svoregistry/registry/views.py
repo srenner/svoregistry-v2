@@ -34,7 +34,7 @@ def index(request):
     else:
         random_entry = None
     entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:6]
-    return render_to_response('index.html', { 'entry': random_entry, 'entries': entries }, context_instance=RequestContext(request))
+    return render_to_response('index.html', { 'entry': random_entry, 'entries': entries })
 
 def lookup_car(request):
     vin = request.GET.get('vin').upper() #capture vin in query string for noscript form compatibility
@@ -49,15 +49,15 @@ def lookup_car(request):
             return HttpResponse("0") #car not found
         else:
             if validate_vin(vin)['valid']:
-                return render_to_response('lookup_add.html', { 'vin': vin }, context_instance=RequestContext(request)) #car not found
+                return render_to_response('lookup_add.html', { 'vin': vin }, context=RequestContext(request)) #car not found
             else:
-                return render_to_response('lookup_invalid.html', { 'vin': vin }, context_instance=RequestContext(request)) #vin was invalid
+                return render_to_response('lookup_invalid.html', { 'vin': vin }, context=RequestContext(request)) #vin was invalid
 
 def new(request):
     #display the newest entries
     entries = Entry.objects.order_by('-entry_datetime', '-id').exclude(deleted=True)[:5]
     strJson = serializers.serialize("json", entries)
-    return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context_instance=RequestContext(request))
+    return render_to_response("new.html", { 'entries': entries, 'json': strJson }, context=RequestContext(request))
 
 def market(request):
     entries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)[:35]
@@ -65,12 +65,12 @@ def market(request):
     cursor = connection.cursor()
     #chartEntries = Entry.objects.filter(for_sale=True).order_by('-entry_datetime').exclude(deleted=True)
     #cursor.execute("""SELECT id, car_id, list_price, transaction_price, mileage, entry_datetime
-    #                    FROM registry_entry 
-    #                    WHERE for_sale = True 
-    #                        AND (list_price IS NOT NULL OR transaction_price IS NOT NULL) 
+    #                    FROM registry_entry
+    #                    WHERE for_sale = True
+    #                        AND (list_price IS NOT NULL OR transaction_price IS NOT NULL)
     #                    ORDER BY entry_datetime""")
     #chartdata = dictfetchall(cursor)
-   # 
+   #
     #json = dumps([{
     #                'id': d['id'],
     #                'vin': d['car_id'],
@@ -80,21 +80,21 @@ def market(request):
     #                'date': d['entry_datetime'].strftime('%b %d, %Y'),
     #                'dateformat': d['entry_datetime'].strftime('%Y-%m-%d'),
     #              } for d in chartdata])
-    
 
-    return render_to_response("market.html", { 'entries': entries, 'chartdata': None }, context_instance=RequestContext(request))
+
+    return render_to_response("market.html", { 'entries': entries, 'chartdata': None })
 
 def statistics(request):
     #display registry statistics
     cursor = connection.cursor()
     cursor.execute("select count(*) from registry_car")
     cars = cursor.fetchall()[0][0]
-    
+
     cursor = connection.cursor()
     cursor.execute("select count(*) from registry_entry")
     entries = cursor.fetchall()[0][0]
-    
-    return render_to_response("statistics.html", {'cars': cars, 'entries': entries}, context_instance=RequestContext(request))
+
+    return render_to_response("statistics.html", {'cars': cars, 'entries': entries}, context=RequestContext(request))
 
 def statistics_year(request):
     cursor = connection.cursor()
@@ -132,8 +132,8 @@ def statistics_status(request):
                         where deceased is not null
                         group by deceased
                         union all
-                        select 
-                          'Unknown' as "status", 
+                        select
+                          'Unknown' as "status",
                           (select count(*) from registry_car where deceased is null) as "count"
                           """)
     report = dictfetchall(cursor)
@@ -155,7 +155,7 @@ def about(request):
     cursor = connection.cursor()
     cursor.execute("select count(*) from registry_entry")
     entries = cursor.fetchall()[0][0]
-    
+
     cursor = connection.cursor()
     cursor.execute("""select year, count(year) as "count",
                           case year
@@ -168,8 +168,8 @@ def about(request):
                         where year != 'NULL'
                         group by year order by year""")
     by_year = dictfetchall(cursor)
-    
-    return render_to_response("about.html", {'cars': cars, 'entries': entries, 'by_year': by_year}, context_instance=RequestContext(request))
+
+    return render_to_response("about.html", {'cars': cars, 'entries': entries, 'by_year': by_year})
 
 def download(request):
     excludes = ['scrape_id', 'entry_flag', 'ip', 'deleted']
@@ -231,9 +231,9 @@ def add_entry(request):
         form = AddEntryForm(request.POST)
         if form.is_valid():
             vin=str(form.cleaned_data['car'])
-            carObject = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'], 
-                      interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'], 
-                      option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'], 
+            carObject = Car(vin=vin, year=form.cleaned_data['year'], slappers=form.cleaned_data['slappers'], color=form.cleaned_data['color'],
+                      interior=form.cleaned_data['interior'], sunroof=form.cleaned_data['sunroof'], comp_prep=form.cleaned_data['comp_prep'],
+                      option_delete=form.cleaned_data['option_delete'], wing_delete=form.cleaned_data['wing_delete'],
                       has_23=form.cleaned_data['has_23'], on_road=form.cleaned_data['on_road'], deceased=form.cleaned_data['deceased'])
             carObject.save()
             #TODO: reduce db calls
@@ -244,7 +244,7 @@ def add_entry(request):
                 new_entry.photo = request.FILES['photo']
                 new_entry.save()
             if request.is_ajax():
-                return render_to_response("entry.html", { 'entry': new_entry }, context_instance=RequestContext(request))
+                return render_to_response("entry.html", { 'entry': new_entry }, context=RequestContext(request))
 
     return HttpResponseRedirect('/' + vin)
 
@@ -258,9 +258,9 @@ def view_car(request,vin):
             twitter_description = 'View info for SVO with VIN ' + car.vin
     else:
         twitter_description = 'View info for SVO with VIN ' + car.vin
-    form = AddEntryForm({'car': vin})    
+    form = AddEntryForm({'car': vin})
     similar = Car.objects.filter(color=car.color,year=car.year,interior=car.interior,sunroof=car.sunroof).exclude(vin=car.vin)
-    return render_to_response('car.html', {'car': car, 'entries': entries, 'similar': similar, 'twitter_description': twitter_description, 'form': form}, context_instance=RequestContext(request))
+    return render_to_response('car.html', {'car': car, 'entries': entries, 'similar': similar, 'twitter_description': twitter_description, 'form': form})
 
 def map_data(request):
     locations = Entry.objects.exclude(geo_lat__isnull=True).exclude(deleted=True)
@@ -285,7 +285,7 @@ def car_entries(request, vin):
                     'lat': float('0' if entry.geo_lat is None else str(entry.geo_lat)),
                     'long': float('0' if entry.geo_long is None else str(entry.geo_long))
                   } for entry in entries])
-    return HttpResponse(json, 'application/json')       
+    return HttpResponse(json, 'application/json')
 
 def flag_entry(request, entry_id):
     try:
@@ -304,4 +304,4 @@ def validate(request, vin):
 def moderator(request):
     entries = Entry.objects.order_by('-entry_flag').exclude(deleted=True)[:10]
     deleted = Entry.objects.filter(deleted=True)[:10]
-    return render_to_response("moderator.html", { 'entries': entries, 'deleted': deleted }, context_instance=RequestContext(request))
+    return render_to_response("moderator.html", { 'entries': entries, 'deleted': deleted })

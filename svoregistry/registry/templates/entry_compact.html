@@ -33,14 +33,14 @@
 			</div>
 			<div style="display: inline-block; vertical-align: top">
 				<div>
-					{% if entry.owner = '' %}
+					{% if entry.owner == '' %}
 					{% else %}
 					Owned by {{entry.owner|default_if_none:"Unknown"|default:"Unknown"}} in
 					{% endif %}
 					{{entry.city|default_if_none:""}} {{entry.state|default_if_none:""}} {{entry.country|default_if_none:"Unknown Location"}} {{entry.zipcode|default_if_none:""}}
 				</div>
 				<div>
-					{% if entry.mileage = 0 or entry.mileage = None %}
+					{% if entry.mileage == 0 or entry.mileage == None %}
 					{% else %}
 					{{entry.mileage|intcomma}} Miles on
 					{% endif %}
