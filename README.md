@@ -4,12 +4,12 @@ This is the newest version of [svoregistry.com](http://www.svoregistry.com). The
 
 Technical Details
 -----------------
-* Programming Language: Python 3.x
-* Web Framework: Django
-* Database: PostgreSQL
+* Python 3.x
+* Django
+* PostgreSQL
 * Search Engine: django-haystack + Whoosh
-* CSS Framework: Bootstrap 3
-* Server OS: Ubuntu Server 16.04
+* Bootstrap 3
+* Ubuntu Server 16.04
 * Web Server: nginx + Gunicorn
 
 Coming Soon
