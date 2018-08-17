@@ -12,7 +12,7 @@ Technical Details
 * Ubuntu Server 16.04
 * Web Server: nginx + Gunicorn
 
-Coming Soon
+Next Steps
 -----------
 * Improved documentation
 * UI tweaks
